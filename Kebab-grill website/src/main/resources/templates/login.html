@@ -20,10 +20,9 @@
             user-select: none;
         }
         .bg-img{
-            background: url('../static/Images/food1.jpeg');
             height: 100vh;
             background-size: cover;
-            background-position: center;
+            background: url('../static/Images/food1.jpeg');
         }
         .bg-img:after{
             position: absolute;
@@ -127,7 +126,7 @@
             color: white;
             margin: 0 0 20px 0;
         }
-        .facebook,.instagram{
+        .facebook,.google{
             width: 100%;
             height: 45px;
             line-height: 45px;
@@ -144,16 +143,16 @@
             border: 1px solid #c6332c;
 
         }
-        .instagram{
-            background: #E1306C;
-            border: 1px solid #df2060;
+        .google:hover{
+            background: red;
         }
+
+
         .facebook:hover{
             background: #3e61a8;
         }
-        .instagram:hover{
-            background: #df2060;
-        }
+
+
         .links i{
             font-size: 17px;
         }
@@ -182,18 +181,21 @@
 
 <body>
 <<div  class="bg-img">
-    <div class="content" style="background-image: ">
+    <div class="content">
         <img th:src="@{/Images/large.png}"   src="../static/Images/large.png" class="mb-2" width="100">
         <header>Login</header>
-        <form action="#">
+        <form  th:action="@{/login}" method="post" th:object="${customer}">
             <div class="field">
                 <span class="fa fa-user"></span>
-                <input type="text" required placeholder="Email or Phone">
+                <input  th:field="*{username}" type="text" required placeholder="Email or Phone">
             </div>
             <div class="field space">
                 <span class="fa fa-lock"></span>
-                <input type="password" class="pass-key" required placeholder="Password">
+                <input th:field="*{password}" type="password" class="pass-key" required placeholder="Password">
                 <span class="show">SHOW</span>
+            </div>
+            <div th:if="${param.error}" class="alert alert-error text-danger">
+                Invalid username or password.
             </div>
             <div class="pass">
                 <a href="#">Forgot Password?</a>
@@ -207,18 +209,17 @@
         </div>
         <div class="links">
             <div class="facebook">
-                <i class="fab fa-facebook-f"><span>Facebook</span></i>
+                <a class="fab fa-facebook-f"><span>Facebook</span></a>
             </div>
-            <br>
-            <div class="instagram">
-                <i class="fab fa-google"><span>Google</span></i>
+            <div class="google">
+                <a  href="" th:href="@{/oauth2/authorization/google}" class="fab fa-google"><span>oogle</span></a>
             </div>
 
 
         </div>
         <div class="signup">
             Don't have account?
-            <a href="#">Signup Now</a>
+            <a href="register.html"  th:href="@{/registration}">Signup Now</a>
         </div>
     </div>
 </div>
