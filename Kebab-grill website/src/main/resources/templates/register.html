@@ -108,6 +108,15 @@
             text-decoration: none;
         }
 
+        .invalid-feedback{
+            color: red;
+            font-size: 12px;
+            font-weight: 600;
+            text-align: left;
+        }
+
+
+
         .modal {
             position: fixed;
             inset: 0;
@@ -207,11 +216,12 @@
                method="post"
                role="form"
                th:object="${user}" class="form">
+            <div class="alert alert-info text-center" th:if="${message}" th:text="${message}"> </div>
 
 
                     <div class="form-group">
                 <label for="Name"> Name</label>
-                <input th:field="*{name}" type="text" name="Name" id="Name" required placeholder=" Enter Your Name" class="form-control form-control-lg">
+                <input th:field="*{name}"  type="text" name="Name" id="Name" required placeholder=" Enter Your Name" class="form-control form-control-lg">
             </div>
 <!--            <div class="form-group">-->
 <!--                <label for="lastName">Last Name</label>-->
@@ -219,16 +229,18 @@
 <!--            </div>-->
             <div class="form-group">
                 <label for="email">Email address</label>
-                <input th:field="*{email_id}"   type="email" class="form-control form-control-lg" required minlength="6" placeholder="Email" name="email" id="email"
+                <input th:field="*{email_id}" th:errorclass="is-invalid"  type="email" class="form-control form-control-lg" required minlength="6" placeholder="Email" name="email" id="email"
                        aria-describedby="emailHelp">
                 <small id="emailHelp" class="form-text text-muted">We'll never share your email with
                     anyone else.</small>
+                <div th:if="${#fields.hasErrors('email_id')}" th:errors="*{email_id}" class="invalid-feedback"></div>
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
                 <input th:field="*{password}" type="password" class="form-control form-control-lg" required placeholder="Password" name="password"
                        id="password">
              </div>
+            
 
 <!--            <label for="name">Name :</label>-->
 <!--            <input   type="text" id="name" name="name" placeholder="Your name.."required>-->

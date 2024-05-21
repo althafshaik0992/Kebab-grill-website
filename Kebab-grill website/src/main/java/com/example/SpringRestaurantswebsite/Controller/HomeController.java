@@ -17,15 +17,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import javax.activation.DataHandler;
-import javax.activation.DataSource;
-import javax.activation.FileDataSource;
 import javax.mail.MessagingException;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeMultipart;
 import java.util.Date;
 import java.util.Properties;
 import java.util.UUID;
@@ -100,7 +95,7 @@ public class HomeController {
     public String getRegPage(Model model) {
         model.addAttribute("problemForm", new ProblemForm());
 
-        return "test";
+        return "reportForm";
     }
 
     @PostMapping("/reportForm")
@@ -155,7 +150,7 @@ public class HomeController {
             System.out.println("email sent");
 
             model.addAttribute("message", "Submitted Successfully");
-            return "test";
+            return "reportForm";
 
         } catch (MessagingException e) {
 

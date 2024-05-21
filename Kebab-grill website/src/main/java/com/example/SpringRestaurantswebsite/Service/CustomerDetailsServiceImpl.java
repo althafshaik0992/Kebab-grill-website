@@ -28,6 +28,8 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
     RoleRepository roleRepo;
 
 
+
+
     private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
 
@@ -41,6 +43,17 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
         }
         return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), mapRolesToAuthorities(user.getRole()));
     }
+
+
+
+
+
+
+
+
+
+
+
 
     private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Set<Role> roles){
         return roles.stream().map(role -> new SimpleGrantedAuthority(role.getRole())).collect(Collectors.toList());
@@ -58,4 +71,11 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
 
         return customerUserRepository.save(user);
     }
+
+    @Override
+    public boolean exists(String emailId) {
+        return customerUserRepository.existsByEmail(emailId);
+    }
+
+
 }
