@@ -4,8 +4,11 @@ package com.example.SpringRestaurantswebsite.Controller;
 import com.example.SpringRestaurantswebsite.Dto.CustomerUserDto;
 import com.example.SpringRestaurantswebsite.Dto.UserRegisteredDTO;
 import com.example.SpringRestaurantswebsite.Model.CustomerUser;
+import com.example.SpringRestaurantswebsite.Model.PasswordResetToken;
 import com.example.SpringRestaurantswebsite.Repository.CustomerUserRepository;
+import com.example.SpringRestaurantswebsite.Repository.TokenRepository;
 import com.example.SpringRestaurantswebsite.Service.CustomerDetailsService;
+import com.example.SpringRestaurantswebsite.Service.CustomerDetailsServiceImpl;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContext;
@@ -17,6 +20,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
@@ -35,6 +39,13 @@ public class LoginController {
 
     @Autowired
     CustomerDetailsService customerDetailsService;
+
+
+    @Autowired
+    CustomerDetailsServiceImpl customerDetailsServiceImpl;
+
+    @Autowired
+    TokenRepository tokenRepository;
 
     @ModelAttribute("customer")
     public CustomerUserDto customerUserDto() {
@@ -72,6 +83,49 @@ public class LoginController {
             }
             return "index";
         }
+
+
+
+
+
+    @GetMapping("/forgotPassword")
+    public String forgotPassword() {
+        return "forgotPassword";
+    }
+
+    @PostMapping("/forgotPassword")
+    public String forgotPassordProcess(@ModelAttribute CustomerUser userDTO) {
+        String output = "";
+
+        CustomerUser user = customerUserRepository.findByEmail(userDTO.getEmail());
+        if (user != null) {
+            output =customerDetailsServiceImpl.sendEmail(user);
+        }
+        if (output.equals("success")) {
+            return "redirect:/forgotPassword?success";
+        }
+        return "redirect:/login?error";
+    }
+
+    @GetMapping("/resetPassword/{token}")
+    public String resetPasswordForm(@PathVariable String token, Model model) {
+        PasswordResetToken reset = tokenRepository.findByToken(token);
+        if (reset != null && customerDetailsServiceImpl.hasExipred(reset.getExpiryDateTime())) {
+            model.addAttribute("email", reset.getUser().getEmail());
+            return "resetPassword";
+        }
+        return "redirect:/forgotPassword?error";
+    }
+
+    @PostMapping("/resetPassword")
+    public String passwordResetProcess(@ModelAttribute CustomerUserDto userDTO) {
+        CustomerUser user = customerUserRepository.findByEmail(userDTO.getUsername());
+        if( user!= null) {
+            user.setPassword(cryptPasswordEncoder.encode(userDTO.getPassword()));
+           customerUserRepository.save(user);
+        }
+        return "redirect:/login";
+    }
     }
 
 

@@ -21,8 +21,9 @@
         }
         .bg-img{
             height: 100vh;
-            background-size: cover;
-            background: url('../static/Images/food1.jpeg');
+
+            background-size:inherit;
+            background: url('large.png');
         }
         .bg-img:after{
             position: absolute;
@@ -92,7 +93,7 @@
         }
         .pass{
             text-align: left;
-            margin: 10px 0;
+            margin: 15px 0;
         }
         .pass a{
             color: white;
@@ -165,7 +166,7 @@
         }
         .signup{
             font-size: 15px;
-            color: white;
+            color: black;
             font-family: 'Poppins',sans-serif;
         }
         .signup a{
@@ -180,8 +181,10 @@
 </head>
 
 <body>
-<<div  class="bg-img">
+<div class ="bg-img">
     <div class="content">
+        <br>
+        <br>
         <img th:src="@{/Images/large.png}"   src="../static/Images/large.png" class="mb-2" width="100">
         <header>Login</header>
         <form  th:action="@{/login}" method="post" th:object="${customer}">
@@ -197,8 +200,9 @@
             <div th:if="${param.error}" class="alert alert-error text-danger">
                 Invalid username or password.
             </div>
+
             <div class="pass">
-                <a href="#">Forgot Password?</a>
+                <a href="forgotPassword.html" th:href="@{/forgotPassword}">Forgot Password?</a>
             </div>
             <div class="field">
                 <input type="submit" value="LOGIN">
@@ -209,7 +213,7 @@
         </div>
         <div class="links">
             <div class="facebook">
-                <a class="fab fa-facebook-f"><span>Facebook</span></a>
+                <a class="fab fa-facebook-f"><span>acebook</span></a>
             </div>
             <div class="google">
                 <a  href="" th:href="@{/oauth2/authorization/google}" class="fab fa-google"><span>oogle</span></a>
@@ -222,6 +226,7 @@
             <a href="register.html"  th:href="@{/registration}">Signup Now</a>
         </div>
     </div>
+
 </div>
 <script>
     const pass_field = document.querySelector('.pass-key');
