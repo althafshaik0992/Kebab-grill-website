@@ -118,11 +118,13 @@ public class LoginController {
     }
 
     @PostMapping("/resetPassword")
-    public String passwordResetProcess(@ModelAttribute CustomerUserDto userDTO) {
-        CustomerUser user = customerUserRepository.findByEmail(userDTO.getUsername());
+    public String passwordResetProcess(@ModelAttribute CustomerUser userDTO) {
+        CustomerUser user = customerUserRepository.findByEmail(userDTO.getEmail());
         if( user!= null) {
             user.setPassword(cryptPasswordEncoder.encode(userDTO.getPassword()));
+            System.out.println("the updated user is  "  +user);
            customerUserRepository.save(user);
+
         }
         return "redirect:/login";
     }
