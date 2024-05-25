@@ -21,7 +21,7 @@ import java.util.Optional;
 @Controller
 public class AdminController {
 
-    public static  String uploadDrive = System.getProperty("user.dir") + "/src/main/resources/static/productImages";
+    public static  String uploadDrive = System.getProperty("user.dir") + "/Kebab-grill website/src/main/resources/static/productImages";
     @Autowired
     CategoryService categoryService;
 

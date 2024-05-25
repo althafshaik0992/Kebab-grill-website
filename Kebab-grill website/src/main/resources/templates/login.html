@@ -11,6 +11,7 @@
           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700|Poppins:400,500&display=swap');
         *{
@@ -104,7 +105,7 @@
             text-decoration: underline;
         }
         .field input[type="submit"]{
-            background: #3498db;
+            background: lightgreen;
             border: 1px solid #2691d9;
             color: white;
             font-size: 18px;
@@ -114,7 +115,7 @@
             font-family: 'Montserrat',sans-serif;
         }
         .field input[type="submit"]:hover{
-            background: #2691d9;
+            background: lightgreen;
         }
         .login{
             color: white;
@@ -127,31 +128,8 @@
             color: white;
             margin: 0 0 20px 0;
         }
-        .facebook,.google{
-            width: 100%;
-            height: 45px;
-            line-height: 45px;
-            margin-left: 10px;
-        }
-        .facebook{
-            margin-left: 0;
-            background: #4267B2;
-            border: 1px solid #3e61a8;
-        }
-        .google{
-            margin-left: 0;
-            background: #DB4437;
-            border: 1px solid #c6332c;
-
-        }
-        .google:hover{
-            background: red;
-        }
 
 
-        .facebook:hover{
-            background: #3e61a8;
-        }
 
 
         .links i{
@@ -175,6 +153,11 @@
         }
         .signup a:hover{
             text-decoration: underline;
+        }
+
+        .fa-google {
+            background:red;
+            color: white;
         }
     </style>
     <title> Responsive Login and Signup Form </title>
@@ -204,34 +187,47 @@
             <div class="pass">
                 <a href="forgotPassword.html" th:href="@{/forgotPassword}">Forgot Password?</a>
             </div>
-            <div class="field">
+            <div class="field ">
                 <input type="submit" value="LOGIN">
             </div>
              <br>
 
         </form>
-        <div class="login ">
+        <div class="login  ">
             Don't have account?
-            <a href="register.html"  th:href="@{/registration}">Signup Now</a>
+            <a href="register.html" class="text-success" th:href="@{/registration}">Signup Now</a>
+            or
+            <a href="index " class="text-success" th:href="@{/home}" >Guest</a>
+            or
+            <a href="#" th:href="@{/oauth2/authorization/facebook}" class="fab fa-facebook"></a>
+            or
+            <a href="#" th:href="@{/oauth2/authorization/google}" class="fab fa-google"></a>
         </div>
-        <div class="login">
-            Or login with
-        </div>
-        <div class="links">
-            <div class="facebook">
-                <a class="fab fa-facebook-f"><span>acebook</span></a>
-            </div>
-            <div class="google">
-                <a  href="" th:href="@{/oauth2/authorization/google}" class="fab fa-google"><span>oogle</span></a>
-            </div>
-
-
-        </div>
-<!--        <div class="signup">-->
-<!--            Don't have account?-->
-<!--            <a href="register.html"  th:href="@{/registration}">Signup Now</a>-->
+<!--        <div >-->
+<!--            Or login with-->
+<!--            <a href="index"  th:href="@{/home}">Guest</a>-->
+<!--            or-->
+<!--            <a href="#" th:href="@{/oauth2/authorization/facebook}" class="fa fa-facebook"></a>-->
+<!--            or-->
+<!--            <a href="#" th:href="@{/oauth2/authorization/google}" class="fa fa-google"></a>-->
 <!--        </div>-->
-    </div>
+
+
+<!--        <div class="links">-->
+<!--            <div class="facebook">-->
+<!--                <a th:href="@{/oauth2/authorization/facebook}"class="fab fa-facebook-f"><span>acebook</span></a>-->
+<!--            </div>-->
+<!--            <div class="google">-->
+<!--                <a  href="" th:href="@{/oauth2/authorization/google}" class="fab fa-google"><span>oogle</span></a>-->
+<!--            </div>-->
+
+
+<!--        </div>-->
+<!--&lt;!&ndash;        <div class="signup">&ndash;&gt;-->
+<!--&lt;!&ndash;            Don't have account?&ndash;&gt;-->
+<!--&lt;!&ndash;            <a href="register.html"  th:href="@{/registration}">Signup Now</a>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--    </div>-->
 
 </div>
 <script>
@@ -249,5 +245,6 @@
         }
     });
 </script>
+</div>
 </body>
 </html>

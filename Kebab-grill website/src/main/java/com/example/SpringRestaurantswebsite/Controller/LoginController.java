@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -81,7 +82,7 @@ public class LoginController {
                 CustomerUser users = customerUserRepository.findByEmail(user.getUsername());
                 model.addAttribute("userDetails", users.getName());
             }
-            return "index";
+            return "loginaftertest";
         }
 
 

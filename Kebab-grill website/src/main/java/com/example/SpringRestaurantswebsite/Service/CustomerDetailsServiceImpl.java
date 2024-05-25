@@ -119,8 +119,8 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
             javax.mail.Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(fromEmail));
             message.setRecipient(javax.mail.Message.RecipientType.TO, new InternetAddress(user.getEmail()));
-            message.setSubject("TPlease Reset Your Password - kebab Grill");
-            message.setText("Hello \n\n" + "Please click on this link to Reset your Password :" + resetLink + ". \n\n"
+            message.setSubject("Please Reset Your Password - kebab Grill");
+            message.setText("Hello \n\n" + "Please click on this link to Reset your Password :"   + resetLink + ". \n\n"
                     + "Regards \n" + "ABC");
 
             Transport.send(message);

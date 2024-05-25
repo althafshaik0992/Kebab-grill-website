@@ -127,7 +127,7 @@
                     <label class="custom-file-label" for="productImage">Choose file</label>
                 </div>
                 <div class="form-group">
-                    <img src="../static/productImages/" id="imgPreview" height="100px" width="100px" th:src="@{${'/productImages/'  + productDto.imageName}}" style="margin-top: 20px" alt=" ">
+                    <img src="../Kebab-grill-website/Kebab-grill website/src/main/resources/static/templates/productImages/" id="imgPreview" height="100px" width="100px" th:src="@{${'/productImages/'  + productDto.imageName}}" style="margin-top: 20px" alt=" ">
                 </div>
                 <input type="hidden" name="imgName" th:value="${productDto.imageName}">
                 <button type="submit" class="btn btn-primary">Submit</button>
