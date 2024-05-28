@@ -97,6 +97,7 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
         user.setName(userRegisteredDTO.getName());
         user.setPassword(passwordEncoder.encode(userRegisteredDTO.getPassword()));
         user.setRole(role);
+        user.setPhoneNumber(userRegisteredDTO.getPhoneNumber());
 
         return customerUserRepository.save(user);
     }

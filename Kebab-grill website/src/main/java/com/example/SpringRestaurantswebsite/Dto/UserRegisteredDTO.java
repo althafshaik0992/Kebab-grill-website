@@ -9,6 +9,8 @@ public class UserRegisteredDTO {
 
     private String password;
 
+    private String phoneNumber;
+
 
 
     String role;
@@ -51,5 +53,11 @@ public class UserRegisteredDTO {
         this.password = password;
     }
 
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
 
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 }

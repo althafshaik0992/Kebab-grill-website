@@ -9,7 +9,6 @@ import com.example.SpringRestaurantswebsite.Repository.CustomerUserRepository;
 import com.example.SpringRestaurantswebsite.Repository.TokenRepository;
 import com.example.SpringRestaurantswebsite.Service.CustomerDetailsService;
 import com.example.SpringRestaurantswebsite.Service.CustomerDetailsServiceImpl;
-import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -22,10 +21,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
-import java.security.Principal;
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 public class LoginController {
@@ -82,7 +77,7 @@ public class LoginController {
                 CustomerUser users = customerUserRepository.findByEmail(user.getUsername());
                 model.addAttribute("userDetails", users.getName());
             }
-            return "loginaftertest";
+            return "loginafterPage";
         }
 
 
@@ -129,6 +124,30 @@ public class LoginController {
         }
         return "redirect:/login";
     }
+
+
+    @GetMapping("/profile")
+    public String profile(Model model) {
+        SecurityContext securityContext = SecurityContextHolder.getContext();
+        UserRegisteredDTO userRegisteredDTO = new UserRegisteredDTO();
+        if (securityContext.getAuthentication().getPrincipal() instanceof DefaultOAuth2User) {
+            DefaultOAuth2User user = (DefaultOAuth2User) securityContext.getAuthentication().getPrincipal();
+           // userRegisteredDTO.setPhoneNumber("000-000-0000");
+            model.addAttribute("userDetails", user.getAttribute("name") != null ? user.getAttribute("name") : user.getAttribute("login"));
+            model.addAttribute("userDetails1", user.getAttribute("email"));
+           // model.addAttribute("userDetails2",userRegisteredDTO.getPhoneNumber());
+        } else {
+            User user = (User) securityContext.getAuthentication().getPrincipal();
+            CustomerUser users = customerUserRepository.findByEmail(user.getUsername());
+            model.addAttribute("userDetails", users.getName());
+            model.addAttribute("userDetails1", users.getEmail());
+            model.addAttribute("userDetails2", users.getPhoneNumber());
+        }
+
+        return "profiletest";
+    }
+
+
     }
 
 

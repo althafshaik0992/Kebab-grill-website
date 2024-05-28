@@ -1,0 +1,330 @@
+ <!DOCTYPE html>
+    <html lang="en" xmlns:th="http://www.thymeleaf.org"
+          xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta charset="UTF-8">
+        <meta content="width=device-width, initial-scale=1" name="viewport">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+        <meta property="og:title" content="">
+        <meta property="og:type" content="">
+        <meta property="og:url" content="">
+        <meta property="og:image" content="">
+
+
+
+        <link rel="icon" href="/favicon.ico" sizes="any">
+        <link rel="icon" href="/icon.svg" type="image/svg+xml">
+        <link rel="apple-touch-icon" href="icon.png">
+        <link rel="stylesheet" href="../static/css/Web.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <link rel="manifest" href="site.webmanifest">
+        <meta name="theme-color" content="#fafafa">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+              integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" rel="stylesheet">
+        <script crossorigin="anonymous" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+                src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script crossorigin="anonymous" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+                src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+        <script crossorigin="anonymous" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+                src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <meta content="" property="og:title">
+        <meta content="" property="og:type">
+        <meta content="" property="og:url">
+        <meta content="" property="og:image">
+
+        <link href="/favicon.ico" rel="icon" sizes="any">
+        <link href="/icon.svg" rel="icon" type="image/svg+xml">
+        <link href="icon.png" rel="apple-touch-icon">
+
+        <link href="site.webmanifest" rel="manifest">
+        <meta content="#fafafa" name="theme-color">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+              integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+              integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+    <meta property="og:title" content="">
+    <meta property="og:type" content="">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+
+
+
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="icon.png">
+    <link rel="stylesheet" href="../static/css/Web.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="manifest" href="site.webmanifest">
+    <meta name="theme-color" content="#fafafa">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" rel="stylesheet">
+    <script crossorigin="anonymous" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script crossorigin="anonymous" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+            src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script crossorigin="anonymous" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+            src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <meta content="" property="og:title">
+    <meta content="" property="og:type">
+    <meta content="" property="og:url">
+    <meta content="" property="og:image">
+
+    <link href="/favicon.ico" rel="icon" sizes="any">
+    <link href="/icon.svg" rel="icon" type="image/svg+xml">
+    <link href="icon.png" rel="apple-touch-icon">
+
+    <link href="site.webmanifest" rel="manifest">
+    <meta content="#fafafa" name="theme-color">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <title>Spring-Restaurants-website</title>
+    <link rel="icon" type="image/x-icon" href="../static/Images/large.png">
+    <style>
+
+        body {
+            font-family: "Lato", sans-serif;
+        }
+
+        .sidenav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        .sidenav a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
+
+
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+
+        .sidenav a:hover {
+            color: #f1f1f1;
+        }
+
+        .sidenav .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+
+        @media screen and (max-height: 450px) {
+            .sidenav {padding-top: 15px;}
+            .sidenav a {font-size: 18px;}
+        }
+
+
+    </style>
+</head>
+<body>
+<header class="bg-light text-success">
+
+
+    <nav class="navbar navbar-expand-lg  navbar-light bg-light">
+        <a class="  navbar-brand text-success" href="loginafterPage.html">
+            <img  th:src="@{/Images/large.png}"    src="../static/Images/large.png" width="auto" height="40" class="d-inline-block align-top ">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <h2 style="text-align: center">Kebab Grill</h2>
+        <div class="collapse navbar-collapse " id="navbarTogglerDemo02" style="display: flex">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0 navbar nav-item px-4 ">
+
+
+
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search any items ">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search  </button>
+                </form>
+            </ul>
+
+
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0 navbar nav justify-content-end "  >
+                <li class="nav-item r ">
+                    <a class="nav-link text-success" href=""  th:href="@{/menu}">   Menu</a>
+                </li>
+
+
+                <li class="nav-item r" >
+                    <a class="nav-link text-success" href="#About us">About Us</a>
+                </li>
+
+                <li class="nav-item r" >
+                    <a class="nav-link text-success" href="#contact">Contact Us</a>
+                </li>
+
+                <i class="fa" style="font-size:24px">&#xf07a;</i>
+                <span class='badge badge-warning' id='lblCartCount'th:text="${cartCount}"> 0 </span>
+
+
+
+                <li  class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-success" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" th:text="*{userDetails}">
+
+                        Guest
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item text-success" href="#" th:href="@{/profile}">My Profile</a>
+                        <a class="dropdown-item text-success" href="#">MY Orders</a>
+                        <div class="dropdown-divider "></div>
+                        <a class="dropdown-item text-success" href="#" th:href="@{/logout}">LogOut</a>
+                    </div>
+                </li>
+
+
+
+            </ul>
+        </div>
+    </nav>
+</header>
+
+
+
+<section class="container-fluid">
+<div id="page-content-wrapper">
+    <div class="container-fluid">
+        <div class="row justify-content-center my-0 my-sm-5">
+            <div class="col-12 col-md-10 col-lg-8 col-xl-7">
+                <!-- Card -->
+                <div class="card profile-card custom-shadow">
+                    <div class="card-body">
+                        <div class="row gx-0">
+                            <div class="col-12 col-sm-5 align-middle">
+                                <div class="profile-wrap">
+                                    <img  src="https://cdn.restrozap.com/images/common/profile.png"  onerror="this.src='/images/common/profile.png'" class="img-responsive rounded-circle profileImage" alt="Profile Image">
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-7">
+                                <div class="profile" >
+                                    <h3 th:text="*{userDetails}">
+                                    </h3>
+                                    <div class="row  align-items-center profileDetails mt-2">
+
+                                        <div class="col-12">
+                                            <div class="fas fa-phone" > <span id="customer-old-phone-number "th:text="${userDetails2}"> </span> </div>
+                                        </div>
+                                        <div class="ml-3">
+                                            <a class="valign-top" title="Edit Phone Number" href="">
+                                                <span class="bi bi-person-check-fill"></span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class=" row align-items-center  align-items-center profileDetails mt-2">
+                                        <div class="col-12">
+                                            <div class=" d-flex justify-content-between" >
+                                           <div class="fas fa-envelope-open"> <span th:text="${userDetails1}" > </span> </div>
+                                    </div>
+                                        </div>
+                                </div>
+                                    <br>
+                                    <div id="customer_address_list">
+
+                                        <div class="row align-items-center profileDetails">
+                                            <div class="col-12">
+                                                <div class="d-flex justify-content-between">
+                                                    <div class="title-class"> <span class="fa fa-home"></span>&nbsp;Home Address</div>
+                                                    <div>
+                                                        <a href=""
+                                                           title="Edit Address">
+<!--                                                           data-micx="{type:'customer-address:edit', args:{$updateIn:'#customer-address-container .modal-body', $container:'#customer-address-container', id:24288 }, on: {click:this} }">-->
+                                                            <span class=" text-success fas fa-edit"></span>
+                                                        </a>
+                                                        |
+                                                        <a id="CustomerAddressDelete" href="" title="Delete"
+                                                           data-address-type="Home">
+<!--                                                           data-micx="{type:'customer-address:delete', args: { id:'24288', $updateIn:'#customer_address_list' }, on:{click:this}}">-->
+                                                            <span class=" text-success  fas fa-trash"></span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <p class="my-3 card-text" id='address_24288'>
+                                                    4000 Dunwoody Park
+                                                    Dunwoody
+                                                    GA  -  30338
+                                                </p>
+                                            </div>
+
+                                            <div class="col-12">
+                                                <div class="title-class">
+
+                                                    <a class="text-success " href="#" >Add New Address</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card -->
+            </div>
+        </div>
+        <div id="customer-address-container">
+        </div>
+        <div id="customer-phone-number-container">
+        </div>
+    </div>
+</div>
+
+</div>
+
+</section>
+</body>
+</html>

@@ -54,7 +54,7 @@ public class SecurityConfig {
                     requests.requestMatchers("/**","/registration/**", "/login/**","/resetPassword/**","/forgotPassword/**").permitAll();
                     requests.anyRequest().authenticated();})
                 .formLogin(login -> login.loginPage("/login").successHandler(successHandler)).csrf(csrf -> csrf.disable())
-                .logout(logout -> logout.logoutUrl("/logout").logoutSuccessUrl("/login")).oauth2Login(login -> login.loginPage("/login").successHandler(successHandler));
+                .logout(logout -> logout.logoutUrl("/logout").logoutSuccessUrl("/")).oauth2Login(login -> login.loginPage("/login").successHandler(successHandler));
         return http.build();
 
     }

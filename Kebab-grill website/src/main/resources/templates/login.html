@@ -106,7 +106,7 @@
         }
         .field input[type="submit"]{
             background: lightgreen;
-            border: 1px solid #2691d9;
+            border: 1px solid lightgreen;
             color: white;
             font-size: 18px;
             letter-spacing: 1px;
@@ -148,7 +148,7 @@
             font-family: 'Poppins',sans-serif;
         }
         .signup a{
-            color: #3498db;
+            color: lightgreen;
             text-decoration: none;
         }
         .signup a:hover{
@@ -159,6 +159,11 @@
             background:red;
             color: white;
         }
+
+
+
+
+
     </style>
     <title> Responsive Login and Signup Form </title>
 </head>
@@ -190,18 +195,19 @@
             <div class="field ">
                 <input type="submit" value="LOGIN">
             </div>
-             <br>
-
         </form>
         <div class="login  ">
             Don't have account?
+            <br>
             <a href="register.html" class="text-success" th:href="@{/registration}">Signup Now</a>
             or
             <a href="index " class="text-success" th:href="@{/home}" >Guest</a>
             or
-            <a href="#" th:href="@{/oauth2/authorization/facebook}" class="fab fa-facebook"></a>
+            <br>
+            <a href="#"  th:href="@{/oauth2/authorization/facebook}" class="fab fa-facebook"></a>
             or
-            <a href="#" th:href="@{/oauth2/authorization/google}" class="fab fa-google"></a>
+            <a href="#"  th:href="@{/oauth2/authorization/google}" class="fab fa-google"></a>
+
         </div>
 <!--        <div >-->
 <!--            Or login with-->

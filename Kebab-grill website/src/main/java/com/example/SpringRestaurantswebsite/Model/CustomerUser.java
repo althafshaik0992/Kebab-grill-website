@@ -24,6 +24,8 @@ public class CustomerUser {
 
         private String password;
 
+        private String phoneNumber;
+
 
 
         @ManyToMany(fetch = FetchType.EAGER)
@@ -31,7 +33,9 @@ public class CustomerUser {
                 inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id") )
         Set<Role> roles = new HashSet<Role>();
 
-        public int getId() {
+
+
+    public int getId() {
             return id;
         }
 
@@ -72,6 +76,12 @@ public class CustomerUser {
             this.password = password;
         }
 
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
 
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 }
 

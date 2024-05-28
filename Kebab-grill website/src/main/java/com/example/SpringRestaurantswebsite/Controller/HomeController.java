@@ -161,6 +161,13 @@ public class HomeController {
     }
 
 
+
+    @GetMapping("/logout")
+    public String logout(){
+        return "index";
+    }
+
+
         public Properties propertiesServer() {
         Properties properties = new Properties();
         properties.put("mail.smtp.port", "587");
@@ -171,6 +178,10 @@ public class HomeController {
 
         return properties;
     }
+
+
+
+
 
 
 
