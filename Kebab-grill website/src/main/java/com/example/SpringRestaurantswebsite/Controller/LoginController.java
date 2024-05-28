@@ -144,7 +144,7 @@ public class LoginController {
             model.addAttribute("userDetails2", users.getPhoneNumber());
         }
 
-        return "profiletest";
+        return "profilePage";
     }
 
 
