@@ -2,6 +2,7 @@ package com.example.SpringRestaurantswebsite.Controller;
 
 
 import com.example.SpringRestaurantswebsite.Dto.CustomerUserDto;
+import com.example.SpringRestaurantswebsite.Dto.ProductDto;
 import com.example.SpringRestaurantswebsite.Dto.UserRegisteredDTO;
 import com.example.SpringRestaurantswebsite.Model.CustomerUser;
 import com.example.SpringRestaurantswebsite.Model.PasswordResetToken;
@@ -22,6 +23,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.Optional;
+
 @Controller
 public class LoginController {
 
@@ -33,12 +36,16 @@ public class LoginController {
     @Autowired
     BCryptPasswordEncoder cryptPasswordEncoder;
 
+
+
     @Autowired
     CustomerDetailsService customerDetailsService;
 
 
     @Autowired
     CustomerDetailsServiceImpl customerDetailsServiceImpl;
+
+
 
     @Autowired
     TokenRepository tokenRepository;
@@ -146,6 +153,32 @@ public class LoginController {
 
         return "profilePage";
     }
+
+//    @GetMapping("/admin/products/add")
+//    public String updatePhoneNumber(Model model,CustomerUser user){
+//        model.addAttribute("updateContact", user.getPhoneNumber());
+//
+//        return "p";
+//    }
+
+    @PostMapping  ("/updatePhoneNumber/{id}")
+    public String updatePhoneNumber( @PathVariable Integer id  ,CustomerUser user,Model model ) {
+
+
+
+//        CustomerUser updatedUser = customerDetailsServiceImpl.getCustomerId(id).get();
+//        CustomerUser customerUser = new CustomerUser();
+//        customerUser.setPhoneNumber(updatedUser.getPhoneNumber());
+//        customerUserRepository.save(customerUser);
+        model.addAttribute("title","update Contact");
+
+        CustomerUser  contact = this.customerUserRepository.findById(id).get();
+         contact.setPhoneNumber(user.getPhoneNumber());
+         this.customerUserRepository.save(contact);
+         model.addAttribute("contact", contact);
+        return "profilePage";
+    }
+
 
 
     }

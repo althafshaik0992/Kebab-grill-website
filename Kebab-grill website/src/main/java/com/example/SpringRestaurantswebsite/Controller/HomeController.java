@@ -3,7 +3,9 @@ package com.example.SpringRestaurantswebsite.Controller;
 
 
 
+import com.example.SpringRestaurantswebsite.Model.CustomerUser;
 import com.example.SpringRestaurantswebsite.Model.ProblemForm;
+import com.example.SpringRestaurantswebsite.Repository.CustomerUserRepository;
 import com.example.SpringRestaurantswebsite.Repository.ProblemFormRepository;
 import com.example.SpringRestaurantswebsite.Service.CategoryService;
 import com.example.SpringRestaurantswebsite.Service.ProductService;
@@ -53,6 +55,9 @@ public class HomeController {
 
     @Autowired
     ProblemFormRepository problemFormRepository;
+
+    @Autowired
+    CustomerUserRepository customerUserRepository;
 
 
 
@@ -178,6 +183,12 @@ public class HomeController {
 
         return properties;
     }
+
+
+
+
+
+
 
 
 

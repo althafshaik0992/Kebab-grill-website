@@ -9,8 +9,6 @@ import com.example.SpringRestaurantswebsite.Repository.RoleRepository;
 import com.example.SpringRestaurantswebsite.Repository.TokenRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -22,10 +20,7 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.time.LocalDateTime;
-import java.util.Collection;
-import java.util.Properties;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -72,6 +67,9 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
         }
         return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), mapRolesToAuthorities(user.getRole()));
     }
+
+
+
 
 
 
@@ -170,4 +168,10 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
         LocalDateTime currentDateTime = LocalDateTime.now();
         return expiryDateTime.isAfter(currentDateTime);
     }
+
+
+    public Optional<CustomerUser> getCustomerId(Integer id){
+        return customerUserRepository.findById(id);
+    }
+
 }

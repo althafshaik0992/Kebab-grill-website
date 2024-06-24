@@ -10,6 +10,8 @@ public interface CustomerUserRepository extends JpaRepository<CustomerUser, Inte
 
      CustomerUser findByEmail(String emailId);
 
+
+
       boolean existsByEmail(String emailId);
 
 
