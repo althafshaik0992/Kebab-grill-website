@@ -96,38 +96,68 @@
 
 
 <footer class=" bg-success  text-light py-4">
-    <div class=" container ">
-        <div class="row ">
-            <div class="col-md-3 " >
-                <a class="  navbar-brand text-success" href="/">
-                    <img  th:src="@{/Images/large.png}"    src="../static/Images/large.png" alt="" class="mb-2" width="100">
-                    <h5 >Kebab Grill</h5>
-                </a>
-                <p>Eat Like Home  <br> Feel Like Home </p>
-            </div>
-            <div class="col-md-3 text-light ">
-                <h3>Navigation</h3>
-                <ul class="list-unstyled">
-                    <li><a href="/" class="text-decoration-none text-light">Home</a></li>
-                    <li><a href="products.html" class="text-decoration-none text-light">Menu</a></li>
-                    <li><a href="#contact" class="text-decoration-none text-light">Contact</a></li>
-                </ul>
-            </div>
-            <div class="col-md-3 text-light">
-                <h3>Follow Us</h3>
-                <ul class="list-unstyled">
-                    <li><a href="#" class=" text-decoration-none  fab fa-facebook-f fa-1x" style="color: #3b5998 ">  Facebook</a></li>
-                    <li><a href="#" class="text-decoration-none  fab fa-twitter fa-1x" style="color: #55acee "> Twitter</a></li>
-                    <li><a href="#" class="text-decoration-none  fab fa-instagram fa-1x" style="color: #ac2bac"> Instagram</a></li>
-                    <li><a href="#" class="text-decoration-none  fab fa-youtube fa-1x" style="color: #ed302f">  YouTube</a></li>
-                </ul>
-            </div>
+    <div class="row ">
+        <div class="col-md-3" >
+            <a class="  navbar-brand text-success" href="/">
+                <img th:src="@{/Images/large.png}"   src="../static/Images/large.png" class="mb-2" width="100">
+                <h5>Kebab Grill</h5>
+            </a>
+            <p>Eat Like Home  <br> Feel Like Home </p>
         </div>
-        <hr class="my-4">
-        <div class="text-center">&copy; Copyright 2024 - Kebab Grill</div>
+        <div class="col-md-3 text-light ">
+            <h3>Navigation</h3>
+            <ul class="list-unstyled">
+                <li><a href="/" class="text-decoration-none text-light">Home</a></li>
+                <li><a class="text-decoration-none text-light" href="menu" > Menu</a></li>
+                <li><a href="#contact" class="text-decoration-none text-light">Contact</a></li>
+            </ul>
+        </div>
+        <div class="col-md-3 text-light">
+            <h3>Follow Us</h3>
+            <ul class="list-unstyled">
+                <li><a href="#" class=" text-decoration-none  fab fa-facebook-f fa-1x" style="color: #3b5998 ">  Facebook</a></li>
+                <li><a href="#" class="text-decoration-none  fab fa-twitter fa-1x" style="color: #55acee "> Twitter</a></li>
+                <li><a href="#" class="text-decoration-none  fab fa-instagram fa-1x" style="color: #ac2bac"> Instagram</a></li>
+                <li><a href="#" class="text-decoration-none  fab fa-youtube fa-1x" style="color: #ed302f">  YouTube</a></li>
+            </ul>
+        </div>
+
+        <div class="col-md-3 ">
+            <h4 class="heading">We Accept</h4>
+
+            <div class="credit-list">
+                    <span>
+                        <img src="https://cdn.restrozap.com/images/common/svg/visa.svg" onerror="this.src='/images/common/svg/visa.svg'" alt="VISA payment" width="44" />
+                    </span>
+                <span>
+                        <img src="https://cdn.restrozap.com/images/common/svg/mastercard.svg" onerror="this.src='/images/common/svg/mastercard.svg'" alt="VISA payment" width="44" />
+                    </span>
+                <span>
+                        <img src="https://cdn.restrozap.com/images/common/svg/american_express.svg" onerror="this.src='/images/common/svg/american_express.svg'" alt="VISA payment" width="44" />
+                    </span>
+                <span>
+                        <img src="https://cdn.restrozap.com/images/common/svg/discover.svg" onerror="this.src='/images/common/svg/discover.svg'" alt="VISA payment" width="44" />
+                    </span>
+            </div>
+            <ul class="list-unstyled ">
+                <li>
+                    <a  class="  text-decoration-none text-danger" href="reportForm">
+                        <!--                    <span style = 'font-size:100px;'>&#128681;</span>-->
+                        &#128681 Report a problem</a></li>
+
+            </ul>
+        </div>
+    </div>
+
+
+
+    <!--   <button class="open-button" onclick="openForm()">Open Form</button>-->
+
+
+    <hr class="my-4">
+    <div class="text-center">&copy; Copyright 2024 - Kebab Grill</div>
     </div>
 </footer>
-
 
 
 

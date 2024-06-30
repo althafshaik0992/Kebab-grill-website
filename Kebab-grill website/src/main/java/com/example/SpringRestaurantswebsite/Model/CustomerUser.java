@@ -1,12 +1,14 @@
 package com.example.SpringRestaurantswebsite.Model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table(name = "user")
+@AllArgsConstructor
 public class CustomerUser {
 
 
@@ -26,13 +28,33 @@ public class CustomerUser {
 
         private String phoneNumber;
 
+        private String address;
+
 
 
         @ManyToMany(fetch = FetchType.EAGER)
         @JoinTable(name = "users_role", joinColumns = @JoinColumn(name = "cust_id", referencedColumnName = "id"),
                 inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id") )
-        Set<Role> roles = new HashSet<Role>();
+        Set<Role> role = new HashSet<Role>();
 
+    public CustomerUser() {
+
+    }
+
+    public CustomerUser(String email, String password, Set<Role> role) {
+        if (email == null || email.isEmpty()) {
+            throw new IllegalArgumentException("Email cannot be null or empty");
+        }
+        if (password == null || password.isEmpty()) {
+            throw new IllegalArgumentException("Password cannot be null or empty");
+        }
+        if (role == null || role.isEmpty()) {
+            throw new IllegalArgumentException("Role cannot be null or empty");
+        }
+        this.email = email;
+        this.password = password;
+        this.role = role;
+    }
 
 
     public int getId() {
@@ -44,11 +66,11 @@ public class CustomerUser {
         }
 
         public Set<Role> getRole() {
-            return roles;
+            return role;
         }
 
         public void setRole(Role role) {
-            this.roles.add(role);
+            this.role.add(role);
         }
 
         public String getName() {
@@ -83,5 +105,17 @@ public class CustomerUser {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+
+
+
 }
 

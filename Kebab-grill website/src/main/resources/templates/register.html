@@ -222,11 +222,21 @@
                 <div th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}" class="invalid-feedback"></div>
             </div>
 
+            <div class="field space">
+
+                <span class="fas fa-home"></span>
+                <input  id="address"th:field="*{address}" th:errorclass="is-invalid" type="tel"  pattern="([0-9]" required placeholder="Enter Address">
+                <div th:if="${#fields.hasErrors('address')}" th:errors="*{address}" class="invalid-feedback"></div>
+            </div>
+
             <div class="field space ">
                 <span class="fa fa-lock"></span>
                 <input th:field="*{password}" type="password" class="pass-key" required placeholder="Password">
                 <span class="show">SHOW</span>
             </div>
+
+
+
 
             <div class="field space">
                 <input type="submit" value="Sign Up">
@@ -248,6 +258,7 @@
 
 
 
+
 <!--        </div>-->
 <!--        <div class="login">-->
 <!--            >Already have an account?-->
@@ -255,7 +266,7 @@
 <!--        </div>-->
 <!--    </div>-->
 
-</div>
+
 <script>
     const pass_field = document.querySelector('.pass-key');
     const showBtn = document.querySelector('.show');
@@ -272,12 +283,51 @@
     });
 
 
+
+    document.addEventListener('DOMContentLoaded', function() {
+        // Wait for the DOM to be fully loaded before executing this function
+
+        // Find the input field with id="phone"
         const phoneInputField = document.querySelector("#phone");
+
+        // Initialize intlTelInput on phoneInputField
         const phoneInput = window.intlTelInput(phoneInputField, {
-        utilsScript:
-        "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+            utilsScript:
+                "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+        });
     });
-</script>
+
+
+
+
+    //     const phoneInputField = document.querySelector("#phone");
+    //     const phoneInput = window.intlTelInput(phoneInputField, {
+    //     utilsScript:
+    //     "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+    // });
+
+
+    // document.addEventListener('DOMContentLoaded', function() {
+    //     const phoneInputField = document.querySelector("#phone");
+    //     const phoneInput = window.intlTelInput(phoneInputField, {
+    //         utilsScript:
+    //             "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+    //     });
+
+// Optional: Handle form submission to get the selected country and formatted phone number
+//         const form = document.querySelector('#phone');
+//         form.addEventListener('submit', function(event) {
+//             event.preventDefault(); // Prevent form submission
+//
+//             const selectedCountry = phoneInput.getSelectedCountryData();
+//             const formattedPhoneNumber = phoneInput.getNumber();
+//
+//             console.log("Selected Country:", selectedCountry);
+//             console.log("Formatted Phone Number:", formattedPhoneNumber);
+//
+// // You can further process or validate the phone number here
+// // For example, send it to a server via AJAX or validate locally
+//         });
 </script>
 </body>
 </html>

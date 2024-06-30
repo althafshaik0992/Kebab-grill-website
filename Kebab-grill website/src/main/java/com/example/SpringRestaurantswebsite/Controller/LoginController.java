@@ -55,6 +55,11 @@ public class LoginController {
         return new CustomerUserDto();
     }
 
+    @ModelAttribute("contact")
+    public CustomerUser customerUser() {
+        return new CustomerUser();
+    }
+
     @GetMapping("/login")
     public String login() {
         return "login";
@@ -79,10 +84,12 @@ public class LoginController {
             if (securityContext.getAuthentication().getPrincipal() instanceof DefaultOAuth2User) {
                 DefaultOAuth2User user = (DefaultOAuth2User) securityContext.getAuthentication().getPrincipal();
                 model.addAttribute("userDetails", user.getAttribute("name") != null ? user.getAttribute("name") : user.getAttribute("login"));
+
             } else {
                 User user = (User) securityContext.getAuthentication().getPrincipal();
                 CustomerUser users = customerUserRepository.findByEmail(user.getUsername());
                 model.addAttribute("userDetails", users.getName());
+
             }
             return "loginafterPage";
         }
@@ -107,7 +114,7 @@ public class LoginController {
         if (output.equals("success")) {
             return "redirect:/forgotPassword?success";
         }
-        return "redirect:/login?error";
+        return "";
     }
 
     @GetMapping("/resetPassword/{token}")
@@ -133,51 +140,7 @@ public class LoginController {
     }
 
 
-    @GetMapping("/profile")
-    public String profile(Model model) {
-        SecurityContext securityContext = SecurityContextHolder.getContext();
-        UserRegisteredDTO userRegisteredDTO = new UserRegisteredDTO();
-        if (securityContext.getAuthentication().getPrincipal() instanceof DefaultOAuth2User) {
-            DefaultOAuth2User user = (DefaultOAuth2User) securityContext.getAuthentication().getPrincipal();
-           // userRegisteredDTO.setPhoneNumber("000-000-0000");
-            model.addAttribute("userDetails", user.getAttribute("name") != null ? user.getAttribute("name") : user.getAttribute("login"));
-            model.addAttribute("userDetails1", user.getAttribute("email"));
-           // model.addAttribute("userDetails2",userRegisteredDTO.getPhoneNumber());
-        } else {
-            User user = (User) securityContext.getAuthentication().getPrincipal();
-            CustomerUser users = customerUserRepository.findByEmail(user.getUsername());
-            model.addAttribute("userDetails", users.getName());
-            model.addAttribute("userDetails1", users.getEmail());
-            model.addAttribute("userDetails2", users.getPhoneNumber());
-        }
 
-        return "profilePage";
-    }
-
-//    @GetMapping("/admin/products/add")
-//    public String updatePhoneNumber(Model model,CustomerUser user){
-//        model.addAttribute("updateContact", user.getPhoneNumber());
-//
-//        return "p";
-//    }
-
-    @PostMapping  ("/updatePhoneNumber/{id}")
-    public String updatePhoneNumber( @PathVariable Integer id  ,CustomerUser user,Model model ) {
-
-
-
-//        CustomerUser updatedUser = customerDetailsServiceImpl.getCustomerId(id).get();
-//        CustomerUser customerUser = new CustomerUser();
-//        customerUser.setPhoneNumber(updatedUser.getPhoneNumber());
-//        customerUserRepository.save(customerUser);
-        model.addAttribute("title","update Contact");
-
-        CustomerUser  contact = this.customerUserRepository.findById(id).get();
-         contact.setPhoneNumber(user.getPhoneNumber());
-         this.customerUserRepository.save(contact);
-         model.addAttribute("contact", contact);
-        return "profilePage";
-    }
 
 
 

@@ -96,6 +96,7 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
         user.setPassword(passwordEncoder.encode(userRegisteredDTO.getPassword()));
         user.setRole(role);
         user.setPhoneNumber(userRegisteredDTO.getPhoneNumber());
+        user.setAddress(userRegisteredDTO.getAddress());
 
         return customerUserRepository.save(user);
     }
@@ -170,7 +171,7 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
     }
 
 
-    public Optional<CustomerUser> getCustomerId(Integer id){
+    public Optional<CustomerUser> getCustomerId(Long id){
         return customerUserRepository.findById(id);
     }
 

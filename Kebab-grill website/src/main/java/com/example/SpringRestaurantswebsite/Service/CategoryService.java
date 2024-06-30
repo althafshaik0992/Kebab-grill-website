@@ -14,15 +14,21 @@ import java.util.Optional;
 @Service
 public class CategoryService {
 
+//
+//    private final CategoryRepository categoryRepository;
+//
+//    public CategoryService(CategoryRepository categoryRepository) {
+//        this.categoryRepository = categoryRepository;
+//    }
 
-
+    @Autowired
+    private CategoryRepository categoryRepository;
 
     @Autowired
     ProblemFormRepository problemFormRepository;
 
 
-    @Autowired
-    CategoryRepository categoryRepository;
+
 
     public List<Category> getCategoryList() {
         return categoryRepository.findAll();

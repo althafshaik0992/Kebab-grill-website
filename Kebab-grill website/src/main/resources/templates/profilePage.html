@@ -118,11 +118,322 @@
 
     <style>
 
+        /*body {*/
+        /*    font-family: "Lato", sans-serif;*/
+        /*    background-color: white;*/
+        /*    margin: 0;*/
+        /*    padding: 0;*/
+        /*}*/
+
+
+
+        /*.sidenav {*/
+        /*    height: 100%;*/
+        /*    width: 0;*/
+        /*    position: fixed;*/
+        /*    z-index: 1;*/
+        /*    top: 0;*/
+        /*    left: 0;*/
+        /*    background-color: #111;*/
+        /*    overflow-x: hidden;*/
+        /*    transition: 0.5s;*/
+        /*    padding-top: 60px;*/
+        /*}*/
+
+        /*.sidenav a {*/
+        /*    padding: 8px 8px 8px 32px;*/
+        /*    text-decoration: none;*/
+        /*    font-size: 25px;*/
+        /*    color: #818181;*/
+        /*    display: block;*/
+        /*    transition: 0.3s;*/
+        /*}*/
+
+
+
+        /*.dropdown-content {*/
+        /*    display: none;*/
+        /*    position: absolute;*/
+        /*    background-color: #f9f9f9;*/
+        /*    min-width: 160px;*/
+        /*    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);*/
+        /*    z-index: 1;*/
+        /*}*/
+
+        /*.cancelbtn {*/
+        /*    width: auto;*/
+        /*    padding: 10px 18px;*/
+        /*    background-color: #f44336;*/
+        /*}*/
+
+        /*!* Center the image and position the close button *!*/
+        /*.imgcontainer {*/
+        /*    text-align: center;*/
+        /*    margin: 24px 0 12px 0;*/
+        /*    position: relative;*/
+        /*}*/
+
+        /*img.avatar {*/
+        /*    width: 40%;*/
+        /*    border-radius: 50%;*/
+        /*}*/
+
+        /*.container {*/
+        /*    padding: 16px;*/
+        /*}*/
+
+        /*span.psw {*/
+        /*    float: right;*/
+        /*    padding-top: 16px;*/
+        /*}*/
+
+        /*!* The Modal (background) *!*/
+        /*.modal {*/
+        /*    display: none; !* Hidden by default *!*/
+        /*    position: fixed; !* Stay in place *!*/
+        /*    z-index: 1; !* Sit on top *!*/
+        /*    left: 0;*/
+        /*    top: 0;*/
+        /*    width: 100%; !* Full width *!*/
+        /*    height: 100%; !* Full height *!*/
+        /*    overflow: auto; !* Enable scroll if needed *!*/
+        /*    background-color: rgb(0,0,0); !* Fallback color *!*/
+        /*    background-color: rgba(0,0,0,0.4); !* Black w/ opacity *!*/
+        /*    padding-top: 60px;*/
+        /*}*/
+
+        /*!* Modal Content/Box *!*/
+        /*.modal-content {*/
+        /*    background-color: #fefefe;*/
+        /*    margin: 5% auto 15% auto; !* 5% from the top, 15% from the bottom and centered *!*/
+        /*    border: 1px solid #888;*/
+        /*    width: 80%; !* Could be more or less, depending on screen size *!*/
+        /*}*/
+
+        /*!* The Close Button (x) *!*/
+        /*.close {*/
+        /*    position: absolute;*/
+        /*    right: 25px;*/
+        /*    top: 0;*/
+        /*    color: #000;*/
+        /*    font-size: 35px;*/
+        /*    font-weight: bold;*/
+        /*}*/
+
+        /*.close:hover,*/
+        /*.close:focus {*/
+        /*    color: red;*/
+        /*    cursor: pointer;*/
+        /*}*/
+
+        /*!* Add Zoom Animation *!*/
+        /*.animate {*/
+        /*    -webkit-animation: animatezoom 0.6s;*/
+        /*    animation: animatezoom 0.6s*/
+        /*}*/
+
+        /*@-webkit-keyframes animatezoom {*/
+        /*    from {-webkit-transform: scale(0)}*/
+        /*    to {-webkit-transform: scale(1)}*/
+        /*}*/
+
+        /*@keyframes animatezoom {*/
+        /*    from {transform: scale(0)}*/
+        /*    to {transform: scale(1)}*/
+        /*}*/
+
+        /*!* Change styles for span and cancel button on extra small screens *!*/
+        /*@media screen and (max-width: 300px) {*/
+        /*    span.psw {*/
+        /*        display: block;*/
+        /*        float: none;*/
+        /*    }*/
+        /*    .cancelbtn {*/
+        /*        width: 100%;*/
+        /*    }*/
+        /*}*/
+
+
+        /*.sidenav a:hover {*/
+        /*    color: #f1f1f1;*/
+        /*}*/
+
+        /*.sidenav .closebtn {*/
+        /*    position: absolute;*/
+        /*    top: 0;*/
+        /*    right: 25px;*/
+        /*    font-size: 36px;*/
+        /*    margin-left: 50px;*/
+        /*}*/
+
+        /*@media screen and (max-height: 450px) {*/
+        /*    .sidenav {padding-top: 15px;}*/
+        /*    .sidenav a {font-size: 18px;}*/
+        /*}*/
+
+        /*.bg-img{*/
+        /*    height: 100vh;*/
+
+        /*    background-size:inherit;*/
+        /*    background: url('large.png');*/
+        /*}*/
+        /*.bg-img:after{*/
+        /*    position: absolute;*/
+        /*    content: '';*/
+        /*    top: 0;*/
+        /*    left: 0;*/
+        /*    height: 100%;*/
+        /*    width: 100%;*/
+        /*    background: rgba(0,0,0,0.7);*/
+        /*}*/
+        /*.content{*/
+        /*    position: absolute;*/
+        /*    top: 50%;*/
+        /*    left: 50%;*/
+        /*    z-index: 999;*/
+        /*    text-align: center;*/
+        /*    padding: 60px 32px;*/
+        /*    width: 370px;*/
+        /*    transform: translate(-50%,-50%);*/
+        /*    background: rgba(255,255,255,0.04);*/
+        /*    box-shadow: -1px 4px 28px 0px rgba(0,0,0,0.75);*/
+        /*}*/
+        /*.content header{*/
+        /*    color: white;*/
+        /*    font-size: 33px;*/
+        /*    font-weight: 600;*/
+        /*    margin: 0 0 35px 0;*/
+        /*    font-family: 'Montserrat',sans-serif;*/
+        /*}*/
+        /*.close {*/
+        /*    position: absolute;*/
+        /*    right: 25px;*/
+        /*    top: 0;*/
+        /*    color: #000;*/
+        /*    font-size: 35px;*/
+        /*    font-weight: bold;*/
+        /*}*/
+
+        /*.close:hover,*/
+        /*.close:focus {*/
+        /*    color: red;*/
+        /*    cursor: pointer;*/
+        /*}*/
+        /*.field{*/
+        /*    position: relative;*/
+        /*    height: 45px;*/
+        /*    width: 100%;*/
+        /*    display: flex;*/
+        /*    background: rgba(255,255,255,0.94);*/
+        /*}*/
+        /*.field span{*/
+        /*    color: #222;*/
+        /*    width: 40px;*/
+        /*    line-height: 45px;*/
+        /*}*/
+        /*.field input{*/
+        /*    height: 100%;*/
+        /*    width: 100%;*/
+        /*    background: transparent;*/
+        /*    border: none;*/
+        /*    outline: none;*/
+        /*    color: #222;*/
+        /*    font-size: 16px;*/
+        /*    font-family: 'Poppins',sans-serif;*/
+        /*}*/
+        /*textarea {*/
+        /*    width: 100%;*/
+        /*    padding: 8px;*/
+        /*    border: 1px solid #ccc;*/
+        /*    border-radius: 4px;*/
+        /*    box-sizing: border-box;*/
+        /*}*/
+
+        /*textarea {*/
+        /*    resize: vertical;*/
+        /*}*/
+        /*.space{*/
+        /*    margin-top: 16px;*/
+        /*}*/
+        /*.show{*/
+        /*    position: absolute;*/
+        /*    right: 13px;*/
+        /*    font-size: 13px;*/
+        /*    font-weight: 700;*/
+        /*    color: #222;*/
+        /*    display: none;*/
+        /*    cursor: pointer;*/
+        /*    font-family: 'Montserrat',sans-serif;*/
+        /*}*/
+        /*.pass-key:valid ~ .show{*/
+        /*    display: block;*/
+        /*}*/
+        /*.pass{*/
+        /*    text-align: left;*/
+        /*    margin: 10px 0;*/
+        /*}*/
+        /*.pass a{*/
+        /*    color: white;*/
+        /*    text-decoration: none;*/
+        /*    font-family: 'Poppins',sans-serif;*/
+        /*}*/
+        /*.pass:hover a{*/
+        /*    text-decoration: underline;*/
+        /*}*/
+        /*.field input[type="submit"]{*/
+        /*    background: lightgreen;*/
+        /*    border: 1px solid lightgreen;*/
+        /*    color: white;*/
+        /*    font-size: 18px;*/
+        /*    letter-spacing: 1px;*/
+        /*    font-weight: 600;*/
+        /*    cursor: pointer;*/
+        /*    font-family: 'Montserrat',sans-serif;*/
+        /*}*/
+        /*.field input[type="submit"]:hover{*/
+        /*    background: lightgreen;*/
+        /*}*/
+
+
+        /*.field input[type="close"]{*/
+        /*    background: red;*/
+        /*    border: red;*/
+        /*    text-align: center;*/
+        /*    color: white;*/
+        /*    font-size: 18px;*/
+        /*    letter-spacing: 1px;*/
+        /*    font-weight: 600;*/
+        /*    cursor: pointer;*/
+        /*    font-family: 'Montserrat',sans-serif;*/
+        /*}*/
+        /*.field input[type="close"]:hover{*/
+        /*    background: red;*/
+        /*}*/
+
+        /*.login{*/
+        /*    color: white;*/
+        /*    margin: 20px 0;*/
+        /*    font-family: 'Poppins',sans-serif;*/
+        /*}*/
+        /*.links{*/
+        /*    display: flex;*/
+        /*    cursor: pointer;*/
+        /*    color: white;*/
+        /*    margin: 0 0 20px 0;*/
+        /*}*/
+
+
+        /*@media (max-width: 768px) {*/
+        /*    .container {*/
+        /*        width: 80%;*/
+        /*    }*/
+        /*}*/
+
+
+
         body {
             font-family: "Lato", sans-serif;
         }
-
-
 
         .sidenav {
             height: 100%;
@@ -157,99 +468,6 @@
             z-index: 1;
         }
 
-        .cancelbtn {
-            width: auto;
-            padding: 10px 18px;
-            background-color: #f44336;
-        }
-
-        /* Center the image and position the close button */
-        .imgcontainer {
-            text-align: center;
-            margin: 24px 0 12px 0;
-            position: relative;
-        }
-
-        img.avatar {
-            width: 40%;
-            border-radius: 50%;
-        }
-
-        .container {
-            padding: 16px;
-        }
-
-        span.psw {
-            float: right;
-            padding-top: 16px;
-        }
-
-        /* The Modal (background) */
-        .modal {
-            display: none; /* Hidden by default */
-            position: fixed; /* Stay in place */
-            z-index: 1; /* Sit on top */
-            left: 0;
-            top: 0;
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgb(0,0,0); /* Fallback color */
-            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-            padding-top: 60px;
-        }
-
-        /* Modal Content/Box */
-        .modal-content {
-            background-color: #fefefe;
-            margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-            border: 1px solid #888;
-            width: 80%; /* Could be more or less, depending on screen size */
-        }
-
-        /* The Close Button (x) */
-        .close {
-            position: absolute;
-            right: 25px;
-            top: 0;
-            color: #000;
-            font-size: 35px;
-            font-weight: bold;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: red;
-            cursor: pointer;
-        }
-
-        /* Add Zoom Animation */
-        .animate {
-            -webkit-animation: animatezoom 0.6s;
-            animation: animatezoom 0.6s
-        }
-
-        @-webkit-keyframes animatezoom {
-            from {-webkit-transform: scale(0)}
-            to {-webkit-transform: scale(1)}
-        }
-
-        @keyframes animatezoom {
-            from {transform: scale(0)}
-            to {transform: scale(1)}
-        }
-
-        /* Change styles for span and cancel button on extra small screens */
-        @media screen and (max-width: 300px) {
-            span.psw {
-                display: block;
-                float: none;
-            }
-            .cancelbtn {
-                width: 100%;
-            }
-        }
-
 
         .sidenav a:hover {
             color: #f1f1f1;
@@ -263,187 +481,154 @@
             margin-left: 50px;
         }
 
+        input[type=text], select, textarea {
+            width: 100%; /* Full width */
+            padding: 12px; /* Some padding */
+            border: 1px solid #ccc; /* Gray border */
+            border-radius: 4px; /* Rounded borders */
+            box-sizing: border-box; /* Make sure that padding and width stays in place */
+            margin-top: 6px; /* Add a top margin */
+            margin-bottom: 16px; /* Bottom margin */
+            resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+        }
+
+        /* Style the submit button with a specific background color etc */
+        input[type=submit] {
+            background-color: #04AA6D;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        /* When moving the mouse over the submit button, add a darker green color */
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+
+        /* Add a background color and some padding around the form */
+        .container {
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+
+
+        .box {
+            background-color: black;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .box a {
+            padding: 15px;
+            background-color: #fff;
+            border-radius: 3px;
+            text-decoration: none;
+        }
+
+        .modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(
+                    254,
+                    126,
+                    126,
+                    0.7
+            );
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .content {
+            position: relative;
+            background: white;
+            padding: 1em 2em;
+            border-radius: 4px;
+        }
+
+        .modal:target {
+            display: flex;
+        }
+        body {
+            text-align: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+
+
         @media screen and (max-height: 450px) {
             .sidenav {padding-top: 15px;}
             .sidenav a {font-size: 18px;}
         }
 
-        .bg-img{
-            height: 100vh;
-
-            background-size:inherit;
-            background: url('large.png');
-        }
-        .bg-img:after{
-            position: absolute;
-            content: '';
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 100%;
-            background: rgba(0,0,0,0.7);
-        }
-        .content{
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            z-index: 999;
-            text-align: center;
-            padding: 60px 32px;
-            width: 370px;
-            transform: translate(-50%,-50%);
-            background: rgba(255,255,255,0.04);
-            box-shadow: -1px 4px 28px 0px rgba(0,0,0,0.75);
-        }
-        .content header{
-            color: white;
-            font-size: 33px;
-            font-weight: 600;
-            margin: 0 0 35px 0;
-            font-family: 'Montserrat',sans-serif;
-        }
-        .field{
-            position: relative;
-            height: 45px;
-            width: 100%;
-            display: flex;
-            background: rgba(255,255,255,0.94);
-        }
-        .field span{
-            color: #222;
-            width: 40px;
-            line-height: 45px;
-        }
-        .field input{
-            height: 100%;
-            width: 100%;
-            background: transparent;
-            border: none;
-            outline: none;
-            color: #222;
-            font-size: 16px;
-            font-family: 'Poppins',sans-serif;
-        }
-        .space{
-            margin-top: 16px;
-        }
-        .show{
-            position: absolute;
-            right: 13px;
-            font-size: 13px;
-            font-weight: 700;
-            color: #222;
-            display: none;
-            cursor: pointer;
-            font-family: 'Montserrat',sans-serif;
-        }
-        .pass-key:valid ~ .show{
-            display: block;
-        }
-        .pass{
-            text-align: left;
-            margin: 10px 0;
-        }
-        .pass a{
-            color: white;
-            text-decoration: none;
-            font-family: 'Poppins',sans-serif;
-        }
-        .pass:hover a{
-            text-decoration: underline;
-        }
-        .field input[type="submit"]{
-            background: lightgreen;
-            border: 1px solid lightgreen;
-            color: white;
-            font-size: 18px;
-            letter-spacing: 1px;
-            font-weight: 600;
-            cursor: pointer;
-            font-family: 'Montserrat',sans-serif;
-        }
-        .field input[type="submit"]:hover{
-            background: lightgreen;
-        }
-        .login{
-            color: white;
-            margin: 20px 0;
-            font-family: 'Poppins',sans-serif;
-        }
-        .links{
-            display: flex;
-            cursor: pointer;
-            color: white;
-            margin: 0 0 20px 0;
-        }
-
-
-
-
     </style>
 </head>
-<body>
-<header class="bg-light text-success">
+    <body>
+    <header class="bg-light text-success">
 
 
-    <nav class="navbar navbar-expand-lg  navbar-light bg-light">
-        <a class="  navbar-brand text-success" href="loginafterPage.html">
-            <img  th:src="@{/Images/large.png}"    src="../static/Images/large.png" width="auto" height="40" class="d-inline-block align-top ">
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <h2 style="text-align: center">Kebab Grill</h2>
-        <div class="collapse navbar-collapse " id="navbarTogglerDemo02" style="display: flex">
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0 navbar nav-item px-4 ">
+        <nav class="navbar navbar-expand-lg  navbar-light bg-light">
+            <a class="  navbar-brand text-success" href="loginafterPage.html">
+                <img  th:src="@{/Images/large.png}"    src="../static/Images/large.png" width="auto" height="40" class="d-inline-block align-top ">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <h2 style="text-align: center">Kebab Grill</h2>
+            <div class="collapse navbar-collapse " id="navbarTogglerDemo02" style="display: flex">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0 navbar nav-item px-4 ">
+
+                </ul>
 
 
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0 navbar nav justify-content-end "  >
+                    <li class="nav-item r ">
+                        <a class="nav-link text-success" href=""  th:href="@{/menu}">   Menu</a>
+                    </li>
 
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search any items ">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search  </button>
-                </form>
-            </ul>
+                    <li class="nav-item r" >
+                        <a class="nav-link text-success" href="#About us">About Us</a>
+                    </li>
 
+                    <li class="nav-item r" >
+                        <a class="nav-link text-success" href="#contact">Contact Us</a>
+                    </li>
 
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0 navbar nav justify-content-end "  >
-                <li class="nav-item r ">
-                    <a class="nav-link text-success" href=""  th:href="@{/menu}">   Menu</a>
-                </li>
+                    <i class="fa" style="font-size:24px">&#xf07a;</i>
+                    <span class='badge badge-warning' id='lblCartCount'th:text="${cartCount}">0 </span>
 
+                    <li  class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-success" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" th:text="*{userDetails}">
+                            Guest
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item text-success" href="#" th:href="@{/profile}">My Profile</a>
+                            <a class="dropdown-item text-success" href="#">MY Orders</a>
+                            <div class="dropdown-divider "></div>
+                            <a class="dropdown-item text-success" href="#" th:href="@{/logout}">LogOut</a>
+                        </div>
+                    </li>
+                </ul>
 
-                <li class="nav-item r" >
-                    <a class="nav-link text-success" href="#About us">About Us</a>
-                </li>
+                            <div class="dropdown-menu dropdown-menu-right px-3 py-2" aria-labelledby="navbarDropdownMenuLink-55">
+                                <ul class="nav navbar-nav nav-profile">
+                                    <li><a class="page-scroll" href="">Account Profile</a></li>
+                                    <li><a class="page-scroll" href="">My Orders</a></li>
+                                    <li><a class="page-scroll" href="">My Favorite List</a></li>
+                                    <li><a class="page-scroll" href="">Sign Out</a> </li>
+                                </ul>
 
-                <li class="nav-item r" >
-                    <a class="nav-link text-success" href="#contact">Contact Us</a>
-                </li>
+                            </div>
 
-                <i class="fa" style="font-size:24px">&#xf07a;</i>
-                <span class='badge badge-warning' id='lblCartCount'th:text="${cartCount}"> 0 </span>
-
-
-
-                <li  class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-success" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" th:text="*{userDetails}">
-
-                        Guest
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item text-success" href="#" th:href="@{/profile}">My Profile</a>
-                        <a class="dropdown-item text-success" href="#">MY Orders</a>
-                        <div class="dropdown-divider "></div>
-                        <a class="dropdown-item text-success" href="#" th:href="@{/logout}">LogOut</a>
-                    </div>
-                </li>
-
-
-
-            </ul>
-        </div>
-    </nav>
-</header>
+            </div>
+        </nav>
+    </header>
 
 
 
@@ -461,27 +646,28 @@
                                     <img  src="https://cdn.restrozap.com/images/common/profile.png"  onerror="this.src='/images/common/profile.png'" class="img-responsive rounded-circle profileImage" alt="Profile Image">
                                 </div>
                             </div>
-                            <div class="col-12 col-sm-7">
+                            <div class="col-12 col-sm-7 row align-items-center profileDetails mt-2">
                                 <div class="profile" >
                                     <h3 th:text="*{userDetails}">
                                     </h3>
                                     <div class="row  align-items-center profileDetails mt-2">
                                         <div class="col-12">
                                             <div class="d-flex justify-content-between">
-                                            <div class="fas fa-phone" > <span id="customer-old-phone-number "  th:text="${userDetails2}"> </span> </div>
+                                            <div class="fas fa-phone" >  <span id="customer-old-phone-number "  th:text="${userDetails2}"> </span> </div>
                                             <div>
-                                                <a href="#"
-                                                   title="Edit Contact">
-                                                    <!--                                                           data-micx="{type:'customer-address:edit', args:{$updateIn:'#customer-address-container .modal-body', $container:'#customer-address-container', id:24288 }, on: {click:this} }">-->
-                                                    <span class=" text-success fas fa-edit"   onclick="document.getElementById('id01').style.display='block'" style="width:auto;" ></span>
-<!--                                                    th:action="@{'/updatePhoneNumber/'+${id}}" th:method="post"-->
-                                                </a>
-                                                |
-                                                <a id="CustomerPhoneDelete" href="" title="Delete"
-                                                   data-address-type="Home">
-                                                    <!--                                                           data-micx="{type:'customer-address:delete', args: { id:'24288', $updateIn:'#customer_address_list' }, on:{click:this}}">-->
-                                                    <span class=" text-success  fas fa-trash"></span>
-                                                </a>
+<!--                                                <a href="#"-->
+<!--                                                   title="Edit Contact">-->
+<!--&lt;!&ndash;                                                    data-micx="{type:'customer-address:edit', args:{$updateIn:'#customer-address-container .modal-body', $container:'#customer-address-container', id:24288 }, on: {click:this} }">&ndash;&gt;&ndash;&gt;-->
+<!--                                                    <span class=" text-success fas fa-edit"   onclick="document.getElementById('id02').style.display='block'" style="width:auto;" ></span>-->
+<!--&lt;!&ndash;                                                    th:action="@{'/updatePhoneNumber/'+${id}}" th:method="post"&ndash;&gt;-->
+<!--                                                </a>-->
+<!--                                                |-->
+<!--                                                <a id="CustomerPhoneDelete" href="" title="Delete"-->
+<!--                                                   data-address-type="Home">-->
+<!--                                                    &lt;!&ndash;                                                           data-micx="{type:'customer-address:delete', args: { id:'24288', $updateIn:'#customer_address_list' }, on:{click:this}}">&ndash;&gt;-->
+<!--                                                    <span class=" text-success  fas fa-trash"></span>-->
+<!--                                                </a>-->
+<!--                                            </div>-->
                                             </div>
                                         </div>
                                     </div>
@@ -494,6 +680,7 @@
                                         </div>
                                 </div>
                                     <br>
+
                                     <div id="customer_address_list">
 
                                         <div class="row align-items-center profileDetails">
@@ -501,32 +688,26 @@
                                                 <div class="d-flex justify-content-between">
                                                     <div class="title-class"> <span class="fa fa-home"></span>&nbsp;Home Address</div>
                                                     <div>
-                                                        <a href="#"
-                                                           title="Edit Address">
-<!--                                                           data-micx="{type:'customer-address:edit', args:{$updateIn:'#customer-address-container .modal-body', $container:'#customer-address-container', id:24288 }, on: {click:this} }">-->
-                                                            <span class=" text-success fas fa-edit"   onclick="document.getElementById('id01').style.display='block'" style="width:auto;" ></span>
-                                                        </a>
-                                                        |
-                                                        <a id="CustomerAddressDelete" href="" title="Delete"
-                                                           data-address-type="Home">
-<!--                                                           data-micx="{type:'customer-address:delete', args: { id:'24288', $updateIn:'#customer_address_list' }, on:{click:this}}">-->
-                                                            <span class=" text-success  fas fa-trash"></span>
-                                                        </a>
+<!--                                                        <a href="#"-->
+<!--                                                           title="Edit Address">-->
+<!--&lt;!&ndash;                                                           data-micx="{type:'customer-address:edit', args:{$updateIn:'#customer-address-container .modal-body', $container:'#customer-address-container', id:24288 }, on: {click:this} }">&ndash;&gt;-->
+<!--                                                            <span class=" text-success fas fa-edit close"   onclick="document.getElementById('id01').style.display='block'" style="width:auto;" ></span>-->
+<!--                                                        </a>-->
+<!--                                                        |-->
+<!--                                                        <a id="CustomerAddressDelete" href="" title="Delete"-->
+<!--                                                           data-address-type="Home">-->
+<!--&lt;!&ndash;                                                           data-micx="{type:'customer-address:delete', args: { id:'24288', $updateIn:'#customer_address_list' }, on:{click:this}}">&ndash;&gt;-->
+<!--                                                            <span class=" text-success  fas fa-trash"></span>-->
+<!--                                                        </a>-->
                                                     </div>
                                                 </div>
-                                                <p class="my-3 card-text" id='address_24288'>
+                                                <p class="my-3 card-text row  align-items-center profileDetails mt-2" id='address_24288' th:text="${address}">
                                                     4000 Dunwoody Park
                                                     Dunwoody
                                                     GA  -  30338
                                                 </p>
                                             </div>
 
-                                            <div class="col-12">
-                                                <div class="title-class">
-
-                                                    <a class="text-success " href="#" >Add New Address</a>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -545,38 +726,113 @@
     </div>
 </div>
 
-</div>
+
 
 </section>
 
 
 
-<div id="id01" class="modal">
+<!--<div id="id01" class="modal">-->
+
+<!--    <form class="modal-content animate" action="/action_page.php"-->
+<!--          th:action="@{/addressform}" method="post"-->
+<!--          th:object="${addressform}">-->
+
+
+
+<!--        <div class="container">-->
+<!--&lt;!&ndash;            <input type="hidden" name="id" >&ndash;&gt;-->
+<!--            <h1 style="text-align: center">Add New Address</h1>-->
+
+
+<!-- -->
+<!--            <div class="container">-->
+
+<!--               <label for="address">Street Address:</label>-->
+<!--                <textarea  th:field="*{street}" id="address" name="address" rows="1" required></textarea>-->
+<!--&lt;!&ndash;                <div th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}" class="invalid-feedback"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                th:field="*{phoneNumber}"  th:text="${userDetails1}"&ndash;&gt;-->
+<!--            </div>-->
+<!--            <div class="container">-->
+
+<!--                <label for="unit">unit :</label>-->
+<!--                <textarea    th:field="*{unit}" type="text"  id="unit" name="address" rows="1" ></textarea>-->
+<!--                &lt;!&ndash;                <div th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}" class="invalid-feedback"></div>&ndash;&gt;-->
+<!--                &lt;!&ndash;                th:field="*{phoneNumber}"  th:text="${userDetails1}"&ndash;&gt;-->
+<!--            </div>-->
+<!--            <div class="container">-->
+<!--                <label for="city">City:</label>-->
+<!--                <textarea th:field="*{city}" type="text" id="city" name="city" rows="1" required></textarea>-->
+<!--            </div>-->
+
+<!--&lt;!&ndash;            <div class="form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;                <label for="state">State:</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                <input type="text" id="state"  readonly="readonly" name="state" required>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+
+
+<!--            <div class="container">-->
+<!--                <label for="state"> State:</label>-->
+<!--                <textarea th:field="*{state}" type="text" id="state" name="state" rows="1" required ></textarea>-->
+<!--&lt;!&ndash;                <select id="state" name="state">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <option value="alabama">Alabama</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <option value="alaska">Alaska</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                    &lt;!&ndash; Add other states here &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                    <option value="wyoming">Wyoming</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                </select>&ndash;&gt;-->
+<!--            </div>-->
+<!--            <div class="container">-->
+<!--                <label for="zipcode">Zip Code:</label>-->
+<!--                <textarea th:field="*{zip}" type="text" id="zipcode" name="zipcode" rows="1" required pattern="[0-9]{5}"></textarea>-->
+<!--            </div>-->
+
+
+
+<!--            <div class="field space">-->
+<!--                <input   type="submit" value="Submit">-->
+<!--            </div>-->
+
+<!--            <div class="field space" >-->
+<!--                <input type="close" onclick="document.getElementById('id01').style.display='none'" value="close">-->
+<!--&lt;!&ndash;                       onclick="document.getElementById('id01').style.display='none'" class="cancelbtn"-->
+<!--value="close"></input>&ndash;&gt;-->
+<!--&lt;!&ndash;           // <button type="submit">Login</button>&ndash;&gt;-->
+
+
+<!--        </div>-->
+<!--        </div>-->
+
+
+<!--    </form>-->
+
+<!--</div>-->
+
+
+<div id="id02" class="modal">
 
     <form class="modal-content animate" action="/action_page.php"
-          th:action="@{'/updatePhoneNumber/'+${id}}" method="post"
+          th:action="@{/updateAddressr}" method="post"
           th:object="${contact}">
-
         <div class="container">
             <input type="hidden" name="id" >
-            <h1 style="text-align: center">Change Your Mobile Number</h1>
+            <h1 style="text-align: center">Change Your address</h1>
             <div class="field space">
-                <div class="fas fa-phone" >  Current Phone Number :  <span id="customer-phone-number " th:text="${userDetails2}" readonly="readonly"> </span> </div>
+                <div class="fas fa-home" >  Current address :  <span id="customer-phone-number " th:text="${address}" readonly="readonly"> </span> </div>
             </div>
 
- 
+
             <div class="field space">
 
-                <span class="fas fa-phone"></span>
-               <input id="phone"  th:field="*{phoneNumber}" type="tel" pattern="([0-9]" required placeholder="Enter New  PhoneNumber" >
-<!--                <div th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}" class="invalid-feedback"></div>-->
+                <span class="fas fa-home"></span>
+                <input id="phone"  th:field="*{address}" type="tel" pattern="([0-9]" required placeholder="Enter New  PhoneNumber" >
+                <!--                <div th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}" class="invalid-feedback"></div>-->
             </div>
 
 
             <div class="field space">
                 <input type="submit" value="Submit">
             </div>
-<!--           // <button type="submit">Login</button>-->
+            <!--           // <button type="submit">Login</button>-->
 
 
         </div>
@@ -586,9 +842,78 @@
 
 </div>
 
-</div>
 
-<script>
+
+
+    <footer class=" bg-success  text-light py-4">
+        <div class="row ">
+            <div class="col-md-3" >
+                <a class="  navbar-brand text-success" href="/">
+                    <img th:src="@{/Images/large.png}"   src="../static/Images/large.png" class="mb-2" width="100">
+                    <h5>Kebab Grill</h5>
+                </a>
+                <p>Eat Like Home  <br> Feel Like Home </p>
+            </div>
+            <div class="col-md-3 text-light ">
+                <h3>Navigation</h3>
+                <ul class="list-unstyled">
+                    <li><a href="/" class="text-decoration-none text-light">Home</a></li>
+                    <li><a class="text-decoration-none text-light" href="menu" > Menu</a></li>
+                    <li><a href="#contact" class="text-decoration-none text-light">Contact</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3 text-light">
+                <h3>Follow Us</h3>
+                <ul class="list-unstyled">
+                    <li><a href="#" class=" text-decoration-none  fab fa-facebook-f fa-1x" style="color: #3b5998 ">  Facebook</a></li>
+                    <li><a href="#" class="text-decoration-none  fab fa-twitter fa-1x" style="color: #55acee "> Twitter</a></li>
+                    <li><a href="#" class="text-decoration-none  fab fa-instagram fa-1x" style="color: #ac2bac"> Instagram</a></li>
+                    <li><a href="#" class="text-decoration-none  fab fa-youtube fa-1x" style="color: #ed302f">  YouTube</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 ">
+                <h4 class="heading">We Accept</h4>
+
+                <div class="credit-list">
+                    <span>
+                        <img src="https://cdn.restrozap.com/images/common/svg/visa.svg" onerror="this.src='/images/common/svg/visa.svg'" alt="VISA payment" width="44" />
+                    </span>
+                    <span>
+                        <img src="https://cdn.restrozap.com/images/common/svg/mastercard.svg" onerror="this.src='/images/common/svg/mastercard.svg'" alt="VISA payment" width="44" />
+                    </span>
+                    <span>
+                        <img src="https://cdn.restrozap.com/images/common/svg/american_express.svg" onerror="this.src='/images/common/svg/american_express.svg'" alt="VISA payment" width="44" />
+                    </span>
+                    <span>
+                        <img src="https://cdn.restrozap.com/images/common/svg/discover.svg" onerror="this.src='/images/common/svg/discover.svg'" alt="VISA payment" width="44" />
+                    </span>
+                </div>
+                <ul class="list-unstyled ">
+                    <li>
+                        <a  class="  text-decoration-none text-danger" href="reportForm">
+                            <!--                    <span style = 'font-size:100px;'>&#128681;</span>-->
+                            &#128681 Report a problem</a></li>
+
+                </ul>
+            </div>
+        </div>
+
+
+
+        <!--   <button class="open-button" onclick="openForm()">Open Form</button>-->
+
+
+        <hr class="my-4">
+        <div class="text-center">&copy; Copyright 2024 - Kebab Grill</div>
+
+    </footer>
+
+
+
+
+
+    <script>
     // Get the modal
     var modal = document.getElementById('id01');
 
@@ -599,13 +924,62 @@
         }
     }
 
+    var modal = document.getElementById('id02');
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+    // const phoneInputField = document.querySelector("#phone");
+    // const phoneInput = window.intlTelInput(phoneInputField, {
+    //     utilsScript:
+    //         "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+    // });
 
 
-    const phoneInputField = document.querySelector("#phone");
-    const phoneInput = window.intlTelInput(phoneInputField, {
-        utilsScript:
-            "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+    // Using us-state-codes package
+    // const usStates = require('us-state-codes');
+    //
+    // // Example function to handle state input
+    // function handleStateInput(stateCode) {
+    //     const state = usStates.getStateByCode(stateCode);
+    //     if (state) {
+    //         console.log(`State: ${state.name}`);
+    //         console.log(`Abbreviation: ${state.code}`);
+    //         console.log(`Capital: ${state.capital}`);
+    //     } else {
+    //         console.log('Invalid state code');
+    //     }
+    // }
+    //
+    // // Example usage
+    // handleStateInput('CA');  // Replace with any valid state code
+
+
+
+    // script.js
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const stateDropdown = document.getElementById('state');
+
+        // Add event listener for form submission
+        const form = document.querySelector('#state');
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            const selectedState = stateDropdown.value.toLowerCase(); // Get selected state and convert to lowercase
+
+            // Scroll to the selected state section
+            const stateSection = document.getElementById(selectedState);
+            if (stateSection) {
+                stateSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
     });
+
 </script>
 
 
