@@ -49,11 +49,4 @@ public class CategoryService {
     }
 
 
-    public void addproblem(ProblemForm problemForm){
-        problemFormRepository.save(problemForm);
-
-    }
-
-
-
 }

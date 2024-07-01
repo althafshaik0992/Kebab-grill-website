@@ -38,16 +38,19 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
     TokenRepository tokenRepository;
 
     @Value("${spring.mail.username}")
-    private String username;
+    String username;
 
-    private final String fromEmail = "shaikguf15080@gmail.com";
+    String fromEmail = "shaikguf15080@gmail.com";
 //
 //    private final String toEmaile = "sk.murfu@gmail.com";
 
 
     @Value("${spring.mail.password}")
-    private String password;
+    String password;
 
+   // Sender's email address
+
+    // Constructor or dependency injection for SMTP credentials
 
 
 
@@ -153,7 +156,7 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
 
 
 
-    public Properties propertiesServer() {
+    public  Properties propertiesServer() {
         Properties properties = new Properties();
         properties.put("mail.smtp.port", "587");
         properties.put("mail.smtp.auth", "true");

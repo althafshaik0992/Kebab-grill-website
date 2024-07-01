@@ -1,7 +1,9 @@
-package Service;
+package com.example.SpringRestaurantswebsite.Service;
 
 import com.example.SpringRestaurantswebsite.Model.Category;
+import com.example.SpringRestaurantswebsite.Model.ProblemForm;
 import com.example.SpringRestaurantswebsite.Repository.CategoryRepository;
+import com.example.SpringRestaurantswebsite.Repository.ProblemFormRepository;
 import com.example.SpringRestaurantswebsite.Service.CategoryService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -11,9 +13,9 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 
@@ -25,6 +27,7 @@ public class CategoryServiceTest {
 
     @InjectMocks
     private CategoryService categoryService;
+
 
 
 
@@ -69,6 +72,53 @@ public class CategoryServiceTest {
 
         // Verify repository method was called with correct argument
         verify(categoryRepository, times(1)).deleteById(categoryIdToDelete);
+    }
+
+    @Test
+    public void testAddCategory() {
+        // Create a mock Category object
+        Category categoryToAdd = new Category();
+        categoryToAdd.setId(1);
+        categoryToAdd.setName("Test Category");
+
+        // Call the method under test
+        categoryService.addCategory(categoryToAdd);
+
+        // Verify that categoryRepository.save() was called with the correct Category object
+        verify(categoryRepository, times(1)).save(categoryToAdd);
+    }
+
+
+    @Test
+    public void testGetCategoryById_ExistingCategory() {
+        // Mock data
+        Category mockCategory = new Category(1, "Test Category");
+        when(categoryRepository.findById(1)).thenReturn(Optional.of(mockCategory));
+
+        // Call the method under test
+        Optional<Category> result = categoryService.getCategoryById(1);
+
+        // Assertions
+        assertTrue(result.isPresent(), "Category should be present");
+        assertEquals(mockCategory, result.get(), "Returned category should match");
+
+        // Verify repository method was called
+        verify(categoryRepository, times(1)).findById(1);
+    }
+
+    @Test
+    public void testGetCategoryById_NonExistingCategory() {
+        // Mock behavior for non-existing category
+        when(categoryRepository.findById(anyInt())).thenReturn(Optional.empty());
+
+        // Call the method under test with a non-existing ID
+        Optional<Category> result = categoryService.getCategoryById(999); // Example non-existing ID
+
+        // Assertions
+        assertTrue(result.isEmpty(), "Category should not be present for non-existing ID");
+
+        // Verify repository method was called
+        verify(categoryRepository, times(1)).findById(999); // Verify with the specific non-existing ID
     }
 
 

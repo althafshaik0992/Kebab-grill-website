@@ -63,7 +63,7 @@ public class HomeController {
 
 
     @GetMapping({"/", "/home"})
-    public String Home(Model model) {
+    public String Home() {
         return "index";
     }
 

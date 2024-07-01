@@ -1,6 +1,7 @@
 package com.example.SpringRestaurantswebsite.Config;
 
 import com.example.SpringRestaurantswebsite.Dto.UserRegisteredDTO;
+import com.example.SpringRestaurantswebsite.Model.CustomerUser;
 import com.example.SpringRestaurantswebsite.Repository.CustomerUserRepository;
 import com.example.SpringRestaurantswebsite.Service.CustomerDetailsService;
 import jakarta.servlet.ServletException;
@@ -26,11 +27,13 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
     @Autowired
     CustomerDetailsService userService;
 
+
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
                                         Authentication authentication) throws IOException, ServletException {
 
-        String redirectUrl = null;
+       // CustomerUser customerUser = new CustomerUser();
+        String redirectUrl = "/dashboard";
         if (authentication.getPrincipal() instanceof DefaultOAuth2User) {
             DefaultOAuth2User userDetails = (DefaultOAuth2User) authentication.getPrincipal();
             String username = userDetails.getAttribute("email") != null ? userDetails.getAttribute("email") : userDetails.getAttribute("login") + "@gmail.com";
@@ -39,11 +42,14 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
                 user.setEmail_id(username);
                 user.setName(userDetails.getAttribute("email") != null ? userDetails.getAttribute("email") : userDetails.getAttribute("login"));
                 user.setPassword(("Dummy"));
+                user.setPhoneNumber("000-000-0000");
                 user.setRole("USER");
                 userService.save(user);
             }
         }
-        redirectUrl = "/dashboard";
+        //redirectUrl = "/dashboard";
         new DefaultRedirectStrategy().sendRedirect(request, response, redirectUrl);
     }
+
+
 }

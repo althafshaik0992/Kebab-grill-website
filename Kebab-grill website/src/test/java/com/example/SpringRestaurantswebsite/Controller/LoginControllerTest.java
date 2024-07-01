@@ -4,9 +4,11 @@ import com.example.SpringRestaurantswebsite.Dto.CustomerUserDto;
 import com.example.SpringRestaurantswebsite.Model.CustomerUser;
 import com.example.SpringRestaurantswebsite.Service.CustomerDetailsService;
 import com.example.SpringRestaurantswebsite.Service.CustomerDetailsServiceImpl;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.springframework.ui.Model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -15,14 +17,19 @@ import static org.mockito.Mockito.*;
 public class LoginControllerTest {
 
 
-    @Mock
+
     private CustomerDetailsServiceImpl customerDetailsService; // Mocking the service dependency
 
-    @InjectMocks
-    private LoginController loginController; // The controller to be tested
+    private LoginController loginController;
 
-
-
+    @BeforeEach
+    public void setup() {
+        // Initialize the controller with mocked dependencies
+        loginController = new LoginController();
+        customerDetailsService = new CustomerDetailsServiceImpl();//
+        MockitoAnnotations.initMocks(this);// Instantiate your controller
+        // Alternatively, you can use mocking framework to mock dependencies
+    }
 
     @Test
     public void testLogin() {
@@ -39,21 +46,21 @@ public class LoginControllerTest {
         // verify(model).addAttribute(...);
     }
 
+
+
+
     @Test
     public void testLoginUser() {
-        // Mock data for CustomerUserDto
-        CustomerUser userDto = new CustomerUser();
-        userDto.setEmail("testuser@gmail.com");
+        // Mock data for CustomerUser
+        CustomerUserDto userDto = new CustomerUserDto();
+        userDto.setUsername("testuser@gmail.com");
         userDto.setPassword("testpassword");
 
-
-
         // Mock behavior of customerDetailsService.loadUserByUsername method
-        // Here, you can simulate any behavior or return values as per your test case
         when(customerDetailsService.loadUserByUsername("testuser")).thenReturn(null); // Example: return null for simplicity
 
         // Call the controller method
-       // loginController.loginUser(userDto);
+        loginController.loginUser(userDto);
 
         // Verify that customerDetailsService.loadUserByUsername method was called with correct arguments
         verify(customerDetailsService).loadUserByUsername("testuser");

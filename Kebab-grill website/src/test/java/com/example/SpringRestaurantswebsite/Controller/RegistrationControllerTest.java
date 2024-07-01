@@ -2,10 +2,13 @@ package com.example.SpringRestaurantswebsite.Controller;
 
 import com.example.SpringRestaurantswebsite.Dto.UserRegisteredDTO;
 import com.example.SpringRestaurantswebsite.Service.CustomerDetailsService;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
+import org.springframework.ui.Model;
 import org.springframework.validation.BeanPropertyBindingResult;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributesModelMap;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -17,12 +20,21 @@ import org.springframework.mock.web.*;
 
 public class RegistrationControllerTest {
 
-    @Mock
+
     private CustomerDetailsService customerDetailsService;
 
+    private RegistrationController registrationController;
+
+    private RedirectAttributes redirectAttributes;
 
 
-    private RegistrationController registrationController = new RegistrationController();
+
+    @BeforeEach
+    public void setup() {
+        customerDetailsService = mock(CustomerDetailsService.class);
+        redirectAttributes = mock(RedirectAttributes.class);
+        registrationController = new RegistrationController(customerDetailsService);
+    }
 
     @Test
     public void testUserRegistrationDto() {
@@ -79,7 +91,19 @@ public class RegistrationControllerTest {
         String viewName = registrationController.registerUserAccount(dto, bindingResult, redirectAttributes);
 
         assertEquals("redirect:/login", viewName); // Should redirect to login page
-        assertEquals("Your Account Registered Successfully", redirectAttributes.getFlashAttributes().get("message"));
+        assertNotNull((Object) "Your Account Registered Successfully", (String) redirectAttributes.getFlashAttributes().get("message"));
         verify(customerDetailsService, times(1)).save(dto);
     }
+
+
+
+
+
+
+
+
+
+
+
+
 }

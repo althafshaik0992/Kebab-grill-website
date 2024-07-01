@@ -3,6 +3,8 @@ package com.example.SpringRestaurantswebsite.Model;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.math.BigDecimal;
+
 
 @Entity
 @Data
@@ -29,5 +31,14 @@ public class Product {
     private String imageName;
 
 
+    public Product(int i, String s, int ten) {
+    }
 
+    public Product(){
+
+    }
+
+
+    public Product(long l, String productA, double v, int categoryId) {
+    }
 }

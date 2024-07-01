@@ -22,11 +22,18 @@ public class RegistrationController {
     @Autowired
     BCryptPasswordEncoder cryptPasswordEncoder;
 
-    @Autowired
-    CustomerDetailsService customerDetailsService;
+//    @Autowired
+//    CustomerDetailsService customerDetailsService;
 
     @Autowired
     CustomerUserRepository customerUserRepository;
+
+    private final CustomerDetailsService customerDetailsService;
+
+    // Constructor injection
+    public RegistrationController(CustomerDetailsService customerDetailsService) {
+        this.customerDetailsService = customerDetailsService;
+    }
 
 
     @ModelAttribute("user")
