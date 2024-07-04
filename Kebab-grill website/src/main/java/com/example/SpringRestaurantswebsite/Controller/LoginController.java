@@ -4,12 +4,15 @@ package com.example.SpringRestaurantswebsite.Controller;
 import com.example.SpringRestaurantswebsite.Dto.CustomerUserDto;
 import com.example.SpringRestaurantswebsite.Dto.ProductDto;
 import com.example.SpringRestaurantswebsite.Dto.UserRegisteredDTO;
+import com.example.SpringRestaurantswebsite.Global.GlobalData;
 import com.example.SpringRestaurantswebsite.Model.CustomerUser;
 import com.example.SpringRestaurantswebsite.Model.PasswordResetToken;
 import com.example.SpringRestaurantswebsite.Repository.CustomerUserRepository;
 import com.example.SpringRestaurantswebsite.Repository.TokenRepository;
+import com.example.SpringRestaurantswebsite.Service.CategoryService;
 import com.example.SpringRestaurantswebsite.Service.CustomerDetailsService;
 import com.example.SpringRestaurantswebsite.Service.CustomerDetailsServiceImpl;
+import com.example.SpringRestaurantswebsite.Service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -36,6 +39,12 @@ public class LoginController {
     @Autowired
     BCryptPasswordEncoder cryptPasswordEncoder;
 
+    @Autowired
+    CategoryService categoryService;
+
+    @Autowired
+    ProductService productService;
+
 
 
     @Autowired
@@ -61,13 +70,37 @@ public class LoginController {
     }
 
     @GetMapping("/login")
-    public String login() {
+    public String login(Model model) {
+        GlobalData.cart.clear();
         return "login";
+    }
+
+
+    @GetMapping("/loginguest")
+    public String guest(Model model) {
+
+        CustomerUser user = new CustomerUser();
+        user.setName("guest");
+
+        model.addAttribute("userDetails", user.getName());
+        model.addAttribute("cartCount", GlobalData.cart.size());
+        return "loginguest";
+    }
+
+    @GetMapping("/loginafter")
+    public String loginafter(Model model) {
+        SecurityContext securityContext = SecurityContextHolder.getContext();
+        User user = (User) securityContext.getAuthentication().getPrincipal();
+        CustomerUser users = customerUserRepository.findByEmail(user.getUsername());
+        model.addAttribute("userDetails", users.getName());
+        model.addAttribute("cartCount", GlobalData.cart.size());
+
+        return "loginafterPage";
     }
 
     @PostMapping("/login")
     public void loginUser(@ModelAttribute("customer")
-                          CustomerUserDto userLoginDTO) {
+                          CustomerUserDto userLoginDTO , CustomerUser user) {
         System.out.println("UserDTO"+userLoginDTO);
         customerDetailsService.loadUserByUsername(userLoginDTO.getUsername());
 
@@ -92,7 +125,31 @@ public class LoginController {
 
             }
             return "loginafterPage";
+
         }
+
+    @GetMapping("/menuafterlogin")
+    public String loginafterlogin(Model model) {
+        SecurityContext securityContext = SecurityContextHolder.getContext();
+        if (securityContext.getAuthentication().getPrincipal() instanceof DefaultOAuth2User) {
+            DefaultOAuth2User user = (DefaultOAuth2User) securityContext.getAuthentication().getPrincipal();
+            model.addAttribute("userDetails", user.getAttribute("name") != null ? user.getAttribute("name") : user.getAttribute("login"));
+            model.addAttribute("categories", categoryService.getCategoryList());
+            model.addAttribute("cartCount", GlobalData.cart.size());
+            model.addAttribute("products", productService.getProductList());
+
+        } else {
+            User user = (User) securityContext.getAuthentication().getPrincipal();
+            CustomerUser users = customerUserRepository.findByEmail(user.getUsername());
+            model.addAttribute("userDetails", users.getName());
+            model.addAttribute("categories", categoryService.getCategoryList());
+            model.addAttribute("cartCount", GlobalData.cart.size());
+            model.addAttribute("products", productService.getProductList());
+
+
+        }
+        return "menuafterlogin";
+    }
 
 
 

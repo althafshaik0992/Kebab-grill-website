@@ -3,6 +3,8 @@ package com.example.SpringRestaurantswebsite.Controller;
 
 
 
+import com.example.SpringRestaurantswebsite.Dto.CustomerUserDto;
+import com.example.SpringRestaurantswebsite.Global.GlobalData;
 import com.example.SpringRestaurantswebsite.Model.CustomerUser;
 import com.example.SpringRestaurantswebsite.Model.ProblemForm;
 import com.example.SpringRestaurantswebsite.Repository.CustomerUserRepository;
@@ -12,6 +14,10 @@ import com.example.SpringRestaurantswebsite.Service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -60,32 +66,124 @@ public class HomeController {
     CustomerUserRepository customerUserRepository;
 
 
-
+    @ModelAttribute("customer")
+    public CustomerUserDto customerUserDto() {
+        return new CustomerUserDto();
+    }
 
     @GetMapping({"/", "/home"})
-    public String Home() {
+    public String Home(Model model) {
+        model.addAttribute("cartCount", GlobalData.cart.size());
         return "index";
     }
 
 
     @GetMapping("/menu")
     public String menu(Model model) {
+
         model.addAttribute("categories", categoryService.getCategoryList());
         model.addAttribute("products", productService.getProductList());
+        model.addAttribute("cartCount", GlobalData.cart.size());
+
         return "menu";
     }
 
+
+    @GetMapping("/menuguest")
+    public String menuguest(Model model) {
+
+        CustomerUser user = new CustomerUser();
+        user.setName("Guest");
+
+        model.addAttribute("userDetails", user.getName());
+        model.addAttribute("categories", categoryService.getCategoryList());
+        model.addAttribute("cartCount", GlobalData.cart.size());
+        model.addAttribute("products", productService.getProductList());
+        return "menuguestlogin";
+    }
+
+//
+
     @GetMapping("/menu/category/{id}")
     public String ViewCategoryMenu(Model model , @PathVariable int id) {
+
         model.addAttribute("categories", categoryService.getCategoryList());
+        model.addAttribute("cartCount", GlobalData.cart.size());
         model.addAttribute("products", productService.getAllProductsByID(id));
         return "menu";
+    }
+
+    @GetMapping("/menuafter/category/{id}")
+    public String ViewCategoryMenuafter(Model model , @PathVariable int id) {
+        SecurityContext securityContext = SecurityContextHolder.getContext();
+        if (securityContext.getAuthentication().getPrincipal() instanceof DefaultOAuth2User) {
+            DefaultOAuth2User user = (DefaultOAuth2User) securityContext.getAuthentication().getPrincipal();
+            model.addAttribute("userDetails", user.getAttribute("name") != null ? user.getAttribute("name") : user.getAttribute("login"));
+            model.addAttribute("categories", categoryService.getCategoryList());
+            model.addAttribute("cartCount", GlobalData.cart.size());
+            model.addAttribute("products", productService.getAllProductsByID(id));
+
+        } else {
+            User user = (User) securityContext.getAuthentication().getPrincipal();
+            CustomerUser users = customerUserRepository.findByEmail(user.getUsername());
+            model.addAttribute("userDetails", users.getName());
+            model.addAttribute("cartCount", GlobalData.cart.size());
+            model.addAttribute("categories", categoryService.getCategoryList());
+            model.addAttribute("products", productService.getAllProductsByID(id));
+        }
+        return "menuafterlogin";
+    }
+
+
+    @GetMapping("/menuguest/category/{id}")
+    public String ViewCategoryMenuguest(Model model , @PathVariable int id) {
+        CustomerUser user = new CustomerUser();
+        user.setName("Guest");
+
+        model.addAttribute("userDetails", user.getName());
+        model.addAttribute("cartCount", GlobalData.cart.size());
+        model.addAttribute("categories", categoryService.getCategoryList());
+        model.addAttribute("products", productService.getAllProductsByID(id));
+        return "menuguestlogin";
     }
 
 
     @GetMapping("/menu/viewmenu/{id}")
     public String ViewMenuItem(Model model ,@PathVariable int id) {
         model.addAttribute("products", productService.getProductById((long) id).get());
+        model.addAttribute("cartCount", GlobalData.cart.size());
+
+        return "viewItem";
+    }
+
+    @GetMapping("/menuafter/viewmenu/{id}")
+    public String ViewMenuItemafterlogin(Model model ,@PathVariable int id) {
+        SecurityContext securityContext = SecurityContextHolder.getContext();
+        if (securityContext.getAuthentication().getPrincipal() instanceof DefaultOAuth2User) {
+            DefaultOAuth2User user = (DefaultOAuth2User) securityContext.getAuthentication().getPrincipal();
+            model.addAttribute("userDetails", user.getAttribute("name") != null ? user.getAttribute("name") : user.getAttribute("login"));
+            model.addAttribute("cartCount", GlobalData.cart.size());
+            model.addAttribute("products", productService.getProductById((long) id).get());
+
+        } else {
+            User user = (User) securityContext.getAuthentication().getPrincipal();
+            CustomerUser users = customerUserRepository.findByEmail(user.getUsername());
+            model.addAttribute("userDetails", users.getName());
+            model.addAttribute("cartCount", GlobalData.cart.size());
+            model.addAttribute("products", productService.getProductById((long) id).get());
+        }
+        return "viewitemafterlogin";
+    }
+
+    @GetMapping("/menuguest/viewmenu/{id}")
+    public String ViewMenuItemguest(Model model ,@PathVariable int id) {
+        CustomerUser user = new CustomerUser();
+        user.setName("Guest");
+
+        model.addAttribute("userDetails", user.getName());
+        model.addAttribute("cartCount", GlobalData.cart.size());
+        model.addAttribute("products", productService.getProductById((long) id).get());
+
         return "viewItem";
     }
 

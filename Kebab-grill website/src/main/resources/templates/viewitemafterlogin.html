@@ -43,8 +43,17 @@
                 <span class='badge badge-warning' id='lblCartCount'th:text="${cartCount}">0</span>
 
 
-                <li class="nav-item nav-right navbar" >
-                    <a class="nav-link text-success " href="#"  th:href="@{/login}" >Login  <span class="icon-bar fa fa-fw fa-user"></span></a>
+                <li  class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-success" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" th:text="*{userDetails}">
+
+                        Guest
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item text-success" href="#" th:href="@{/profile}">My Profile</a>
+                        <a class="dropdown-item text-success" href="#">MY Orders</a>
+                        <div class="dropdown-divider "></div>
+                        <a class="dropdown-item text-success" href="#" th:href="@{/logout}">LogOut</a>
+                    </div>
                 </li>
             </ul>
             </ul>
@@ -90,7 +99,6 @@
 <!--        </div>-->
 <!--    </div>-->
 <!--</nav>-->
-
 <div class="container mt-5">
     <div class="row">
         <div class="col-sm-5 d-flex justify-content-center">
@@ -102,22 +110,8 @@
             <p th:text="${products.category.name}"></p>
             <h2>$ <span th:text="${products.price}"></span></h2>
             <p th:text="${products.description}"></p>
-
-<!--            <div class="input-group-append">-->
-<!--                <button class="btn btn-outline-secondary" type="button" onclick="decreaseQuantity()">-</button>-->
-
-<!--                <input class="form-control   mr-sm-2" type="number" name="quantity" value="1" min="1" id="quantityInput"  style="max-width: 50px;">-->
-<!--                &lt;!&ndash;            <br>&ndash;&gt;-->
-<!--                <button class="btn btn-outline-secondary" type="button" onclick="increaseQuantity()">+</button>-->
-<!--            </div>-->
-<!--            <br>-->
-
-            <div>
-                <input type="hidden" name="productId" th:value="${products.id}">
-            <a href="" th:href="@{/add/cart/{id}(id = ${products.id})}" class="btn btn-primary bg-success">Add to cart</a>
-            </div>
+            <a href="" th:href="@{/addToCart/{id}(id = ${products.id})}" class="btn btn-primary bg-success">Add to cart</a>
         </div>
-
     </div>
 </div>
 <br>
@@ -184,43 +178,8 @@
 
     <hr class="my-4">
     <div class="text-center">&copy; Copyright 2024 - Kebab Grill</div>
-
-
-
-
-
+    </div>
 </footer>
-
-<!--<script th:inline="javascript">-->
-<!--    function decreaseQuantity() {-->
-<!--        const quantity = parseInt(document.getElementById('quantityInput').value, 10);-->
-<!--        if (quantity > 1) {-->
-<!--            document.getElementById('quantityInput').value = quantity - 1;-->
-<!--        }-->
-<!--    }-->
-
-<!--    function increaseQuantity() {-->
-<!--        const quantity = parseInt(document.getElementById('quantityInput').value, 10);-->
-<!--        document.getElementById('quantityInput').value = quantity + 1;-->
-<!--    }-->
-
-<!--    $(document).ready(function() {-->
-<!--        $('form[action*="/add/cart/{id}"]').submit(function(e) {-->
-<!--            e.preventDefault();-->
-<!--            const form = $(this);-->
-<!--            const url = form.attr('action');-->
-<!--            const formData = form.serialize();-->
-
-<!--            $.post(url, formData, function(response) {-->
-<!--                // Update cart count-->
-<!--                $('#lblCartCount').text(); // Assuming the response object has cartCount-->
-<!--            });-->
-<!--        });-->
-<!--    });-->
-<!--</script>-->
-
-
-
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
         crossorigin="anonymous"></script>

@@ -2,12 +2,8 @@ package com.example.SpringRestaurantswebsite.Service;
 
 import com.example.SpringRestaurantswebsite.Dto.UserRegisteredDTO;
 import com.example.SpringRestaurantswebsite.Model.CustomerUser;
-import com.example.SpringRestaurantswebsite.Model.Product;
-import com.example.SpringRestaurantswebsite.Repository.CustomerUserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetailsService;
-
-import java.util.Optional;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 
 public  interface CustomerDetailsService  extends UserDetailsService {
@@ -20,6 +16,8 @@ public  interface CustomerDetailsService  extends UserDetailsService {
 
 
     boolean exists(String emailId);
+
+
 }
 
 

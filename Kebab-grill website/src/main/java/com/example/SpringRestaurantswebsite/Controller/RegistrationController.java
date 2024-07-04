@@ -50,7 +50,7 @@ public class RegistrationController {
     @PostMapping("/registration")
     public String registerUserAccount(@ModelAttribute("user") @Valid
                                       UserRegisteredDTO registrationDto, BindingResult bindingResult , RedirectAttributes redirectAttributes) {
-       if (customerDetailsService.exists(registrationDto.getEmail_id())==true) {
+       if (customerDetailsService.exists(registrationDto.getEmail_id())) {
            bindingResult.addError( new FieldError("registrationDto","email_id","Email already in use "));
            redirectAttributes.addFlashAttribute("message","Email Already In use");
            return "register";

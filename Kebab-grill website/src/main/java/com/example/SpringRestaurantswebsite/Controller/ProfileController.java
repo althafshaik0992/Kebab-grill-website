@@ -4,6 +4,7 @@ package com.example.SpringRestaurantswebsite.Controller;
 import com.example.SpringRestaurantswebsite.Dto.CustomerUserDto;
 import com.example.SpringRestaurantswebsite.Dto.UserRegisteredDTO;
 
+import com.example.SpringRestaurantswebsite.Global.GlobalData;
 import com.example.SpringRestaurantswebsite.Model.CustomerUser;
 import com.example.SpringRestaurantswebsite.Model.ProblemForm;
 
@@ -70,6 +71,7 @@ public class ProfileController {
             // userRegisteredDTO.setPhoneNumber("000-000-0000");
             model.addAttribute("userDetails", user.getAttribute("name") != null ? user.getAttribute("name") : user.getAttribute("login"));
             model.addAttribute("userDetails1", user.getAttribute("email"));
+            model.addAttribute("cartCount", GlobalData.cart.size());
 
             // model.addAttribute("userDetails2",userRegisteredDTO.getPhoneNumber());
         } else {
@@ -78,6 +80,7 @@ public class ProfileController {
             CustomerUser users = customerUserRepository.findByEmail(user.getUsername());
             model.addAttribute("userDetails", users.getName());
             model.addAttribute("userDetails1", users.getEmail());
+            model.addAttribute("cartCount", GlobalData.cart.size());
             model.addAttribute("userDetails2", users.getPhoneNumber());
             model.addAttribute("address",users.getAddress());
 

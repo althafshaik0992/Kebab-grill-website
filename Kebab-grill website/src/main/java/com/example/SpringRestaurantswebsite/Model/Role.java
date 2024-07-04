@@ -7,6 +7,7 @@ import org.springframework.security.core.GrantedAuthority;
 @Table(name="role")
 public class Role implements GrantedAuthority {
 
+    public static final Role ADMIN = new Role();
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;

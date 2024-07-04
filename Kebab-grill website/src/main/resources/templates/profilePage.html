@@ -589,16 +589,11 @@
 
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0 navbar nav justify-content-end "  >
                     <li class="nav-item r ">
-                        <a class="nav-link text-success" href=""  th:href="@{/menu}">   Menu</a>
+                        <a class="nav-link text-success" href=""  th:href="@{/menuafterlogin}">   Menu</a>
                     </li>
 
-                    <li class="nav-item r" >
-                        <a class="nav-link text-success" href="#About us">About Us</a>
-                    </li>
 
-                    <li class="nav-item r" >
-                        <a class="nav-link text-success" href="#contact">Contact Us</a>
-                    </li>
+
 
                     <i class="fa" style="font-size:24px">&#xf07a;</i>
                     <span class='badge badge-warning' id='lblCartCount'th:text="${cartCount}">0 </span>
@@ -857,9 +852,9 @@
             <div class="col-md-3 text-light ">
                 <h3>Navigation</h3>
                 <ul class="list-unstyled">
-                    <li><a href="/" class="text-decoration-none text-light">Home</a></li>
-                    <li><a class="text-decoration-none text-light" href="menu" > Menu</a></li>
-                    <li><a href="#contact" class="text-decoration-none text-light">Contact</a></li>
+                    <li><a href="#" th:href="@{/loginafter}"  class="text-decoration-none text-light">Home</a></li>
+                    <li><a class="text-decoration-none text-light" href="#" th:href="@{/menuafterlogin}" > Menu</a></li>
+
                 </ul>
             </div>
             <div class="col-md-3 text-light">

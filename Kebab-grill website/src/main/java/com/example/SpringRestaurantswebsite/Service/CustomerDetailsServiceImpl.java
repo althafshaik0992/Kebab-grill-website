@@ -72,6 +72,9 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
     }
 
 
+//
+
+
 
 
 
@@ -88,6 +91,8 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
     private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Set<Role> roles){
         return roles.stream().map(role -> new SimpleGrantedAuthority(role.getRole())).collect(Collectors.toList());
     }
+
+
 
     @Override
     public CustomerUser save(UserRegisteredDTO userRegisteredDTO) {
