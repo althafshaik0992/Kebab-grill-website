@@ -87,6 +87,7 @@ public class LoginController {
         return "loginguest";
     }
 
+
     @GetMapping("/loginafter")
     public String loginafter(Model model) {
         SecurityContext securityContext = SecurityContextHolder.getContext();
