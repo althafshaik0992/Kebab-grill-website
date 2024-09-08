@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
@@ -41,6 +42,28 @@ public class CartController {
     }
 
 
+    @PostMapping("/add-to-cart")
+    public String addToCart(@RequestParam("product_id") Long productId, Model model) {
+        // Add product to the cart
+        GlobalData.cart.add(productService.getProductById(productId).get());
+
+        // Optionally, update the cart model
+        model.addAttribute("cart", GlobalData.cart);
+
+        return "redirect:/menu";
+    }
+
+
+    @PostMapping("/add-to-cart-login")
+    public String addToCartLogin(@RequestParam("product_id") Long productId, Model model) {
+        // Add product to the cart
+        GlobalData.cart.add(productService.getProductById(productId).get());
+
+        // Optionally, update the cart model
+        model.addAttribute("cart", GlobalData.cart);
+
+        return "redirect:/dashboard";
+    }
 //    @PostMapping("/add/cart/{id}")
 //    public String cart(Model model, @PathVariable Long id)  {
 //        GlobalData.cart.add(productService.getProductById(id).get());

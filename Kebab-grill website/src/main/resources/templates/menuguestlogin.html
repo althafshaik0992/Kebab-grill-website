@@ -23,51 +23,46 @@
 
 <header class="bg-light text-success">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="  navbar-brand text-success" href="/">
-            <img  th:src="@{/Images/large.png}"    src="../static/Images/large.png" width="auto" height="40" class="d-inline-block align-top ">
+        <a class="navbar-brand text-success" href="/">
+            <img th:src="@{/Images/large.png}" src="../static/Images/large.png" width="auto" height="40" class="d-inline-block align-top">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0 navbar nav-item px-4">
-
-
-
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2  " type="search" placeholder="Search">
+                <!-- Search Form -->
+                <!-- <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
+                </form> -->
             </ul>
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0 navbar">
-                <i class="fa" style="font-size:24px">&#xf07a;</i>
-                <span class='badge badge-warning' id='lblCartCount'th:text="${cartCount}">0</span>
-
-
-                <li  class="nav-item dropdown">
+            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                <!-- Cart Icon and Count -->
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fa" style="font-size:24px">&#xf07a;</i>
+                        <span class='badge badge-warning' id='lblCartCount' th:text="${cartCount}">0</span>
+                    </a>
+                </li>
+                <!-- User Dropdown Menu -->
+                <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-success" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" th:text="*{userDetails}">
-
                         Guest
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <!--                        <a class="dropdown-item text-success" href="#" th:href="@{/profile}">My Profile</a>-->
-                        <a class="dropdown-item text-success" href="#">MY Orders</a>
-                        <div class="dropdown-divider "></div>
+                        <a class="dropdown-item text-success" href="#" th:href="@{/profile}">My Profile</a>
+                        <a class="dropdown-item text-success" href="#">My Orders</a>
+                        <div class="dropdown-divider"></div>
                         <a class="dropdown-item text-success" href="#" th:href="@{/logout}">LogOut</a>
                     </div>
                 </li>
-
-
-                <!--            <li class="nav-item active">-->
-                <!--                <span class="nav-link" th:text="${cartCount}">0</span>-->
-                <!--            </li>-->
-            </ul>
             </ul>
         </div>
     </nav>
 </header>
+
 
 <div class="container" style="margin-top: 30px">
     <div class="row">

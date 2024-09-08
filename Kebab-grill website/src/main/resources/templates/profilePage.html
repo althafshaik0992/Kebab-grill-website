@@ -570,60 +570,117 @@
     </style>
 </head>
     <body>
-    <header class="bg-light text-success">
+<!--    <header class="bg-light text-success">-->
 
 
-        <nav class="navbar navbar-expand-lg  navbar-light bg-light">
-            <a class="  navbar-brand text-success" href="loginafterPage.html">
-                <img  th:src="@{/Images/large.png}"    src="../static/Images/large.png" width="auto" height="40" class="d-inline-block align-top ">
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <h2 style="text-align: center">Kebab Grill</h2>
-            <div class="collapse navbar-collapse " id="navbarTogglerDemo02" style="display: flex">
-                <ul class="navbar-nav mr-auto mt-2 mt-lg-0 navbar nav-item px-4 ">
+<!--        <nav class="navbar navbar-expand-lg  navbar-light bg-light">-->
+<!--            <a class="  navbar-brand text-success" href="loginafterPage.html">-->
+<!--                <img  th:src="@{/Images/large.png}"    src="../static/Images/large.png" width="auto" height="40" class="d-inline-block align-top ">-->
+<!--            </a>-->
+<!--            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--                <span class="navbar-toggler-icon"></span>-->
+<!--            </button>-->
+<!--            <h2 style="text-align: center">Kebab Grill</h2>-->
+<!--            <div class="collapse navbar-collapse " id="navbarTogglerDemo02" style="display: flex">-->
+<!--                <ul class="navbar-nav mr-auto mt-2 mt-lg-0 navbar nav-item px-4 ">-->
 
-                </ul>
-
-
-                <ul class="navbar-nav mr-auto mt-2 mt-lg-0 navbar nav justify-content-end "  >
-                    <li class="nav-item r ">
-                        <a class="nav-link text-success" href=""  th:href="@{/menuafterlogin}">   Menu</a>
-                    </li>
+<!--                </ul>-->
 
 
+<!--                <ul class="navbar-nav mr-auto mt-2 mt-lg-0 navbar nav justify-content-end "  >-->
+<!--                    <li class="nav-item r ">-->
+<!--                        <a class="nav-link text-success" href=""  th:href="@{/menuafterlogin}">   Menu</a>-->
+<!--                    </li>-->
 
 
-                    <i class="fa" style="font-size:24px">&#xf07a;</i>
-                    <span class='badge badge-warning' id='lblCartCount'th:text="${cartCount}">0 </span>
 
-                    <li  class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-success" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" th:text="*{userDetails}">
-                            Guest
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item text-success" href="#" th:href="@{/profile}">My Profile</a>
-                            <a class="dropdown-item text-success" href="#">MY Orders</a>
-                            <div class="dropdown-divider "></div>
-                            <a class="dropdown-item text-success" href="#" th:href="@{/logout}">LogOut</a>
-                        </div>
-                    </li>
-                </ul>
 
-                            <div class="dropdown-menu dropdown-menu-right px-3 py-2" aria-labelledby="navbarDropdownMenuLink-55">
-                                <ul class="nav navbar-nav nav-profile">
-                                    <li><a class="page-scroll" href="">Account Profile</a></li>
-                                    <li><a class="page-scroll" href="">My Orders</a></li>
-                                    <li><a class="page-scroll" href="">My Favorite List</a></li>
-                                    <li><a class="page-scroll" href="">Sign Out</a> </li>
-                                </ul>
+<!--                    <i class="fa" style="font-size:24px">&#xf07a;</i>-->
+<!--                    <span class='badge badge-warning' id='lblCartCount'th:text="${cartCount}">0 </span>-->
 
-                            </div>
+<!--                    <li  class="nav-item dropdown">-->
+<!--                        <a class="nav-link dropdown-toggle text-success" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" th:text="*{userDetails}">-->
+<!--                            Guest-->
+<!--                        </a>-->
+<!--                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+<!--                            <a class="dropdown-item text-success" href="#" th:href="@{/profile}">My Profile</a>-->
+<!--                            <a class="dropdown-item text-success" href="#">MY Orders</a>-->
+<!--                            <div class="dropdown-divider "></div>-->
+<!--                            <a class="dropdown-item text-success" href="#" th:href="@{/logout}">LogOut</a>-->
+<!--                        </div>-->
+<!--                    </li>-->
+<!--                </ul>-->
 
-            </div>
-        </nav>
-    </header>
+<!--                            <div class="dropdown-menu dropdown-menu-right px-3 py-2" aria-labelledby="navbarDropdownMenuLink-55">-->
+<!--                                <ul class="nav navbar-nav nav-profile">-->
+<!--                                    <li><a class="page-scroll" href="">Account Profile</a></li>-->
+<!--                                    <li><a class="page-scroll" href="">My Orders</a></li>-->
+<!--                                    <li><a class="page-scroll" href="">My Favorite List</a></li>-->
+<!--                                    <li><a class="page-scroll" href="">Sign Out</a> </li>-->
+<!--                                </ul>-->
+
+<!--                            </div>-->
+
+<!--            </div>-->
+<!--        </nav>-->
+<!--    </header>-->
+
+
+
+<header class="bg-light text-success">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand text-success" href="/">
+            <img th:src="@{/Images/large.png}" src="../static/Images/large.png" width="auto" height="40" class="d-inline-block align-top">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0 navbar nav-item px-4">
+                <!-- Search Form -->
+                <!-- <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form> -->
+            </ul>
+            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+
+
+
+
+                <li class="nav-item r ">
+                    <a class="nav-link text-success" href=""  th:href="@{/menuafterlogin}">   Menu</a>
+                </li>
+
+
+
+                <!-- Cart Icon and Count -->
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fa" style="font-size:24px">&#xf07a;</i>
+                        <span class='badge badge-warning' id='lblCartCount' th:text="${cartCount}">0</span>
+                    </a>
+                </li>
+
+
+
+                <!-- User Dropdown Menu -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-success" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" th:text="*{userDetails}">
+                        Guest
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item text-success" href="#" th:href="@{/profile}">My Profile</a>
+                        <a class="dropdown-item text-success" href="#">My Orders</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item text-success" href="#" th:href="@{/logout}">LogOut</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
 
 
 

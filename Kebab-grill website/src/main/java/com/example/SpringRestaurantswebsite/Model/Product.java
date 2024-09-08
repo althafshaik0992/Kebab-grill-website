@@ -32,6 +32,9 @@ private  int quantity;
 
     private String imageName;
 
+    private boolean is_activated;
+    private boolean is_deleted;
+
 
     public Product(int i, String s, int ten) {
     }

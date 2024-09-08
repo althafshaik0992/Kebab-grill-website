@@ -1,198 +1,286 @@
-<!DOCTYPE html>
+
+
+<!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta charset="UTF-8">
-    <meta content="width=device-width, initial-scale=1" name="viewport">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-
-    <meta property="og:title" content="">
-    <meta property="og:type" content="">
-    <meta property="og:url" content="">
-    <meta property="og:image" content="">
-
-
-
-    <link rel="icon" href="/favicon.ico" sizes="any">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="icon.png">
-    <link rel="stylesheet" href="../static/css/Web.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <link rel="manifest" href="site.webmanifest">
-    <meta name="theme-color" content="#fafafa">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" rel="stylesheet">
-    <script crossorigin="anonymous" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-            src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script crossorigin="anonymous" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-            src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script crossorigin="anonymous" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-            src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <meta content="" property="og:title">
-    <meta content="" property="og:type">
-    <meta content="" property="og:url">
-    <meta content="" property="og:image">
-
-    <link href="/favicon.ico" rel="icon" sizes="any">
-    <link href="/icon.svg" rel="icon" type="image/svg+xml">
-    <link href="icon.png" rel="apple-touch-icon">
-
-    <link href="site.webmanifest" rel="manifest">
-    <meta content="#fafafa" name="theme-color">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-    <title>Spring-Restaurants-website</title>
-    <link rel="icon" type="image/x-icon" href="../static/Images/large.png">
+    <title>Document</title>
+
     <style>
-
-        body {
-            font-family: "Lato", sans-serif;
+        .font{
+            font-family: "Inter Semi Bold",sans-serif;
+        }
+        .card {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease-in-out;
+            border: none;
+            border-radius: 10px;
         }
 
-        .sidenav {
-            height: 100%;
-            width: 0;
-            position: fixed;
-            z-index: 1;
-            top: 0;
-            left: 0;
-            background-color: #111;
-            overflow-x: hidden;
-            transition: 0.5s;
-            padding-top: 60px;
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
         }
 
-        .sidenav a {
-            padding: 8px 8px 8px 32px;
-            text-decoration: none;
-            font-size: 25px;
-            color: #818181;
-            display: block;
-            transition: 0.3s;
+        .card-img-top img {
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
         }
 
-
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #f9f9f9;
-            min-width: 160px;
-            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-            z-index: 1;
+        .card-body h5 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 10px;
         }
 
-
-        .sidenav a:hover {
-            color: #f1f1f1;
+        .card-body h4 {
+            color: #28a745;
+            margin-bottom: 10px;
         }
 
-        .sidenav .closebtn {
-            position: absolute;
-            top: 0;
-            right: 25px;
-            font-size: 36px;
-            margin-left: 50px;
+        .card-body p {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 15px;
         }
 
-        @media screen and (max-height: 450px) {
-            .sidenav {padding-top: 15px;}
-            .sidenav a {font-size: 18px;}
+        /* Add to Cart Button */
+        .btn-success {
+            background-color: #28a745;
+            border: none;
+            font-size: 0.875rem;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.2s;
         }
 
+        .btn-success:hover {
+            background-color: #218838;
+        }
 
+        .btn-success i {
+            margin-right: 5px;
+        }
+
+        /* Mask icons hover */
+        .mask-icon ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .mask-icon ul li {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .mask-icon ul li a {
+            color: #28a745;
+            font-size: 1.2rem;
+        }
+
+        /* Responsive layout adjustments */
+        @media (max-width: 768px) {
+            .card {
+                margin-bottom: 30px;
+            }
+        }
+
+        .product-item-filter {
+            padding: 15px 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+
+        .toolbar-sorter-right span {
+            font-weight: 600;
+            margin-right: 10px;
+        }
+
+        .selectpicker {
+            width: auto;
+            display: inline-block;
+            min-width: 180px;
+        }
+
+        .nav-tabs {
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-tabs li {
+            display: inline-block;
+        }
+
+        .nav-tabs li a {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-right: 5px;
+            background-color: #f8f9fa;
+        }
+
+        .nav-tabs li a.active {
+            background-color: #28a745;
+            color: white;
+        }
+
+        /* Media Queries for smaller screens */
+        @media (max-width: 576px) {
+            .product-item-filter {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .text-sm-left, .text-sm-right {
+                text-align: center !important;
+            }
+
+            .nav-tabs {
+                justify-content: center;
+                margin-top: 15px;
+            }
+        }
     </style>
-    </style>
+
 </head>
 <body>
 <header class="bg-light text-success">
-
-
-    <nav class="navbar navbar-expand-lg  navbar-light bg-light">
-        <a class="  navbar-brand text-success" href="loginafterPage.html">
-            <img  th:src="@{/Images/large.png}"    src="../static/Images/large.png" width="auto" height="40" class="d-inline-block align-top ">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand text-success" href="/">
+            <img th:src="@{/Images/large.png}" src="../static/Images/large.png" width="auto" height="40" class="d-inline-block align-top">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <h2 style="text-align: center">Kebab Grill</h2>
-        <div class="collapse navbar-collapse " id="navbarTogglerDemo02" style="display: flex">
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0 navbar nav-item px-4 ">
 
-
-
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search any items ">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search  </button>
-                </form>
-            </ul>
-
-
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0 navbar nav justify-content-end "  >
-                <li class="nav-item r ">
-                    <a class="nav-link text-success" href=""  th:href="@{/menuafterlogin}">   Menu</a>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <!--                <ul class="navbar-nav mr-auto mt-2 mt-lg-0 navbar nav-item px-4">-->
+            <!--                    &lt;!&ndash; Search Form &ndash;&gt;-->
+            <!--                    <form class="form-inline my-2 my-lg-0">-->
+            <!--                        <input class="form-control mr-sm-2" type="search" placeholder="Search">-->
+            <!--                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
+            <!--                    </form>-->
+            <!--                </ul>-->
+            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                <!-- Cart Icon and Count -->
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fa" style="font-size:24px">&#xf07a;</i>
+                        <span class='badge badge-warning' id='lblCartCount' th:text="${cartCount}">0</span>
+                    </a>
                 </li>
-
-
-                <li class="nav-item r" >
-                    <a class="nav-link text-success" href="#About us">About Us</a>
-                </li>
-
-
-                <li class="nav-item r" >
-                    <a class="nav-link text-success" href="#contact">Contact Us</a>
-                </li>
-
-                <i class="fa" style="font-size:24px">&#xf07a;</i>
-                <span class='badge badge-warning' id='lblCartCount'th:text="${cartCount}"> 0 </span>
-
-
-                <li  class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-success" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" th:text="*{userDetails}">
-
+                <!-- User Dropdown Menu -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-success" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  th:text="${userDetails}">
                         Guest
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item text-success" href="#" th:href="@{/profile}">My Profile</a>
-                        <a class="dropdown-item text-success" href="#">MY Orders</a>
-                        <div class="dropdown-divider "></div>
-                        <a class="dropdown-item text-success" href="#" th:href="@{/logout}">LogOut</a>
+                        <a class="dropdown-item text-success" href="#">My Orders</a>
+                        <div class="dropdown-divider"></div>
                     </div>
                 </li>
-
-
-
             </ul>
-<!--            <div class="dropdown-menu dropdown-menu-right px-3 py-2" aria-labelledby="navbarDropdownMenuLink-55">-->
-<!--                <ul class="nav navbar-nav nav-profile">-->
-<!--                    <li><a class="page-scroll" href="">Account Profile</a></li>-->
-<!--                    <li><a class="page-scroll" href="">My Orders</a></li>-->
-<!--                    <li><a class="page-scroll" href="">My Favorite List</a></li>-->
-<!--                    <li><a class="page-scroll" href="">Sign Out</a> </li>-->
-<!--                </ul>-->
-<!--            </div>-->
         </div>
     </nav>
 </header>
 
 
+<!--<header class="bg-light text-success">-->
+<!--    <nav class="navbar navbar-expand-lg navbar-light bg-light">-->
+<!--        <a class="navbar-brand text-success" href="/">-->
+<!--            <img th:src="@{/Images/large.png}" src="../static/Images/large.png" width="auto" height="40" class="d-inline-block align-top">-->
+<!--        </a>-->
+<!--        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--            <span class="navbar-toggler-icon"></span>-->
+<!--        </button>-->
 
+<!--        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">-->
+<!--            <ul class="navbar-nav mr-auto mt-2 mt-lg-0 navbar nav-item px-4">-->
+<!--                &lt;!&ndash; Search Form &ndash;&gt;-->
+<!--                &lt;!&ndash; <form class="form-inline my-2 my-lg-0">-->
+<!--                    <input class="form-control mr-sm-2" type="search" placeholder="Search">-->
+<!--                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
+<!--                </form> &ndash;&gt;-->
+<!--            </ul>-->
+<!--            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">-->
+<!--                &lt;!&ndash; Cart Icon and Count &ndash;&gt;-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link" href="#">-->
+<!--                        <i class="fa" style="font-size:24px">&#xf07a;</i>-->
+<!--                        <span class='badge badge-warning' id='lblCartCount' th:text="${cartCount}">0</span>-->
+<!--                    </a>-->
+<!--                </li>-->
+<!--                &lt;!&ndash; User Dropdown Menu &ndash;&gt;-->
+<!--                <li class="nav-item dropdown">-->
+<!--                    <a class="nav-link dropdown-toggle text-success" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" th:text="*{userDetails}">-->
+<!--                        Guest-->
+<!--                    </a>-->
+<!--                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+<!--                        <a class="dropdown-item text-success" href="#" th:href="@{/profile}">My Profile</a>-->
+<!--                        <a class="dropdown-item text-success" href="#">My Orders</a>-->
+<!--                        <div class="dropdown-divider"></div>-->
+<!--                        <a class="dropdown-item text-success" href="#" th:href="@{/logout}">LogOut</a>-->
+<!--                    </div>-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--    </nav>-->
+<!--</header>-->
+
+<!--<header class="bg-light text-success">-->
+<!--    <nav class="navbar navbar-expand-lg navbar-light bg-light">-->
+<!--        <a class="navbar-brand text-success" href="loginafterPage.html">-->
+<!--            <img th:src="@{/Images/large.png}" src="../static/Images/large.png" width="auto" height="40" class="d-inline-block align-top">-->
+<!--        </a>-->
+<!--        <h2 class="mx-auto">Kebab Grill</h2>-->
+<!--        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--            <span class="navbar-toggler-icon"></span>-->
+<!--        </button>-->
+
+<!--        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">-->
+<!--            &lt;!&ndash; Push navigation items to the right using ml-auto &ndash;&gt;-->
+<!--            <ul class="navbar-nav ml-auto">-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link text-success" href="" th:href="@{/menuafterlogin}">Menu</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link text-success" href="#About us">About Us</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link text-success" href="#contact">Contact Us</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link" href="#">-->
+<!--                        <i class="fa" style="font-size:24px">&#xf07a;</i>-->
+<!--                        <span class='badge badge-warning' id='lblCartCount' th:text="${cartCount}">0</span>-->
+<!--                    </a>-->
+<!--                </li>-->
+<!--                &lt;!&ndash; User Dropdown Menu &ndash;&gt;-->
+<!--                <li class="nav-item dropdown">-->
+<!--                    <a class="nav-link dropdown-toggle text-success" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" th:text="*{userDetails}">-->
+<!--                        Guest-->
+<!--                    </a>-->
+<!--                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+<!--                        <a class="dropdown-item text-success" href="#" th:href="@{/profile}">My Profile</a>-->
+<!--                        <a class="dropdown-item text-success" href="#">My Orders</a>-->
+<!--                        <div class="dropdown-divider"></div>-->
+<!--                        <a class="dropdown-item text-success" href="#" th:href="@{/logout}">LogOut</a>-->
+<!--                    </div>-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--    </nav>-->
+<!--</header>-->
 
 <section class="container-fluid">
     <div class="detailed-view-bg-container">
@@ -239,7 +327,7 @@
 
         </div>
     </div>
-    </div>
+
     <br>
 </section>
 
@@ -251,11 +339,89 @@
         <div class="view">
             <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
                 <div align="center" class="text-center white-text mx-5 mx-sm-3 wow fadeIn"><br />
-                    <a class="btn btn-md orderNowButton" style="background-color: #45a049" href="" th:href="@{/menu}">Order Now</a></div>
+                    <a class="btn btn-md orderNowButton" style="background-color: #45a049" href="" th:href="@{/menuafterlogin}">Order Now</a></div>
             </div>
         </div>
     </div>
 </section>
+
+
+
+
+<br>
+<br>
+
+
+<!--<div class="products-box">-->
+<!--    <div class="container" th:each="category : ${categories}">-->
+<!--&lt;!&ndash;        <div class="row">&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="col-lg-12">&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="title-all text-center">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <h1 th:text="${category.name}"></h1>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--        <div class="row">-->
+<!--            <div class="col-lg-12">-->
+<!--                <div class="special-menu text-center">-->
+<!--                    <div class="button-group filter-button-group">-->
+<!--                        <button type="submit"   class="btn btn-success" data-filter="*">All</button>-->
+<!--                        <button type="submit"   class="btn btn-success"  data-filter=".best-seller">Best seller</button>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!--    </div>-->
+<!--</div>-->
+<!--&lt;!&ndash;<section class="best-sellers">&ndash;&gt;-->
+
+
+
+
+
+
+    <div class="container" style="margin-top: 30px">
+        <!--    <div class="row">-->
+        <!--        <div class="col-lg-12 text-center">-->
+        <!--            <h2>Best Sellers</h2>-->
+        <!--        </div>-->
+        <!--    </div>-->
+        <div class="row">
+            <!-- Loop over products dynamically -->
+            <div class="col-lg-3 col-md-6 mb-4" th:each="product : ${products}">
+                <div class="card h-100">
+                    <div class="card-img-top d-flex justify-content-center">
+                        <img class="img-fluid" height="150px" width="150px" th:src="@{${'/productImages/' + product.imageName}}" th:alt="${product.name}">
+                    </div>
+                    <div class="card-body text-center">
+                        <h5 class="card-title" th:text="${product.name}"></h5>
+                        <h4>$ <span th:text="${product.price}"></span></h4>
+                        <p class="card-text" th:text="${product.description}">Description goes here.</p>
+
+                        <form action="/add-to-cart-login" method="POST">
+                            <input type="hidden" name="product_id" th:value="${product.id}">
+                            <button type="submit" class="btn btn-success">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Mask Icon for product view -->
+                    <div class="mask-icon d-flex justify-content-center mt-2">
+                        <ul>
+                            <li>
+                                <a th:href="@{/product-detail/{id}(id = ${product.id})}" data-toggle="tooltip"
+                                   data-placement="right" title="View">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 <!-- Contact Section -->
@@ -312,8 +478,8 @@
         <div class="col-md-3 text-light ">
             <h3>Navigation</h3>
             <ul class="list-unstyled">
-                <li><a href="/" class="text-decoration-none text-light">Home</a></li>
-                <li><a class="text-decoration-none text-light" href="menu" > Menu</a></li>
+                <li><a href="/"  th:href="@{/loginafterPage}" class="text-decoration-none text-light">Home</a></li>
+                <li><a class="text-decoration-none text-light" href="menu"  th:href="@{/menuafterlogin}"> Menu</a></li>
                 <li><a href="#contact" class="text-decoration-none text-light">Contact</a></li>
             </ul>
         </div>
@@ -375,5 +541,14 @@
 <!--        document.getElementById("myForm").style.display = "none";-->
 <!--    }-->
 <!--</script>-->
+
+
+<!-- jQuery and Bootstrap JS -->
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
 </body>
 </html>

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -87,6 +87,9 @@
     </div>
 </nav>
 </header>
+<body>
+
+
 <div class="container-fluid">
 
     <a th:href="@{/admin/products/add}" style="margin: 20px 0" class="btn btn-primary">Add Product</a>
@@ -94,29 +97,36 @@
         <thead class="thead-light">
         <tr>
             <th scope="col">SN</th>
-            <th scope="col">Product Name</th>
             <th scope="col">Category</th>
+            <th scope="col">Product Name</th>
+            <th scope="col">Price</th>
             <th scope="col">Preview</th>
-            <th scope="col">Delete</th>
             <th scope="col">Update</th>
+            <th scope="col">Enable</th>
+            <th scope="col">Delete</th>
+
+
         </tr>
         </thead>
         <tbody>
 
         <tr th:each="product, iStat : ${products}">
             <th scope="row" th:text="${iStat.index + 1}">1</th>
-            <td th:text="${product.name}">Larry</td>
             <td th:text="${product.category?.name}">Larry</td>
+            <td th:text="${product.name}">Larry</td>
+            <td th:text = "${product.price}"></td>
             <td><img src="" height="100px" width="100px"  th:src="@{${'/productImages/' + product.imageName}}"></td>
 
-            <td><a href="" th:href="@{/admin/product/delete/{id}(id=${product.id})}" class="btn btn-danger">Delete</a></td>
+<!--            <td><a href="" th:href="@{/admin/product/delete/{id}(id=${product.id})}" class="btn btn-danger">Delete</a></td>-->
             <td><a href="" th:href="@{/admin/product/update/{id}(id=${product.id})}" class="btn btn-warning">Update</a></td>
-
+            <td><a  HREF="" th:href="@{/admin/product/enable/{id}(id=${product.id})}"
+                   class="btn btn-success">Enable</a> </td>
+            <td><a href="" th:href="@{/admin/product/delete/{id}(id=${product.id})}" class="btn btn-danger">Delete</a></td>-->
         </tr>
         </tbody>
     </table>
-    </table>
 </div>
+
 
 
 <footer class=" bg-success  text-light py-4">
@@ -175,13 +185,17 @@
 
 
 
+
     <!--   <button class="open-button" onclick="openForm()">Open Form</button>-->
 
 
     <hr class="my-4">
     <div class="text-center">&copy; Copyright 2024 - Kebab Grill</div>
-    </div>
 </footer>
+
+
+
+
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

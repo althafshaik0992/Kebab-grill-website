@@ -3,6 +3,8 @@ package com.example.SpringRestaurantswebsite.Model;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
+
 
 @Entity
 @Data
@@ -17,6 +19,12 @@ public class Category {
     private int  id ;
 
     private String name ;
+    @OneToMany(mappedBy = "category")
+    private List<Product> products;
+
+    public int getProductCount() {
+        return products.size();
+    }
 
     public Category(int i, String s) {
     }

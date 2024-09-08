@@ -84,6 +84,9 @@ public class LoginController {
 
         model.addAttribute("userDetails", user.getName());
         model.addAttribute("cartCount", GlobalData.cart.size());
+        model.addAttribute("categories", categoryService.getCategoryList());
+        model.addAttribute("cartCount", GlobalData.cart.size());
+        model.addAttribute("products", productService.getProductList());
         return "loginguest";
     }
 
@@ -95,6 +98,9 @@ public class LoginController {
         CustomerUser users = customerUserRepository.findByEmail(user.getUsername());
         model.addAttribute("userDetails", users.getName());
         model.addAttribute("cartCount", GlobalData.cart.size());
+        model.addAttribute("categories", categoryService.getCategoryList());
+        model.addAttribute("cartCount", GlobalData.cart.size());
+        model.addAttribute("products", productService.getProductList());
 
         return "loginafterPage";
     }
@@ -118,11 +124,18 @@ public class LoginController {
             if (securityContext.getAuthentication().getPrincipal() instanceof DefaultOAuth2User) {
                 DefaultOAuth2User user = (DefaultOAuth2User) securityContext.getAuthentication().getPrincipal();
                 model.addAttribute("userDetails", user.getAttribute("name") != null ? user.getAttribute("name") : user.getAttribute("login"));
+                model.addAttribute("categories", categoryService.getCategoryList());
+                model.addAttribute("cartCount", GlobalData.cart.size());
+                model.addAttribute("products", productService.getProductList());
+
 
             } else {
                 User user = (User) securityContext.getAuthentication().getPrincipal();
                 CustomerUser users = customerUserRepository.findByEmail(user.getUsername());
                 model.addAttribute("userDetails", users.getName());
+                model.addAttribute("categories", categoryService.getCategoryList());
+                model.addAttribute("cartCount", GlobalData.cart.size());
+                model.addAttribute("products", productService.getProductList());
 
             }
             return "loginafterPage";

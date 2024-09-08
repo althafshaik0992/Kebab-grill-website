@@ -16,88 +16,311 @@
       .font{
           font-family: "Inter Semi Bold",sans-serif;
       }
+
+
+      .card {
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          transition: all 0.3s ease-in-out;
+          border: none;
+          border-radius: 10px;
+      }
+
+      .card:hover {
+          transform: scale(1.05);
+          box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      }
+
+      .card-img-top img {
+          border-top-left-radius: 10px;
+          border-top-right-radius: 10px;
+      }
+
+      .card-body h5 {
+          font-size: 1.25rem;
+          font-weight: 600;
+          margin-bottom: 10px;
+      }
+
+      .card-body h4 {
+          color: #28a745;
+          margin-bottom: 10px;
+      }
+
+      .card-body p {
+          font-size: 0.9rem;
+          color: #666;
+          margin-bottom: 15px;
+      }
+
+      /* Add to Cart Button */
+      .btn-success {
+          background-color: #28a745;
+          border: none;
+          font-size: 0.875rem;
+          padding: 10px 15px;
+          border-radius: 5px;
+          transition: background-color 0.2s;
+      }
+
+      .btn-success:hover {
+          background-color: #218838;
+      }
+
+      .btn-success i {
+          margin-right: 5px;
+      }
+
+      /* Mask icons hover */
+      .mask-icon ul {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+      }
+
+      .mask-icon ul li {
+          display: inline-block;
+          margin-right: 10px;
+      }
+
+      .mask-icon ul li a {
+          color: #28a745;
+          font-size: 1.2rem;
+      }
+
+      /* Responsive layout adjustments */
+      @media (max-width: 768px) {
+          .card {
+              margin-bottom: 30px;
+          }
+      }
+
+      .product-item-filter {
+          padding: 15px 0;
+          border-bottom: 1px solid #ddd;
+          margin-bottom: 20px;
+      }
+
+      .toolbar-sorter-right span {
+          font-weight: 600;
+          margin-right: 10px;
+      }
+
+      .selectpicker {
+          width: auto;
+          display: inline-block;
+          min-width: 180px;
+      }
+
+      .nav-tabs {
+          margin: 0;
+          padding: 0;
+      }
+
+      .nav-tabs li {
+          display: inline-block;
+      }
+
+      .nav-tabs li a {
+          padding: 10px;
+          border: 1px solid #ddd;
+          border-radius: 5px;
+          margin-right: 5px;
+          background-color: #f8f9fa;
+      }
+
+      .nav-tabs li a.active {
+          background-color: #28a745;
+          color: white;
+      }
+
+      /* Media Queries for smaller screens */
+      @media (max-width: 576px) {
+          .product-item-filter {
+              flex-direction: column;
+              text-align: center;
+          }
+
+          .text-sm-left, .text-sm-right {
+              text-align: center !important;
+          }
+
+          .nav-tabs {
+              justify-content: center;
+              margin-top: 15px;
+          }
+      }
     </style>
 
 </head>
 <body>
+    <header class="bg-light text-success">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand text-success" href="/">
+                <img th:src="@{/Images/large.png}" src="../static/Images/large.png" width="auto" height="40" class="d-inline-block align-top">
+            </a>
+            <button class="navbar-toggler mr-4" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-<header class="bg-light text-success">
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="  navbar-brand text-success" href="/">
-        <img  th:src="@{/Images/large.png}"    src="../static/Images/large.png" width="auto" height="40" class="d-inline-block align-top ">
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+            <h4>Kebab Grill </h4>
+
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+<!--                <ul class="navbar-nav mr-auto mt-2 mt-lg-0 navbar nav-item px-4">-->
+<!--                    &lt;!&ndash; Search Form &ndash;&gt;-->
+<!--                    <form class="form-inline my-2 my-lg-0">-->
+<!--                        <input class="form-control mr-sm-2" type="search" placeholder="Search">-->
+<!--                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
+<!--                    </form>-->
+<!--                </ul>-->
+                <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                    <!-- Cart Icon and Count -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" th:href="@{/cart}">
+                            <i class="fa" style="font-size:24px">&#xf07a;</i>
+                            <span   class='badge badge-warning' id='lblCartCount' th:text="${cartCount}">0</span>
+                        </a>
+                    </li>
+                    <!-- User Dropdown Menu -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-success" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                            Guest
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item text-success" href="#" th:href="@{/login}">My Profile</a>
+                            <a class="dropdown-item text-success" href="#"  th:href="@{/login}">My Orders</a>
+                            <div class="dropdown-divider"></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
 
 
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0 navbar nav-item px-4">
+    <div class="shop-box-inner">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-9 col-lg-9 col-sm-12 col-xs-12 shop-content-right">
+                    <div class="right-product-box">
+                        <div class="product-item-filter row d-flex align-items-center">
+                            <!-- Sorting -->
+                            <div class="col-12 col-sm-8 text-center text-sm-left">
+                                <div class="toolbar-sorter-right d-inline-block">
+                                    <span>Sort by</span>
+                                    <select id="basic" class="selectpicker show-tick form-control d-inline-block"
+                                            data-placeholder="$ USD" onchange="location = this.value;">
+                                        <option>--Select--</option>
+                                        <option value="http://localhost:8080/high-price">High Price → Low Price</option>
+                                        <option value="http://localhost:8080/lower-price">Low Price → High Price</option>
+                                        <option value="4">Best Selling</option>
+                                    </select>
+                                </div>
+                                <p class="mt-2">Showing all results</p>
+                            </div>
+
+<!--                            &lt;!&ndash; View Toggle Buttons &ndash;&gt;-->
+<!--                            <div class="col-12 col-sm-4 text-center text-sm-right">-->
+<!--                                <ul class="nav nav-tabs justify-content-end ml-auto">-->
+<!--                                    <li class="nav-item">-->
+<!--                                        <a class="nav-link active" href="#grid-view" data-toggle="tab">-->
+<!--                                            <i class="fa fa-th"></i>-->
+<!--                                        </a>-->
+<!--                                    </li>-->
+<!--                                    <li class="nav-item">-->
+<!--                                        <a class="nav-link" href="#list-view" data-toggle="tab">-->
+<!--                                            <i class="fa fa-list-ul"></i>-->
+<!--                                        </a>-->
+<!--                                    </li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+                        </div> <!-- product-item-filter -->
+                    </div> <!-- right-product-box -->
+                </div> <!-- shop-content-right -->
+            </div> <!-- row -->
+        </div> <!-- container -->
+    </div> <!-- shop-box-inner -->
+
+<section>
+    <div class="container" style="margin-top: 30px">
+        <div class="row">
+            <div class="col-sm-3" >
+<!--                <ul class="navbar-nav mr-auto mt-2 mt-lg-0 navbar nav-item px-4">-->
+<!--                    <form class="form-inline my-2 my-lg-0 "th:action="@{/search-product}" method="get" >-->
+<!--                        <label>-->
+<!--                            <input class="form-control mr-sm-2 text-success" type="search" placeholder="Search">-->
+<!--                        </label>-->
+<!--                        <button class="btn btn-outline-success my-2 my-sm-0"  type="submit">Search</button>-->
+<!--                    </form>-->
 
 
+                        <!-- Search Form -->
+                        <div class="search-product mb-4">
+                            <form th:action="@{/search-product}" method="get" class="d-flex">
+                                <input class="form-control  me-3" name="keyword" placeholder="Search products..." type="text" aria-label="Search">
+                                <button class="btn btn-success" type="submit">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </form>
+                        </div>
+                <h4>Categories</h4>
+                <ul class="list-group text-success" >
+                    <!-- Category links -->
+                    <a th:href="@{/menu}">
+                        <li class="list-group-item text-success">All Items</li>
+                    </a>
+                    <a  th:each="category : ${categories}" th:href="@{/menu/category/{id}(id=${category.id})}">
+                        <li class="list-group-item  text-success" th:text="${category.name+ '(' + category.products.size() + ')'}"></li>
+                    </a>
+                </ul>
+            </div>
 
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2  " type="search" placeholder="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
-        </ul>
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0 navbar">
-            <li class="nav-item r ">
-                <a class="nav-link text-success" href="">Orders</a>
-            </li>
+            <!-- Product section -->
+            <div class="col-sm-9">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 mb-4" th:each="product : ${products}">
+                        <div class="card h-100">
+                            <div class="card-img-top d-flex justify-content-center">
+                                <img class="img-fluid" height="150px" width="150px"
+                                     th:src="@{${'/productImages/' + product.imageName}}" th:alt="${product.name}">
+                            </div>
+                            <div class="card-body text-center">
+                                <h5 class="card-title" th:text="${product.name}"></h5>
+                                <h4>$ <span th:text="${product.price}"></span></h4>
+                                <p class="card-text" th:text="${product.description}">Description goes here.</p>
 
+                                <form action="/add-to-cart" method="POST">
+                                    <input type="hidden" name="product_id" th:value="${product.id}">
+                                    <button type="submit" class="btn btn-success">
+                                        <i class="fas fa-shopping-cart"></i> Add to Cart
+                                    </button>
+                                </form>
+                            </div>
 
-            <i class="fa" style="font-size:24px">&#xf07a;</i>
-            <span class='badge badge-warning' id='lblCartCount'th:text="${cartCount}">0</span>
-
-
-            <li class="nav-item nav-right navbar" >
-                <a class="nav-link text-success " href="#"  th:href="@{/login}" >Login  <span class="icon-bar fa fa-fw fa-user"></span></a>
-            </li>
-
-
-<!--            <li class="nav-item active">-->
-<!--                <span class="nav-link" th:text="${cartCount}">0</span>-->
-<!--            </li>-->
-            </ul>
-        </ul>
-    </div>
-</nav>
-</header>
-
-<div class="container" style="margin-top: 30px">
-    <div class="row">
-        <div class="col-sm-3">
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0 navbar nav-item px-4">
-            </ul>
-            <h4>Categories</h4>
-            <ul class="list-group text-success">
-                <a th:href="@{/menu}"><li class="list-group-item">All Items</li></a>
-                <a href="" th:each="category, iStat : ${categories}"
-                   th:href="@{/menu/category/{id}(id=${category.id})}"><li
-                        class="list-group-item" th:text="${category.name}"></li></a>
-
-            </ul>
-        </div>
-        <div class="col-sm-9">
-            <div class="card" style="margin-top: 20px" th:each="product : ${products}">
-                <div class="row no-gutters">
-                    <div class="col-sm-5 d-flex justify-content-center">
-                        <img class="" height="150px" width="150px" th:src="@{${'/productImages/' + product.imageName}}" th:alt="${product.name}">
-                    </div>
-                    <div class="col-sm-7 d-flex justify-content-center">
-                        <div class="card-body">
-                            <h5 class="card-title" th:text="${product.name}"></h5>
-                            <h4>$ <span th:text="${product.price}"></span> </h4>
-                            <p th:text="${product.description}" >Suresh Dasari is a founder and technical lead developer in tutlane.</p>
-                            <a href="#" th:href="@{/menu/viewmenu/{id}(id=${product.id})}" class="btn btn-primary font bg-success">View Item</a>
+                            <!-- Mask Icon for product view -->
+                            <div class="mask-icon d-flex justify-content-center mt-2">
+                                <ul>
+                                    <li>
+                                        <a th:href="@{/menu/viewmenu/{id}(id=${product.id})}" data-toggle="tooltip"
+                                           data-placement="right" title="View">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</section>
+
+
+
+
+
+
+
 
 
 <footer class=" bg-success  text-light py-4">

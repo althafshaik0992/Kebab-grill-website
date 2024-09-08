@@ -4,9 +4,12 @@ package com.example.SpringRestaurantswebsite.Controller;
 
 
 import com.example.SpringRestaurantswebsite.Dto.CustomerUserDto;
+import com.example.SpringRestaurantswebsite.Dto.ProductDto;
 import com.example.SpringRestaurantswebsite.Global.GlobalData;
+import com.example.SpringRestaurantswebsite.Model.Category;
 import com.example.SpringRestaurantswebsite.Model.CustomerUser;
 import com.example.SpringRestaurantswebsite.Model.ProblemForm;
+import com.example.SpringRestaurantswebsite.Model.Product;
 import com.example.SpringRestaurantswebsite.Repository.CustomerUserRepository;
 import com.example.SpringRestaurantswebsite.Repository.ProblemFormRepository;
 import com.example.SpringRestaurantswebsite.Service.CategoryService;
@@ -20,16 +23,14 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.mail.MessagingException;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.Date;
+import java.util.List;
 import java.util.Properties;
 import java.util.UUID;
 
@@ -73,6 +74,9 @@ public class HomeController {
 
     @GetMapping({"/", "/home"})
     public String Home(Model model) {
+        model.addAttribute("categories", categoryService.getCategoryList());
+        model.addAttribute("cartCount", GlobalData.cart.size());
+        model.addAttribute("products", productService.getProductList());
         model.addAttribute("cartCount", GlobalData.cart.size());
         return "index";
     }
@@ -185,6 +189,46 @@ public class HomeController {
         model.addAttribute("products", productService.getProductById((long) id).get());
 
         return "viewItem";
+    }
+
+    @GetMapping("/high-price")
+    public String filterHighPrice(Model model) {
+//        List<Category> categories = categoryService.getCategoriesAndSize();
+//        model.addAttribute("categories", categories);
+        List<ProductDto> products = productService.filterHighProducts();
+        List<ProductDto> listView = productService.listViewProducts();
+        model.addAttribute("title", "Shop Detail");
+        model.addAttribute("page", "Shop Detail");
+        model.addAttribute("productViews", listView);
+        model.addAttribute("products", products);
+        return "menu";
+    }
+
+
+    @GetMapping("/lower-price")
+    public String filterLowerPrice(Model model) {
+//        List<Category> categories = categoryService.getCategoriesAndSize();
+//        model.addAttribute("categories", categories);
+        List<ProductDto> products = productService.filterLowerProducts();
+        List<ProductDto> listView = productService.listViewProducts();
+        model.addAttribute("productViews", listView);
+        model.addAttribute("title", "Shop Detail");
+        model.addAttribute("page", "Shop Detail");
+        model.addAttribute("products", products);
+        return "menu";
+    }
+
+    @GetMapping("/search-product")
+    public String searchProduct(@RequestParam("keyword") String keyword, Model model) {
+       // List<Category> categoryDtos = categoryService.getCategoriesAndSize();
+        List<ProductDto> productDtos = productService.searchProducts(keyword);
+        List<ProductDto> listView = productService.listViewProducts();
+        model.addAttribute("productViews", listView);
+       // model.addAttribute("categories", categoryDtos);
+        model.addAttribute("title", "Search Products");
+        model.addAttribute("page", "Result Search");
+        model.addAttribute("products", productDtos);
+        return "menu";
     }
 
 

@@ -18,13 +18,41 @@ private int quantity;
 
 
 
+
+
     private String  description   ;
 
     private String imageName;
+    private boolean activated;
+    private boolean deleted;
 
 
     public Long getId() {
         return id;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public boolean isActivated() {
+        return activated;
+    }
+
+    public void setActivated(boolean activated) {
+        this.activated = activated;
     }
 
     public void setId(Long id) {
