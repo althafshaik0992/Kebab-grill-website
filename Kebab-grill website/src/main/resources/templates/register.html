@@ -1,41 +1,333 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="en">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
-<!--    <title>Registration Page</title>-->
-<!--    <link rel="stylesheet" th:href="@{../static/css/Web.css}">-->
-<!--</head>-->
-<!--<body>-->
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700|Poppins:400,500&display=swap');
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+        }
+        .bg-img{
+            height: 100vh;
 
-<!--<div class="container">-->
-<!--    <h2>Registration</h2>-->
+            background-size:inherit;
+            background: url('large.png');
+        }
+        .bg-img:after{
+            position: absolute;
+            content: '';
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background: rgba(0,0,0,0.7);
+        }
+        .content{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            z-index: 999;
+            text-align: center;
+            padding: 60px 32px;
+            width: 370px;
+            transform: translate(-50%,-50%);
+            background: rgba(255,255,255,0.04);
+            box-shadow: -1px 4px 28px 0px rgba(0,0,0,0.75);
+        }
+        .content header{
+            color: white;
+            font-size: 33px;
+            font-weight: 600;
+            margin: 0 0 35px 0;
+            font-family: 'Montserrat',sans-serif;
+        }
+        .field{
+            position: relative;
+            height: 45px;
+            width: 100%;
+            display: flex;
+            background: rgba(255,255,255,0.94);
+        }
+        .field span{
+            color: #222;
+            width: 40px;
+            line-height: 45px;
+        }
+        .field input{
+            height: 100%;
+            width: 100%;
+            background: transparent;
+            border: none;
+            outline: none;
+            color: #222;
+            font-size: 16px;
+            font-family: 'Poppins',sans-serif;
+        }
+        .space{
+            margin-top: 16px;
+        }
+        .show{
+            position: absolute;
+            right: 13px;
+            font-size: 13px;
+            font-weight: 700;
+            color: #222;
+            display: none;
+            cursor: pointer;
+            font-family: 'Montserrat',sans-serif;
+        }
+        .pass-key:valid ~ .show{
+            display: block;
+        }
+        .pass{
+            text-align: left;
+            margin: 10px 0;
+        }
+        .pass a{
+            color: white;
+            text-decoration: none;
+            font-family: 'Poppins',sans-serif;
+        }
+        .pass:hover a{
+            text-decoration: underline;
+        }
+        .field input[type="submit"]{
+            background: #3498db;
+            border: 1px solid #2691d9;
+            color: white;
+            font-size: 18px;
+            letter-spacing: 1px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: 'Montserrat',sans-serif;
+        }
+        .field input[type="submit"]:hover{
+            background: #2691d9;
+        }
+        .login{
+            color: white;
+            margin: 20px 0;
+            font-family: 'Poppins',sans-serif;
+        }
+        .links{
+            display: flex;
+            cursor: pointer;
+            color: white;
+            margin: 0 0 20px 0;
+        }
+        .facebook,.google{
+            width: 100%;
+            height: 45px;
+            line-height: 45px;
+            margin-left: 10px;
+        }
+        .facebook{
+            margin-left: 0;
+            background: #4267B2;
+            border: 1px solid #3e61a8;
+        }
+        .google{
+            margin-left: 0;
+            background: #DB4437;
+            border: 1px solid #c6332c;
 
-<!--    <div th:if="${message != null}" class="message">-->
-<!--        [[${message}]]-->
+        }
+        .google:hover{
+            background: red;
+        }
+
+
+        .facebook:hover{
+            background: #3e61a8;
+        }
+
+
+        .links i{
+            font-size: 17px;
+        }
+        i span{
+            margin-left: 8px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            font-size: 16px;
+            font-family: 'Poppins',sans-serif;
+        }
+        .signup{
+            font-size: 15px;
+            color: black;
+            font-family: 'Poppins',sans-serif;
+        }
+        .signup a{
+            color: #3498db;
+            text-decoration: none;
+        }
+        .signup a:hover{
+            text-decoration: underline;
+        }
+        .invalid-feedback{
+            color: red;
+            font-size: 12px;
+            font-weight: 600;
+            text-align: left;
+        }
+    </style>
+    <title> Responsive Login and Signup Form </title>
+</head>
+
+<body>
+<div class ="bg-img">
+    <div class="content">
+        <br>
+        <br>
+        <img th:src="@{/Images/large.png}"   src="../static/Images/large.png" class="mb-2" width="100">
+        <header>Sign Up</header>
+        <form th:action="@{/registration}"
+              method="post"
+              role="form"
+              th:object="${user}">
+            <div class="alert alert-info text-center" th:if="${message}" th:text="${message}"> </div>
+            <div class="field space">
+                <span class="fa fa-user"></span>
+                <input th:field="*{name}" type="text" name="Name"  required placeholder=" Enter Name">
+            </div>
+
+            <div class="field space">
+
+                <span class="fa fa-user"></span>
+                <input  th:field="*{email_id}" th:errorclass="is-invalid" type="email" required placeholder="Enter Email">
+                <div th:if="${#fields.hasErrors('email_id')}" th:errors="*{email_id}" class="invalid-feedback"></div>
+            </div>
+
+            <div class="field space">
+
+                <span class="fas fa-phone"></span>
+                <input  id="phone"th:field="*{phoneNumber}" th:errorclass="is-invalid" type="tel"  pattern="([0-9]" required placeholder="Enter PhoneNumber">
+                <div th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}" class="invalid-feedback"></div>
+            </div>
+
+            <div class="field space">
+
+                <span class="fas fa-home"></span>
+                <input  id="address"th:field="*{address}" th:errorclass="is-invalid" type="tel"  pattern="([0-9]" required placeholder="Enter Address">
+                <div th:if="${#fields.hasErrors('address')}" th:errors="*{address}" class="invalid-feedback"></div>
+            </div>
+
+            <div class="field space ">
+                <span class="fa fa-lock"></span>
+                <input th:field="*{password}" type="password" class="pass-key" required placeholder="Password">
+                <span class="show">SHOW</span>
+            </div>
+
+
+
+
+            <div class="field space">
+                <input type="submit" value="Sign Up">
+            </div>
+
+            <div class="login">
+                Already have an account?
+                <a href="login.html" th:href="@{/login}">Login Now</a>
+            </div>
+        </form>
+    </div>
+    <!--   -->
+    <!--    <div class="login">-->
+    <!--        >Already have an account?-->
+    <!--        <a href="register.html"  th:href="@{/registration}">Login Now</a>-->
+    <!--    </div>-->
+</div>
+
+
+
+
+
+<!--        </div>-->
+<!--        <div class="login">-->
+<!--            >Already have an account?-->
+<!--            <a href="register.html"  th:href="@{/registration}">Login Now</a>-->
+<!--        </div>-->
 <!--    </div>-->
 
-<!--    <form-->
 
-<!--            th:action="@{/registration}"-->
-<!--            method="post"-->
-<!--            role="form"-->
-<!--            th:object="${product}"-->
-<!--    >-->
-<!--        <div class="input-group">-->
-<!--            <label for="name">Name:</label>-->
-<!--            <input th:field="*{name}" type="text" id="name" name="name" placeholder="Enter your Name" required>-->
-<!--        </div>-->
-<!--        <div class="input-group">-->
-<!--            <label for="email">Email:</label>-->
-<!--            <input th:field="*{email}" type="text" id="email" name="name" placeholder="Enter your Email" required>-->
-<!--        </div>-->
-<!--        <div class="input-group">-->
-<!--            <label for="Message">Message:</label>-->
-<!--            <input th:field="*{message}" type="text" id="message" name="message" placeholder="Enter your message" required>-->
-<!--        </div>-->
-<!--        <button type="submit" class="btn">Register</button>-->
-<!--    </form>-->
-<!--</div>-->
-<!--</body>-->
-<!--</html>-->
+<script>
+    const pass_field = document.querySelector('.pass-key');
+    const showBtn = document.querySelector('.show');
+    showBtn.addEventListener('click', function () {
+        if (pass_field.type === "password") {
+            pass_field.type = "text";
+            showBtn.textContent = "HIDE";
+            showBtn.style.color = "#3498db";
+        } else {
+            pass_field.type = "password";
+            showBtn.textContent = "SHOW";
+            showBtn.style.color = "#222";
+        }
+    });
+
+
+
+    document.addEventListener('DOMContentLoaded', function() {
+        // Wait for the DOM to be fully loaded before executing this function
+
+        // Find the input field with id="phone"
+        const phoneInputField = document.querySelector("#phone");
+
+        // Initialize intlTelInput on phoneInputField
+        const phoneInput = window.intlTelInput(phoneInputField, {
+            utilsScript:
+                "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+        });
+    });
+
+
+
+
+    //     const phoneInputField = document.querySelector("#phone");
+    //     const phoneInput = window.intlTelInput(phoneInputField, {
+    //     utilsScript:
+    //     "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+    // });
+
+
+    // document.addEventListener('DOMContentLoaded', function() {
+    //     const phoneInputField = document.querySelector("#phone");
+    //     const phoneInput = window.intlTelInput(phoneInputField, {
+    //         utilsScript:
+    //             "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+    //     });
+
+// Optional: Handle form submission to get the selected country and formatted phone number
+//         const form = document.querySelector('#phone');
+//         form.addEventListener('submit', function(event) {
+//             event.preventDefault(); // Prevent form submission
+//
+//             const selectedCountry = phoneInput.getSelectedCountryData();
+//             const formattedPhoneNumber = phoneInput.getNumber();
+//
+//             console.log("Selected Country:", selectedCountry);
+//             console.log("Formatted Phone Number:", formattedPhoneNumber);
+//
+// // You can further process or validate the phone number here
+// // For example, send it to a server via AJAX or validate locally
+//         });
+</script>
+</body>
+</html>

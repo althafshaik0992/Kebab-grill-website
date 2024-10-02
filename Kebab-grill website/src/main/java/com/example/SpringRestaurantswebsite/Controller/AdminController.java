@@ -11,17 +11,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.security.Principal;
 import java.util.Optional;
 
 @Controller
 public class AdminController {
 
-    public static  String uploadDrive = System.getProperty("user.dir") + "/src/main/resources/static/productImages";
+    public static  String uploadDrive = System.getProperty("user.dir") + "/Kebab-grill website/src/main/resources/static/productImages";
     @Autowired
     CategoryService categoryService;
 
@@ -53,6 +55,13 @@ public class AdminController {
     public String postcategoriesAdd(@ModelAttribute("category") Category category){
         categoryService.addCategory(category);
         return "redirect:/admin/categories";
+    }
+
+    @GetMapping("/admin/product/enable/{id}")
+    public String enabledProduct(@PathVariable  Long id, RedirectAttributes redirectAttributes) {
+            productService.enableById(id);
+            redirectAttributes.addFlashAttribute("success", "Enabled successfully!");
+        return "redirect:/products";
     }
 
 
@@ -147,6 +156,9 @@ public class AdminController {
         return "productAdd";
 
     }
+
+
+
 
 
 

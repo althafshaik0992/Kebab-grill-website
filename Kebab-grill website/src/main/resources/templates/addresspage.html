@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+    <meta property="og:title" content="">
+    <meta property="og:type" content="">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+
+
+
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="icon.png">
+    <link rel="stylesheet" href="../static/css/Web.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="manifest" href="site.webmanifest">
+    <meta name="theme-color" content="#fafafa">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" rel="stylesheet">
+    <script crossorigin="anonymous" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script crossorigin="anonymous" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+            src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script crossorigin="anonymous" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+            src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <meta content="" property="og:title">
+    <meta content="" property="og:type">
+    <meta content="" property="og:url">
+    <meta content="" property="og:image">
+
+    <link href="/favicon.ico" rel="icon" sizes="any">
+    <link href="/icon.svg" rel="icon" type="image/svg+xml">
+    <link href="icon.png" rel="apple-touch-icon">
+
+    <link href="site.webmanifest" rel="manifest">
+    <meta content="#fafafa" name="theme-color">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <title>Spring-Restaurants-website</title>
+    <link rel="icon" type="image/x-icon" href="../static/Images/large.png">
+    <style>
+
+
+        body {
+            font-family: "Lato", sans-serif;
+        }
+
+        .sidenav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        .sidenav a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
+
+
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+
+        .sidenav a:hover {
+            color: #f1f1f1;
+        }
+
+        .sidenav .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+
+        input[type=text], select, textarea {
+            width: 100%; /* Full width */
+            padding: 12px; /* Some padding */
+            border: 1px solid #ccc; /* Gray border */
+            border-radius: 4px; /* Rounded borders */
+            box-sizing: border-box; /* Make sure that padding and width stays in place */
+            margin-top: 6px; /* Add a top margin */
+            margin-bottom: 16px; /* Bottom margin */
+            resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+        }
+
+        /* Style the submit button with a specific background color etc */
+        input[type=submit] {
+            background-color: #04AA6D;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        /* When moving the mouse over the submit button, add a darker green color */
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+
+        /* Add a background color and some padding around the form */
+        .container {
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+
+
+        .box {
+            background-color: black;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .box a {
+            padding: 15px;
+            background-color: #fff;
+            border-radius: 3px;
+            text-decoration: none;
+        }
+
+        .modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(
+                    254,
+                    126,
+                    126,
+                    0.7
+            );
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .content {
+            position: relative;
+            background: white;
+            padding: 1em 2em;
+            border-radius: 4px;
+        }
+
+        .modal:target {
+            display: flex;
+        }
+        body {
+            text-align: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+
+
+        @media screen and (max-height: 450px) {
+            .sidenav {padding-top: 15px;}
+            .sidenav a {font-size: 18px;}
+        }
+
+
+    </style>
+
+</head>
+<body>
+<header class="bg-light text-success">
+
+
+    <nav class="navbar navbar-expand-lg  navbar-light bg-light">
+        <a class="  navbar-brand text-success" href="loginafterPage.html">
+            <img  th:src="@{/Images/large.png}"    src="../static/Images/large.png" width="auto" height="40" class="d-inline-block align-top ">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <h2 style="text-align: center">Kebab Grill</h2>
+        <div class="collapse navbar-collapse " id="navbarTogglerDemo02" style="display: flex">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0 navbar nav-item px-4 ">
+
+
+
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search any items ">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search  </button>
+                </form>
+            </ul>
+
+
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0 navbar nav justify-content-end "  >
+                <li class="nav-item r ">
+                    <a class="nav-link text-success" href=""  th:href="@{/menu}">   Menu</a>
+                </li>
+
+
+                <li class="nav-item r" >
+                    <a class="nav-link text-success" href="#About us">About Us</a>
+                </li>
+
+
+                <li class="nav-item r" >
+                    <a class="nav-link text-success" href="#contact">Contact Us</a>
+                </li>
+
+                <i class="fa" style="font-size:24px">&#xf07a;</i>
+                <span class='badge badge-warning' id='lblCartCount'th:text="${cartCount}"> 0 </span>
+
+
+                <li  class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-success" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" th:text="*{user}">
+
+                        Guest
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item text-success" href="#" th:href="@{/profile}">My Profile</a>
+                        <a class="dropdown-item text-success" href="#">MY Orders</a>
+                        <div class="dropdown-divider "></div>
+                        <a class="dropdown-item text-success" href="#" th:href="@{/logout}">LogOut</a>
+                    </div>
+                </li>
+
+
+
+            </ul>
+            <!--            <div class="dropdown-menu dropdown-menu-right px-3 py-2" aria-labelledby="navbarDropdownMenuLink-55">-->
+            <!--                <ul class="nav navbar-nav nav-profile">-->
+            <!--                    <li><a class="page-scroll" href="">Account Profile</a></li>-->
+            <!--                    <li><a class="page-scroll" href="">My Orders</a></li>-->
+            <!--                    <li><a class="page-scroll" href="">My Favorite List</a></li>-->
+            <!--                    <li><a class="page-scroll" href="">Sign Out</a> </li>-->
+            <!--                </ul>-->
+            <!--            </div>-->
+        </div>
+    </nav>
+</header>
+
+<!--<br>-->
+<!--<br>-->
+
+<!--                    <h2>     <b>Add  A New Address</b></h2>-->
+
+<!--&lt;!&ndash; The form &ndash;&gt;-->
+<!--<div class="container">-->
+<!--    <form  th:action="@{/addressform}"-->
+<!--           action="https://formsubmit.co/shaikguf15080@gmail.com"-->
+<!--           method="post"-->
+<!--           role="form"-->
+<!--           th:object="${addressform}" class="form">-->
+
+<!--        <label for="address">Address Line :</label>-->
+<!--        <input  th:field="*{street}" type="text" id="address" name="address" placeholder="Your Address.."required>-->
+
+<!--        <label for="city"> city :</label>-->
+<!--        <input th:field="*{city}" type="text" id="city" name="city" placeholder="Your City.." required>-->
+
+<!--        <label for="phoneNumber">State :</label>-->
+<!--        <input th:field="*{state}" type="text" id="phoneNumber" name="" placeholder="Your State.."  required>-->
+<!--        <br>-->
+<!--        <br>-->
+
+<!--        <label for="Zip">Zip :</label>-->
+<!--        <input th:field="*{zip}" type="number" id="Zip" name="" placeholder="Your Zip.."  required>-->
+
+<!--        <button  class="text-success" type="submit" > Submit </button>-->
+
+<!--    </form>-->
+
+
+<!--</div>-->
+
+
+
+
+<!--<footer class=" bg-success  text-light py-4">-->
+<!--    <div class="row ">-->
+<!--        <div class="col-md-3" >-->
+<!--            <a class="  navbar-brand text-success" href="/">-->
+<!--                <img th:src="@{/Images/large.png}"   src="../static/Images/large.png" class="mb-2" width="100">-->
+<!--                <h5>Kebab Grill</h5>-->
+<!--            </a>-->
+<!--            <p>Eat Like Home  <br> Feel Like Home </p>-->
+<!--        </div>-->
+<!--        <div class="col-md-3 text-light ">-->
+<!--            <h3>Navigation</h3>-->
+<!--            <ul class="list-unstyled">-->
+<!--                <li><a href="/" class="text-decoration-none text-light">Home</a></li>-->
+<!--                <li><a href="products.html" class="text-decoration-none text-light">Menu</a></li>-->
+<!--                <li><a href="#contact" class="text-decoration-none text-light">Contact</a></li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--        <div class="col-md-3 text-light">-->
+<!--            <h3>Follow Us</h3>-->
+<!--            <ul class="list-unstyled">-->
+<!--                <li><a href="#" class=" text-decoration-none  fab fa-facebook-f fa-1x" style="color: #3b5998 ">  Facebook</a></li>-->
+<!--                <li><a href="#" class="text-decoration-none  fab fa-twitter fa-1x" style="color: #55acee "> Twitter</a></li>-->
+<!--                <li><a href="#" class="text-decoration-none  fab fa-instagram fa-1x" style="color: #ac2bac"> Instagram</a></li>-->
+<!--                <li><a href="#" class="text-decoration-none  fab fa-youtube fa-1x" style="color: #ed302f">  YouTube</a></li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--        <div class="col-md-3 text-light ">-->
+
+<!--            <ul class="list-unstyled ">-->
+<!--                <br>-->
+<!--                <br>-->
+<!--                <li><a href="reportForm.html" class="  text-decoration-none text-danger">-->
+<!--                    &lt;!&ndash;                    <span style = 'font-size:100px;'>&#128681;</span>&ndash;&gt;-->
+<!--                    &#128681 Report a problem</a></li>-->
+
+<!--            </ul>-->
+<!--        </div>-->
+<!--    </div>-->
+
+
+
+<!--    &lt;!&ndash;   <button class="open-button" onclick="openForm()">Open Form</button>&ndash;&gt;-->
+
+
+<!--    <hr class="my-4">-->
+<!--    <div class="text-center">&copy; Copyright 2024 - Kebab Grill</div>-->
+<!--    </div>-->
+<!--</footer>-->
+<!--<script>-->
+<!--    $(document).ready(function() {-->
+<!--        $('.form').on('submit', function () {-->
+<!--            swal("Dear Customer  your Address has changed  Successfully "+-->
+<!--                "/n" + "Thank You ",-->
+<!--                {-->
+<!--                    button: "Ok",-->
+<!--                });-->
+
+<!--        });-->
+<!--    });-->
+
+<!--</script>-->
+
+
+<!--</body>-->
+<!--</html>-->

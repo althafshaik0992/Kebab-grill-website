@@ -36,24 +36,15 @@
                 </form>
             </ul>
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0 navbar">
-                <li class="nav-item r ">
-                    <a class="nav-link text-success" href="">Order</a>
-                </li>
 
-                <li class="nav-item r" >
-                    <a class="nav-link text-success" href="#About us">About Us</a>
-                </li>
+
+
+                <i class="fa" style="font-size:24px">&#xf07a;</i>
+                <span class='badge badge-warning' id='lblCartCount'th:text="${cartCount}">0</span>
+
+
                 <li class="nav-item nav-right navbar" >
-                    <a class="nav-link text-success" href="#">Login</a>
-                </li>
-                <li class="nav-item r" >
-                    <a class="nav-link text-success" href="#contact">Contact Us</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link text-success"   th:href="@{/cart}" href="#">cart</a>
-                </li>
-                <li class="nav-item active">
-                    <span class="nav-link" th:text="${cartCount}">0</span>
+                    <a class="nav-link text-success " href="#"  th:href="@{/login}" >Login  <span class="icon-bar fa fa-fw fa-user"></span></a>
                 </li>
             </ul>
             </ul>
@@ -99,6 +90,7 @@
 <!--        </div>-->
 <!--    </div>-->
 <!--</nav>-->
+
 <div class="container mt-5">
     <div class="row">
         <div class="col-sm-5 d-flex justify-content-center">
@@ -110,46 +102,125 @@
             <p th:text="${products.category.name}"></p>
             <h2>$ <span th:text="${products.price}"></span></h2>
             <p th:text="${products.description}"></p>
-            <a href="" th:href="@{/addToCart/{id}(id = ${products.id})}" class="btn btn-primary">Add to cart</a>
+
+<!--            <div class="input-group-append">-->
+<!--                <button class="btn btn-outline-secondary" type="button" onclick="decreaseQuantity()">-</button>-->
+
+<!--                <input class="form-control   mr-sm-2" type="number" name="quantity" value="1" min="1" id="quantityInput"  style="max-width: 50px;">-->
+<!--                &lt;!&ndash;            <br>&ndash;&gt;-->
+<!--                <button class="btn btn-outline-secondary" type="button" onclick="increaseQuantity()">+</button>-->
+<!--            </div>-->
+<!--            <br>-->
+
+            <div>
+                <input type="hidden" name="productId" th:value="${products.id}">
+            <a href="" th:href="@{/add/cart/{id}(id = ${products.id})}" class="btn btn-primary bg-success">Add to cart</a>
+            </div>
         </div>
+
     </div>
 </div>
 <br>
 <br>
 
 <footer class=" bg-success  text-light py-4">
-    <div class=" container ">
-        <div class="row ">
-            <div class="col-md-3 " >
-                <a class="  navbar-brand text-success" href="/">
-                    <img   th:src="@{/Images/large.png}"    src="../static/Images/large.png" alt="" class="mb-2" width="100">
-                    <h5 >Kebab Grill</h5>
-                </a>
-                <p>Eat Like Home  <br> Feel Like Home </p>
-            </div>
-            <div class="col-md-3 text-light ">
-                <h3>Navigation</h3>
-                <ul class="list-unstyled">
-                    <li><a href="/" class="text-decoration-none text-light">Home</a></li>
-                    <li><a href="products.html" class="text-decoration-none text-light">Menu</a></li>
-                    <li><a href="#contact" class="text-decoration-none text-light">Contact</a></li>
-                </ul>
-            </div>
-            <div class="col-md-3 text-light">
-                <h3>Follow Us</h3>
-                <ul class="list-unstyled">
-                    <li><a href="#" class=" text-decoration-none  fab fa-facebook-f fa-1x" style="color: #3b5998 ">  Facebook</a></li>
-                    <li><a href="#" class="text-decoration-none  fab fa-twitter fa-1x" style="color: #55acee "> Twitter</a></li>
-                    <li><a href="#" class="text-decoration-none  fab fa-instagram fa-1x" style="color: #ac2bac"> Instagram</a></li>
-                    <li><a href="#" class="text-decoration-none  fab fa-youtube fa-1x" style="color: #ed302f">  YouTube</a></li>
-                </ul>
-            </div>
+    <div class="row ">
+        <div class="col-md-3" >
+            <a class="  navbar-brand text-success" href="/">
+                <img th:src="@{/Images/large.png}"   src="../static/Images/large.png" class="mb-2" width="100">
+                <h5>Kebab Grill</h5>
+            </a>
+            <p>Eat Like Home  <br> Feel Like Home </p>
         </div>
-        <hr class="my-4">
-        <div class="text-center">&copy; Copyright 2024 - Kebab Grill</div>
+        <div class="col-md-3 text-light ">
+            <h3>Navigation</h3>
+            <ul class="list-unstyled">
+                <li><a href="/" class="text-decoration-none text-light">Home</a></li>
+                <li><a class="text-decoration-none text-light" href="menu" > Menu</a></li>
+                <li><a href="#contact" class="text-decoration-none text-light">Contact</a></li>
+            </ul>
+        </div>
+        <div class="col-md-3 text-light">
+            <h3>Follow Us</h3>
+            <ul class="list-unstyled">
+                <li><a href="#" class=" text-decoration-none  fab fa-facebook-f fa-1x" style="color: #3b5998 ">  Facebook</a></li>
+                <li><a href="#" class="text-decoration-none  fab fa-twitter fa-1x" style="color: #55acee "> Twitter</a></li>
+                <li><a href="#" class="text-decoration-none  fab fa-instagram fa-1x" style="color: #ac2bac"> Instagram</a></li>
+                <li><a href="#" class="text-decoration-none  fab fa-youtube fa-1x" style="color: #ed302f">  YouTube</a></li>
+            </ul>
+        </div>
+
+        <div class="col-md-3 ">
+            <h4 class="heading">We Accept</h4>
+
+            <div class="credit-list">
+                    <span>
+                        <img src="https://cdn.restrozap.com/images/common/svg/visa.svg" onerror="this.src='/images/common/svg/visa.svg'" alt="VISA payment" width="44" />
+                    </span>
+                <span>
+                        <img src="https://cdn.restrozap.com/images/common/svg/mastercard.svg" onerror="this.src='/images/common/svg/mastercard.svg'" alt="VISA payment" width="44" />
+                    </span>
+                <span>
+                        <img src="https://cdn.restrozap.com/images/common/svg/american_express.svg" onerror="this.src='/images/common/svg/american_express.svg'" alt="VISA payment" width="44" />
+                    </span>
+                <span>
+                        <img src="https://cdn.restrozap.com/images/common/svg/discover.svg" onerror="this.src='/images/common/svg/discover.svg'" alt="VISA payment" width="44" />
+                    </span>
+            </div>
+            <ul class="list-unstyled ">
+                <li>
+                    <a  class="  text-decoration-none text-danger" href="reportForm">
+                        <!--                    <span style = 'font-size:100px;'>&#128681;</span>-->
+                        &#128681 Report a problem</a></li>
+
+            </ul>
+        </div>
     </div>
 
+
+
+    <!--   <button class="open-button" onclick="openForm()">Open Form</button>-->
+
+
+    <hr class="my-4">
+    <div class="text-center">&copy; Copyright 2024 - Kebab Grill</div>
+
+
+
+
+
 </footer>
+
+<!--<script th:inline="javascript">-->
+<!--    function decreaseQuantity() {-->
+<!--        const quantity = parseInt(document.getElementById('quantityInput').value, 10);-->
+<!--        if (quantity > 1) {-->
+<!--            document.getElementById('quantityInput').value = quantity - 1;-->
+<!--        }-->
+<!--    }-->
+
+<!--    function increaseQuantity() {-->
+<!--        const quantity = parseInt(document.getElementById('quantityInput').value, 10);-->
+<!--        document.getElementById('quantityInput').value = quantity + 1;-->
+<!--    }-->
+
+<!--    $(document).ready(function() {-->
+<!--        $('form[action*="/add/cart/{id}"]').submit(function(e) {-->
+<!--            e.preventDefault();-->
+<!--            const form = $(this);-->
+<!--            const url = form.attr('action');-->
+<!--            const formData = form.serialize();-->
+
+<!--            $.post(url, formData, function(response) {-->
+<!--                // Update cart count-->
+<!--                $('#lblCartCount').text(); // Assuming the response object has cartCount-->
+<!--            });-->
+<!--        });-->
+<!--    });-->
+<!--</script>-->
+
+
+
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
         crossorigin="anonymous"></script>

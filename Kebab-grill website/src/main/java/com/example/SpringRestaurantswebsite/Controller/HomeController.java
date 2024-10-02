@@ -3,30 +3,34 @@ package com.example.SpringRestaurantswebsite.Controller;
 
 
 
+import com.example.SpringRestaurantswebsite.Dto.CustomerUserDto;
+import com.example.SpringRestaurantswebsite.Dto.ProductDto;
+import com.example.SpringRestaurantswebsite.Global.GlobalData;
+import com.example.SpringRestaurantswebsite.Model.Category;
+import com.example.SpringRestaurantswebsite.Model.CustomerUser;
 import com.example.SpringRestaurantswebsite.Model.ProblemForm;
+import com.example.SpringRestaurantswebsite.Model.Product;
+import com.example.SpringRestaurantswebsite.Repository.CustomerUserRepository;
 import com.example.SpringRestaurantswebsite.Repository.ProblemFormRepository;
 import com.example.SpringRestaurantswebsite.Service.CategoryService;
 import com.example.SpringRestaurantswebsite.Service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
-import javax.activation.DataHandler;
-import javax.activation.DataSource;
-import javax.activation.FileDataSource;
 import javax.mail.MessagingException;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeMultipart;
 import java.util.Date;
+import java.util.List;
 import java.util.Properties;
 import java.util.UUID;
 
@@ -59,34 +63,172 @@ public class HomeController {
     @Autowired
     ProblemFormRepository problemFormRepository;
 
+    @Autowired
+    CustomerUserRepository customerUserRepository;
 
 
+    @ModelAttribute("customer")
+    public CustomerUserDto customerUserDto() {
+        return new CustomerUserDto();
+    }
 
     @GetMapping({"/", "/home"})
     public String Home(Model model) {
+        model.addAttribute("categories", categoryService.getCategoryList());
+        model.addAttribute("cartCount", GlobalData.cart.size());
+        model.addAttribute("products", productService.getProductList());
+        model.addAttribute("cartCount", GlobalData.cart.size());
         return "index";
     }
 
 
     @GetMapping("/menu")
     public String menu(Model model) {
+
         model.addAttribute("categories", categoryService.getCategoryList());
         model.addAttribute("products", productService.getProductList());
+        model.addAttribute("cartCount", GlobalData.cart.size());
+
         return "menu";
     }
 
+
+    @GetMapping("/menuguest")
+    public String menuguest(Model model) {
+
+        CustomerUser user = new CustomerUser();
+        user.setName("Guest");
+
+        model.addAttribute("userDetails", user.getName());
+        model.addAttribute("categories", categoryService.getCategoryList());
+        model.addAttribute("cartCount", GlobalData.cart.size());
+        model.addAttribute("products", productService.getProductList());
+        return "menuguestlogin";
+    }
+
+//
+
     @GetMapping("/menu/category/{id}")
     public String ViewCategoryMenu(Model model , @PathVariable int id) {
+
         model.addAttribute("categories", categoryService.getCategoryList());
+        model.addAttribute("cartCount", GlobalData.cart.size());
         model.addAttribute("products", productService.getAllProductsByID(id));
         return "menu";
+    }
+
+    @GetMapping("/menuafter/category/{id}")
+    public String ViewCategoryMenuafter(Model model , @PathVariable int id) {
+        SecurityContext securityContext = SecurityContextHolder.getContext();
+        if (securityContext.getAuthentication().getPrincipal() instanceof DefaultOAuth2User) {
+            DefaultOAuth2User user = (DefaultOAuth2User) securityContext.getAuthentication().getPrincipal();
+            model.addAttribute("userDetails", user.getAttribute("name") != null ? user.getAttribute("name") : user.getAttribute("login"));
+            model.addAttribute("categories", categoryService.getCategoryList());
+            model.addAttribute("cartCount", GlobalData.cart.size());
+            model.addAttribute("products", productService.getAllProductsByID(id));
+
+        } else {
+            User user = (User) securityContext.getAuthentication().getPrincipal();
+            CustomerUser users = customerUserRepository.findByEmail(user.getUsername());
+            model.addAttribute("userDetails", users.getName());
+            model.addAttribute("cartCount", GlobalData.cart.size());
+            model.addAttribute("categories", categoryService.getCategoryList());
+            model.addAttribute("products", productService.getAllProductsByID(id));
+        }
+        return "menuafterlogin";
+    }
+
+
+    @GetMapping("/menuguest/category/{id}")
+    public String ViewCategoryMenuguest(Model model , @PathVariable int id) {
+        CustomerUser user = new CustomerUser();
+        user.setName("Guest");
+
+        model.addAttribute("userDetails", user.getName());
+        model.addAttribute("cartCount", GlobalData.cart.size());
+        model.addAttribute("categories", categoryService.getCategoryList());
+        model.addAttribute("products", productService.getAllProductsByID(id));
+        return "menuguestlogin";
     }
 
 
     @GetMapping("/menu/viewmenu/{id}")
     public String ViewMenuItem(Model model ,@PathVariable int id) {
         model.addAttribute("products", productService.getProductById((long) id).get());
+        model.addAttribute("cartCount", GlobalData.cart.size());
+
         return "viewItem";
+    }
+
+    @GetMapping("/menuafter/viewmenu/{id}")
+    public String ViewMenuItemafterlogin(Model model ,@PathVariable int id) {
+        SecurityContext securityContext = SecurityContextHolder.getContext();
+        if (securityContext.getAuthentication().getPrincipal() instanceof DefaultOAuth2User) {
+            DefaultOAuth2User user = (DefaultOAuth2User) securityContext.getAuthentication().getPrincipal();
+            model.addAttribute("userDetails", user.getAttribute("name") != null ? user.getAttribute("name") : user.getAttribute("login"));
+            model.addAttribute("cartCount", GlobalData.cart.size());
+            model.addAttribute("products", productService.getProductById((long) id).get());
+
+        } else {
+            User user = (User) securityContext.getAuthentication().getPrincipal();
+            CustomerUser users = customerUserRepository.findByEmail(user.getUsername());
+            model.addAttribute("userDetails", users.getName());
+            model.addAttribute("cartCount", GlobalData.cart.size());
+            model.addAttribute("products", productService.getProductById((long) id).get());
+        }
+        return "viewitemafterlogin";
+    }
+
+    @GetMapping("/menuguest/viewmenu/{id}")
+    public String ViewMenuItemguest(Model model ,@PathVariable int id) {
+        CustomerUser user = new CustomerUser();
+        user.setName("Guest");
+
+        model.addAttribute("userDetails", user.getName());
+        model.addAttribute("cartCount", GlobalData.cart.size());
+        model.addAttribute("products", productService.getProductById((long) id).get());
+
+        return "viewItem";
+    }
+
+    @GetMapping("/high-price")
+    public String filterHighPrice(Model model) {
+//        List<Category> categories = categoryService.getCategoriesAndSize();
+//        model.addAttribute("categories", categories);
+        List<ProductDto> products = productService.filterHighProducts();
+        List<ProductDto> listView = productService.listViewProducts();
+        model.addAttribute("title", "Shop Detail");
+        model.addAttribute("page", "Shop Detail");
+        model.addAttribute("productViews", listView);
+        model.addAttribute("products", products);
+        return "menu";
+    }
+
+
+    @GetMapping("/lower-price")
+    public String filterLowerPrice(Model model) {
+//        List<Category> categories = categoryService.getCategoriesAndSize();
+//        model.addAttribute("categories", categories);
+        List<ProductDto> products = productService.filterLowerProducts();
+        List<ProductDto> listView = productService.listViewProducts();
+        model.addAttribute("productViews", listView);
+        model.addAttribute("title", "Shop Detail");
+        model.addAttribute("page", "Shop Detail");
+        model.addAttribute("products", products);
+        return "menu";
+    }
+
+    @GetMapping("/search-product")
+    public String searchProduct(@RequestParam("keyword") String keyword, Model model) {
+       // List<Category> categoryDtos = categoryService.getCategoriesAndSize();
+        List<ProductDto> productDtos = productService.searchProducts(keyword);
+        List<ProductDto> listView = productService.listViewProducts();
+        model.addAttribute("productViews", listView);
+       // model.addAttribute("categories", categoryDtos);
+        model.addAttribute("title", "Search Products");
+        model.addAttribute("page", "Result Search");
+        model.addAttribute("products", productDtos);
+        return "menu";
     }
 
 
@@ -100,7 +242,7 @@ public class HomeController {
     public String getRegPage(Model model) {
         model.addAttribute("problemForm", new ProblemForm());
 
-        return "test";
+        return "reportForm";
     }
 
     @PostMapping("/reportForm")
@@ -155,7 +297,7 @@ public class HomeController {
             System.out.println("email sent");
 
             model.addAttribute("message", "Submitted Successfully");
-            return "test";
+            return "reportForm";
 
         } catch (MessagingException e) {
 
@@ -163,6 +305,13 @@ public class HomeController {
             throw new RuntimeException(e.getCause());
 
         }
+    }
+
+
+
+    @GetMapping("/logout")
+    public String logout(){
+        return "index";
     }
 
 
@@ -176,6 +325,16 @@ public class HomeController {
 
         return properties;
     }
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+    <meta property="og:title" content="">
+    <meta property="og:type" content="">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+
+
+
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="icon.png">
+    <link rel="stylesheet" href="../static/css/Web.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="manifest" href="site.webmanifest">
+    <meta name="theme-color" content="#fafafa">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" rel="stylesheet">
+    <script crossorigin="anonymous" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script crossorigin="anonymous" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+            src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script crossorigin="anonymous" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+            src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <meta content="" property="og:title">
+    <meta content="" property="og:type">
+    <meta content="" property="og:url">
+    <meta content="" property="og:image">
+
+    <link href="/favicon.ico" rel="icon" sizes="any">
+    <link href="/icon.svg" rel="icon" type="image/svg+xml">
+    <link href="icon.png" rel="apple-touch-icon">
+
+    <link href="site.webmanifest" rel="manifest">
+    <meta content="#fafafa" name="theme-color">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <title>Spring-Restaurants-website</title>
+    <link rel="icon" type="image/x-icon" href="../static/Images/large.png">
+    <style>
+
+        body {
+            font-family: "Lato", sans-serif;
+        }
+
+        .sidenav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        .sidenav a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
+
+
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+
+        .sidenav a:hover {
+            color: #f1f1f1;
+        }
+
+        .sidenav .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+
+        @media screen and (max-height: 450px) {
+            .sidenav {padding-top: 15px;}
+            .sidenav a {font-size: 18px;}
+        }
+
+
+    </style>
+    </style>
+</head>
+<body>
+<header class="bg-light text-success">
+
+
+    <nav class="navbar navbar-expand-lg  navbar-light bg-light">
+        <a class="  navbar-brand text-success" href="loginafterPage.html">
+            <img  th:src="@{/Images/large.png}"    src="../static/Images/large.png" width="auto" height="40" class="d-inline-block align-top ">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <h2 style="text-align: center">Kebab Grill</h2>
+        <div class="collapse navbar-collapse " id="navbarTogglerDemo02" style="display: flex">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0 navbar nav-item px-4 ">
+
+
+
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search any items ">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search  </button>
+                </form>
+            </ul>
+
+
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0 navbar nav justify-content-end "  >
+                <li class="nav-item r ">
+                    <a class="nav-link text-success" href=""  th:href="@{/menuguest}">   Menu</a>
+                </li>
+
+
+                <li class="nav-item r" >
+                    <a class="nav-link text-success" href="#About us">About Us</a>
+                </li>
+
+
+                <li class="nav-item r" >
+                    <a class="nav-link text-success" href="#contact">Contact Us</a>
+                </li>
+
+                <i class="fa" style="font-size:24px">&#xf07a;</i>
+                <span class='badge badge-warning' id='lblCartCount'th:text="${cartCount}"> 0 </span>
+
+
+                <li  class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-success" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" th:text="*{userDetails}">
+
+                        Guest
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+<!--                        <a class="dropdown-item text-success" href="#" th:href="@{/profile}">My Profile</a>-->
+                        <a class="dropdown-item text-success" href="#">MY Orders</a>
+                        <div class="dropdown-divider "></div>
+                        <a class="dropdown-item text-success" href="#" th:href="@{/logout}">LogOut</a>
+                    </div>
+                </li>
+
+
+
+            </ul>
+                        <div class="dropdown-menu dropdown-menu-right px-3 py-2" aria-labelledby="navbarDropdownMenuLink-55">
+                            <ul class="nav navbar-nav nav-profile">
+                                <li><a class="page-scroll" href="">Account Profile</a></li>
+                                <li><a class="page-scroll" href="">My Orders</a></li>
+                                <li><a class="page-scroll" href="">My Favorite List</a></li>
+                                <li><a class="page-scroll" href="">Sign Out</a> </li>
+                            </ul>
+                        </div>
+        </div>
+    </nav>
+</header>
+
+
+
+
+<section class="container-fluid">
+    <div class="detailed-view-bg-container">
+        <div class="detailed-view-card-container">
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+                </ol>
+                <div class="carousel-inner">
+
+
+
+
+                    <div class="carousel-item active">
+                        <img  th:src="@{/Images/food1.jpeg }"  src="../static/Images/food1.jpeg" class="d-block w-100" alt="..." />
+                    </div>
+                    <div class="carousel-item">
+                        <img  th:src="@{/Images/food 2.jpeg}" src="../static/Images/food 2.jpeg" class="d-block w-100" alt="..." />
+                    </div>
+
+                    <div class="carousel-item">
+                        <img th:src="@{/Images/food3.jpeg}"  src="../static/Images/food3.jpeg" class="d-block w-100" alt="..." />
+                    </div>
+                    <div class="carousel-item">
+                        <img  th:src="@{/Images/large.png}" src="../static/Images/kebab grill Med b6cdb427-d696-4acd-9806-4b983327541a.png" class="d-block w-100" alt="..." />
+                    </div>
+                    <div class="carousel-item">
+                        <img  th:src="@{/Images/large.png}" src="../static/Images/kebab grill Med 0b8980ba-649a-4052-9bd9-641a7ba508d0.png" class="d-block w-100" alt="..." />
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+
+        </div>
+    </div>
+    </div>
+    <br>
+</section>
+
+
+<!--order section-->
+
+<section class="order">
+    <div>
+        <div class="view">
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+                <div align="center" class="text-center white-text mx-5 mx-sm-3 wow fadeIn"><br />
+                    <a class="btn btn-md orderNowButton" style="background-color: #45a049" href="" th:href="@{/menu}">Order Now</a></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Contact Section -->
+<section id="contact" class="container my-5 ">
+    <div class="row">
+        <div class="col-12 mb-4">
+            <h2 class="text-center">Contact Us</h2>
+        </div>
+        <div class="contactDetails">
+            <div class="row">
+                <div class="col-12  col-sm-6 col-lg-4 ">
+                    <h5 class="font-weight-bold restaurant-name">Kebab Grill </h5>
+                    <p class="address"><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp; &nbsp;
+                        4000 Dunwoody Park, Dunwoody, GA 30338</p>
+                    <p class="address"><i class="fa fa-phone" aria-hidden="true"></i>&nbsp; &nbsp;(470) 524 0970 </p>
+                    <p class="address"><i class="fa fa-envelope" aria-hidden="true"></i>&nbsp; &nbsp;<a href="mailto:orders.kebabgrill@gmail.com">orders.kebabgrilll@gmail.com</a></p>
+                </div>
+                <div class="Map">
+
+                    <div class="col-12 col md-6 col-md-8 col-8 col-6 ">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6621.291464861663!2d-84.31420802596706!3d33.92451632446669!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88f509828179dad9%3A0xb4c5929964bd6874!2s4000%20Dunwoody%20Park%2C%20Dunwoody%2C%20GA%2030338!5e0!3m2!1sen!2sus!4v1714618045387!5m2!1sen!2sus"
+                                width="500" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+
+
+<br>
+<br>
+<section id="About us" class="container my-5">
+    <div class="row">
+        <div class="col-12 mb-4">
+            <h2 class="text-center">About Us</h2>
+            <p class="mb-4"><em>Kebab Grill  sets itself apart as a premier destination for fine dine in, combining a user-friendly interface, extensive Menu  catalog, secure payment options, personalized recommendations, responsive customer support, seamless order tracking, and mobile accessibility.<br>It's about constantly challenging the status quo.</em></p>
+        </div>
+    </div>
+</section>
+
+
+<footer class=" bg-success  text-light py-4">
+    <div class="row ">
+        <div class="col-md-3" >
+            <a class="  navbar-brand text-success" href="/">
+                <img th:src="@{/Images/large.png}"   src="../static/Images/large.png" class="mb-2" width="100">
+                <h5>Kebab Grill</h5>
+            </a>
+            <p>Eat Like Home  <br> Feel Like Home </p>
+        </div>
+        <div class="col-md-3 text-light ">
+            <h3>Navigation</h3>
+            <ul class="list-unstyled">
+                <li><a href="/" class="text-decoration-none text-light">Home</a></li>
+                <li><a class="text-decoration-none text-light" href="menu" > Menu</a></li>
+                <li><a href="#contact" class="text-decoration-none text-light">Contact</a></li>
+            </ul>
+        </div>
+        <div class="col-md-3 text-light">
+            <h3>Follow Us</h3>
+            <ul class="list-unstyled">
+                <li><a href="#" class=" text-decoration-none  fab fa-facebook-f fa-1x" style="color: #3b5998 ">  Facebook</a></li>
+                <li><a href="#" class="text-decoration-none  fab fa-twitter fa-1x" style="color: #55acee "> Twitter</a></li>
+                <li><a href="#" class="text-decoration-none  fab fa-instagram fa-1x" style="color: #ac2bac"> Instagram</a></li>
+                <li><a href="#" class="text-decoration-none  fab fa-youtube fa-1x" style="color: #ed302f">  YouTube</a></li>
+            </ul>
+        </div>
+
+        <div class="col-md-3 ">
+            <h4 class="heading">We Accept</h4>
+
+            <div class="credit-list">
+                    <span>
+                        <img src="https://cdn.restrozap.com/images/common/svg/visa.svg" onerror="this.src='/images/common/svg/visa.svg'" alt="VISA payment" width="44" />
+                    </span>
+                <span>
+                        <img src="https://cdn.restrozap.com/images/common/svg/mastercard.svg" onerror="this.src='/images/common/svg/mastercard.svg'" alt="VISA payment" width="44" />
+                    </span>
+                <span>
+                        <img src="https://cdn.restrozap.com/images/common/svg/american_express.svg" onerror="this.src='/images/common/svg/american_express.svg'" alt="VISA payment" width="44" />
+                    </span>
+                <span>
+                        <img src="https://cdn.restrozap.com/images/common/svg/discover.svg" onerror="this.src='/images/common/svg/discover.svg'" alt="VISA payment" width="44" />
+                    </span>
+            </div>
+            <ul class="list-unstyled ">
+                <li>
+                    <a  class="  text-decoration-none text-danger" href="reportForm">
+                        <!--                    <span style = 'font-size:100px;'>&#128681;</span>-->
+                        &#128681 Report a problem</a></li>
+
+            </ul>
+        </div>
+    </div>
+
+
+
+    <!--   <button class="open-button" onclick="openForm()">Open Form</button>-->
+
+
+    <hr class="my-4">
+    <div class="text-center">&copy; Copyright 2024 - Kebab Grill</div>
+    </div>
+</footer>
+
+
+
+<!--<script>-->
+<!--    function openForm() {-->
+<!--        document.getElementById("myForm").style.display = "block";-->
+<!--    }-->
+
+<!--    function closeForm() {-->
+<!--        document.getElementById("myForm").style.display = "none";-->
+<!--    }-->
+<!--</script>-->
+</body>
+</html>
