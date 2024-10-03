@@ -16,13 +16,13 @@ pipeline {
         }
         stage('Build') {
             steps {
-             dir('Kebab-grill website')
+             dir('Kebab-grill website'){
                 bat "mvn compile"  // Maven build; stops pipeline if compile fails
             }
         }
         stage('Test') {
             steps {
-              dir('Kebab-grill website')
+              dir('Kebab-grill website'){
                 bat "mvn test"  // Maven tests; stops pipeline if tests fail
             }
         }
