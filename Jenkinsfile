@@ -5,6 +5,9 @@ pipeline {
         maven "M3"
         git "Git"
     }
+    triggers {
+        githubPush() // This triggers the build on GitHub events like PR updates
+    }
     stages {
         stage('Git Checkout') {
             steps {
