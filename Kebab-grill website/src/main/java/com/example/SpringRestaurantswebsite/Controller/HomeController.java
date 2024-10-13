@@ -32,6 +32,7 @@ import javax.mail.MessagingException;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.*;
@@ -249,6 +250,7 @@ public class HomeController {
     @GetMapping("/reportForm")
     public String getRegPage(Model model) {
         model.addAttribute("problemForm", new ProblemForm());
+        model.addAttribute("cartCount", GlobalData.cart.size());
 
         return "reportForm";
     }
@@ -319,7 +321,7 @@ public class HomeController {
     @GetMapping("/generate")
     public void generateQRCode(HttpServletResponse response) throws IOException {
         //String url = "http://localhost:8080/menu";// Replace with your menu URL
-        String url = "https://youtube.com";
+        String url = "http://localhost:8080/menu";
 
         QRCodeWriter qrCodeWriter = new QRCodeWriter();
         try {
@@ -340,8 +342,8 @@ public class HomeController {
 
     @GetMapping("/logout")
     public String logout() {
+        GlobalData.cart.clear();
         return "index";
-
     }
 
 

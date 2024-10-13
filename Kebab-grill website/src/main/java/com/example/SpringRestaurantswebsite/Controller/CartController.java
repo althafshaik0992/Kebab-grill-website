@@ -3,6 +3,7 @@ package com.example.SpringRestaurantswebsite.Controller;
 
 import com.example.SpringRestaurantswebsite.Global.GlobalData;
 import com.example.SpringRestaurantswebsite.Model.Product;
+import com.example.SpringRestaurantswebsite.Repository.ProductRepository;
 import com.example.SpringRestaurantswebsite.Service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -43,7 +45,9 @@ public class CartController {
 
 
     @PostMapping("/add-to-cart")
-    public String addToCart(@RequestParam("product_id") Long productId, Model model) {
+    public String addToCart(@RequestParam("product_id") Long productId, Model model) throws Exception {
+
+
         // Add product to the cart
         GlobalData.cart.add(productService.getProductById(productId).get());
 
@@ -95,9 +99,15 @@ public class CartController {
     }
 
     @GetMapping("/checkout")
-        public String checkout(Model model){
-        model.addAttribute("total", GlobalData.cart.stream().mapToDouble(Product::getPrice).sum());
-        return "checkout";
+        public String checkout(Model model, Principal principal) {
+        if (principal == null) {
+            GlobalData.cart.clear();
+            model.addAttribute("cart", GlobalData.cart);
+            return "redirect:/login";
+        } else {
+            model.addAttribute("total", GlobalData.cart.stream().mapToDouble(Product::getPrice).sum());
+            return "checkout";
+        }
     }
     }
 

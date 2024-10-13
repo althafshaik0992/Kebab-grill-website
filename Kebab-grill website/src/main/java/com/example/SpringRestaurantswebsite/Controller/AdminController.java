@@ -61,7 +61,7 @@ public class AdminController {
     public String enabledProduct(@PathVariable  Long id, RedirectAttributes redirectAttributes) {
             productService.enableById(id);
             redirectAttributes.addFlashAttribute("success", "Enabled successfully!");
-        return "redirect:/products";
+        return "redirect:/admin/products";
     }
 
 
@@ -139,6 +139,8 @@ public class AdminController {
     }
 
 
+
+
     @GetMapping("/admin/product/update/{id}")
     public String  updateById(@PathVariable Long id , Model model){
        Product product = productService.getProductById(id).get();
@@ -156,6 +158,8 @@ public class AdminController {
         return "productAdd";
 
     }
+
+
 
 
 

@@ -1,7 +1,6 @@
 package com.example.SpringRestaurantswebsite.Config;
 
 import com.example.SpringRestaurantswebsite.Dto.UserRegisteredDTO;
-import com.example.SpringRestaurantswebsite.Model.CustomerUser;
 import com.example.SpringRestaurantswebsite.Repository.CustomerUserRepository;
 import com.example.SpringRestaurantswebsite.Service.CustomerDetailsService;
 import jakarta.servlet.ServletException;
@@ -14,7 +13,6 @@ import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
-
 import java.io.IOException;
 
 
@@ -30,7 +28,7 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
-                                        Authentication authentication) throws IOException, ServletException {
+                                        Authentication authentication ) throws IOException, ServletException {
 
        // CustomerUser customerUser = new CustomerUser();
         String redirectUrl = "/dashboard";
@@ -50,6 +48,4 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
         //redirectUrl = "/dashboard";
         new DefaultRedirectStrategy().sendRedirect(request, response, redirectUrl);
     }
-
-
 }

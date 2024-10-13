@@ -35,7 +35,6 @@ private  int quantity;
     private boolean is_activated;
     private boolean is_deleted;
 
-
     public Product(int i, String s, int ten) {
     }
 

@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.expression.ExpressionException;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -74,7 +75,6 @@ public class ProductService {
    public List<Product> findByCategoryId(Long id) {
         return null;
     }
-
 
     public void enableById(Long id) {
         Product product = productRepository.getById(id);

@@ -7,12 +7,14 @@ import com.example.SpringRestaurantswebsite.Dto.UserRegisteredDTO;
 import com.example.SpringRestaurantswebsite.Global.GlobalData;
 import com.example.SpringRestaurantswebsite.Model.CustomerUser;
 import com.example.SpringRestaurantswebsite.Model.PasswordResetToken;
+import com.example.SpringRestaurantswebsite.Model.Product;
 import com.example.SpringRestaurantswebsite.Repository.CustomerUserRepository;
 import com.example.SpringRestaurantswebsite.Repository.TokenRepository;
 import com.example.SpringRestaurantswebsite.Service.CategoryService;
 import com.example.SpringRestaurantswebsite.Service.CustomerDetailsService;
 import com.example.SpringRestaurantswebsite.Service.CustomerDetailsServiceImpl;
 import com.example.SpringRestaurantswebsite.Service.ProductService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -26,6 +28,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.security.Principal;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -118,29 +123,78 @@ public class LoginController {
 
 
 
-        @GetMapping("/dashboard")
-        public String displayDashboard(Model model) {
-            SecurityContext securityContext = SecurityContextHolder.getContext();
-            if (securityContext.getAuthentication().getPrincipal() instanceof DefaultOAuth2User) {
-                DefaultOAuth2User user = (DefaultOAuth2User) securityContext.getAuthentication().getPrincipal();
-                model.addAttribute("userDetails", user.getAttribute("name") != null ? user.getAttribute("name") : user.getAttribute("login"));
-                model.addAttribute("categories", categoryService.getCategoryList());
-                model.addAttribute("cartCount", GlobalData.cart.size());
-                model.addAttribute("products", productService.getProductList());
+//        @GetMapping("/dashboard")
+//        public String displayDashboard(Model model, Principal principal, HttpSession session) {
+//            if (principal != null) {
+//                // Check if the cart is stored in session
+//                if (session.getAttribute("cart") != null) {
+//                    GlobalData.cart = (List<Product>) session.getAttribute("cart");
+//                } else {
+//                    // If there's no cart in the session, initialize it
+//                    GlobalData.cart = new ArrayList<>(); // Or however you want to initialize it
+//                }
+//            }
+//            SecurityContext securityContext = SecurityContextHolder.getContext();
+//            if (securityContext.getAuthentication().getPrincipal() instanceof DefaultOAuth2User) {
+//                DefaultOAuth2User user = (DefaultOAuth2User) securityContext.getAuthentication().getPrincipal();
+//                model.addAttribute("userDetails", user.getAttribute("name") != null ? user.getAttribute("name") : user.getAttribute("login"));
+//                model.addAttribute("categories", categoryService.getCategoryList());
+//                model.addAttribute("cartCount", GlobalData.cart.size());
+//                model.addAttribute("products", productService.getProductList());
+//
+//
+//            } else {
+//                User user = (User) securityContext.getAuthentication().getPrincipal();
+//                CustomerUser users = customerUserRepository.findByEmail(user.getUsername());
+//                model.addAttribute("userDetails", users.getName());
+//                model.addAttribute("categories", categoryService.getCategoryList());
+//                model.addAttribute("cartCount", GlobalData.cart.size());
+//                model.addAttribute("products", productService.getProductList());
+//
+//            }
+//            model.addAttribute("cartCount", GlobalData.cart.size());
+//            model.addAttribute("cart", GlobalData.cart);
+//            return "loginafterPage";
+//
+//        }
 
 
+
+
+    @GetMapping("/dashboard")
+    public String displayDashboard(Model model, Principal principal, HttpSession session) {
+        // Retrieve the cart from session if the user is logged in
+        if (principal != null) {
+            // Check if the cart is stored in session
+            if (session.getAttribute("cart") != null) {
+                GlobalData.cart = (List<Product>) session.getAttribute("cart");
             } else {
-                User user = (User) securityContext.getAuthentication().getPrincipal();
-                CustomerUser users = customerUserRepository.findByEmail(user.getUsername());
-                model.addAttribute("userDetails", users.getName());
-                model.addAttribute("categories", categoryService.getCategoryList());
-                model.addAttribute("cartCount", GlobalData.cart.size());
-                model.addAttribute("products", productService.getProductList());
-
+                // If there's no cart in the session, initialize it
+                GlobalData.cart = new ArrayList<>(); // Or however you want to initialize it
             }
-            return "loginafterPage";
-
         }
+
+        // Security context to get user details
+        SecurityContext securityContext = SecurityContextHolder.getContext();
+
+        if (securityContext.getAuthentication().getPrincipal() instanceof DefaultOAuth2User) {
+            DefaultOAuth2User user = (DefaultOAuth2User) securityContext.getAuthentication().getPrincipal();
+            model.addAttribute("userDetails", user.getAttribute("name") != null ? user.getAttribute("name") : user.getAttribute("login"));
+        } else {
+            User user = (User) securityContext.getAuthentication().getPrincipal();
+            CustomerUser users = customerUserRepository.findByEmail(user.getUsername());
+            model.addAttribute("userDetails", users.getName());
+        }
+
+        // Prepare other model attributes
+        model.addAttribute("categories", categoryService.getCategoryList());
+        model.addAttribute("cartCount", GlobalData.cart.size()); // Count of items in the cart
+        model.addAttribute("products", productService.getProductList());
+        model.addAttribute("cart", GlobalData.cart); // Pass the cart to the view
+
+        return "loginafterPage"; // Render the dashboard page
+    }
+
 
     @GetMapping("/menuafterlogin")
     public String loginafterlogin(Model model) {
