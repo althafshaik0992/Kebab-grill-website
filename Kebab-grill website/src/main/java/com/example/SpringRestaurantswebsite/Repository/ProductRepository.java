@@ -18,8 +18,6 @@ public interface ProductRepository  extends JpaRepository<Product,Long> {
     @Query("select p from Product p where p.name like %?1% or p.description like %?1%")
     List<Product> findAllByNameOrDescription(String keyword);
 
-
-
     @Query(value = "select " +
             "p.id, p.name, p.description, p.quantity, p.price, p.category_id, p.image_Name, p.is_activated, p.is_deleted " +
             "from product p where p.is_deleted = false and p.is_activated = true order by p.price desc limit 9", nativeQuery = true)

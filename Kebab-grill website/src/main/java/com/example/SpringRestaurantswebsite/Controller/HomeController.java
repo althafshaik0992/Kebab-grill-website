@@ -14,9 +14,12 @@ import com.example.SpringRestaurantswebsite.Repository.CustomerUserRepository;
 import com.example.SpringRestaurantswebsite.Repository.ProblemFormRepository;
 import com.example.SpringRestaurantswebsite.Service.CategoryService;
 import com.example.SpringRestaurantswebsite.Service.ProductService;
+import com.google.zxing.EncodeHintType;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
@@ -29,10 +32,16 @@ import javax.mail.MessagingException;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import java.util.Date;
-import java.util.List;
-import java.util.Properties;
-import java.util.UUID;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.util.*;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.client.j2se.MatrixToImageWriter;
+import com.google.zxing.qrcode.QRCodeWriter;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
 
 
 @Controller
@@ -241,6 +250,7 @@ public class HomeController {
     @GetMapping("/reportForm")
     public String getRegPage(Model model) {
         model.addAttribute("problemForm", new ProblemForm());
+        model.addAttribute("cartCount", GlobalData.cart.size());
 
         return "reportForm";
     }
@@ -308,11 +318,37 @@ public class HomeController {
     }
 
 
+    @GetMapping("/generate")
+    public void generateQRCode(HttpServletResponse response) throws IOException {
+        //String url = "http://localhost:8080/menu";// Replace with your menu URL
+        String url = "http://localhost:8080/menu";
+
+        QRCodeWriter qrCodeWriter = new QRCodeWriter();
+        try {
+            Map<EncodeHintType, Object> hints = new HashMap<>();
+            hints.put(EncodeHintType.CHARACTER_SET, "UTF-8");
+            BitMatrix bitMatrix = new MultiFormatWriter().encode(url, BarcodeFormat.QR_CODE, 200, 200);
+
+            response.setContentType(MediaType.IMAGE_PNG_VALUE);
+            OutputStream outputStream = response.getOutputStream();
+            MatrixToImageWriter.writeToStream(bitMatrix, "PNG", outputStream);
+            outputStream.close();
+        } catch (WriterException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 
     @GetMapping("/logout")
-    public String logout(){
+    public String logout() {
+        GlobalData.cart.clear();
         return "index";
     }
+
+
+
+
 
 
         public Properties propertiesServer() {

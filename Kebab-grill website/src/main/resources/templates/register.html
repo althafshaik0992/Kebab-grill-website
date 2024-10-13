@@ -109,8 +109,8 @@
             text-decoration: underline;
         }
         .field input[type="submit"]{
-            background: #3498db;
-            border: 1px solid #2691d9;
+            background:lightgreen;
+            border: 1px solid lightgreen;
             color: white;
             font-size: 18px;
             letter-spacing: 1px;
@@ -119,10 +119,16 @@
             font-family: 'Montserrat',sans-serif;
         }
         .field input[type="submit"]:hover{
-            background: #2691d9;
+            background: lightgreen;
         }
         .login{
             color: white;
+            margin: 20px 0;
+            font-family: 'Poppins',sans-serif;
+        }
+
+        .loginButton{
+            color: lightgreen;
             margin: 20px 0;
             font-family: 'Poppins',sans-serif;
         }
@@ -244,7 +250,7 @@
 
             <div class="login">
                 Already have an account?
-                <a href="login.html" th:href="@{/login}">Login Now</a>
+                <a class="loginButton" href="login.html" th:href="@{/login}">Login Now</a>
             </div>
         </form>
     </div>
