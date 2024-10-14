@@ -132,6 +132,9 @@
             margin: 20px 0;
             font-family: 'Poppins',sans-serif;
         }
+        .loginButton input[type="login"]:hover {
+            background: darkgreen;
+        }
         .links{
             display: flex;
             cursor: pointer;
@@ -186,6 +189,9 @@
         }
         .signup a:hover{
             text-decoration: underline;
+        }
+        .field input[type="submit"]:hover {
+            background: darkgreen;
         }
         .invalid-feedback{
             color: red;
@@ -250,7 +256,7 @@
 
             <div class="login">
                 Already have an account?
-                <a class="loginButton" href="login.html" th:href="@{/login}">Login Now</a>
+                <a class="loginButton"  href="login.html" th:href="@{/login}">Login Now</a>
             </div>
         </form>
     </div>

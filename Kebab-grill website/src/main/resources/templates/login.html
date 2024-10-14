@@ -10,32 +10,29 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700|Poppins:400,500&display=swap');
-        *{
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             user-select: none;
         }
-        .bg-img{
+        .bg-img {
             height: 100vh;
-
-            background-size:inherit;
-            background: url('large.png');
+            background: url('large.png') no-repeat center;
+            background-size: cover;
         }
-        .bg-img:after{
+        .bg-img:after {
             position: absolute;
             content: '';
             top: 0;
             left: 0;
             height: 100%;
             width: 100%;
-            background: rgba(0,0,0,0.7);
+            background: rgba(0, 0, 0, 0.7);
         }
-        .content{
+        .content {
             position: absolute;
             top: 50%;
             left: 50%;
@@ -43,30 +40,30 @@
             text-align: center;
             padding: 60px 32px;
             width: 370px;
-            transform: translate(-50%,-50%);
-            background: rgba(255,255,255,0.04);
-            box-shadow: -1px 4px 28px 0px rgba(0,0,0,0.75);
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.04);
+            box-shadow: -1px 4px 28px 0px rgba(0, 0, 0, 0.75);
         }
-        .content header{
+        .content header {
             color: white;
             font-size: 33px;
             font-weight: 600;
             margin: 0 0 35px 0;
-            font-family: 'Montserrat',sans-serif;
+            font-family: 'Montserrat', sans-serif;
         }
-        .field{
+        .field {
             position: relative;
             height: 45px;
             width: 100%;
             display: flex;
-            background: rgba(255,255,255,0.94);
+            background: rgba(255, 255, 255, 0.94);
         }
-        .field span{
+        .field span {
             color: #222;
             width: 40px;
             line-height: 45px;
         }
-        .field input{
+        .field input {
             height: 100%;
             width: 100%;
             background: transparent;
@@ -74,37 +71,24 @@
             outline: none;
             color: #222;
             font-size: 16px;
-            font-family: 'Poppins',sans-serif;
+            font-family: 'Poppins', sans-serif;
         }
-        .space{
+        .space {
             margin-top: 16px;
         }
-        .show{
-            position: absolute;
-            right: 13px;
-            font-size: 13px;
-            font-weight: 700;
-            color: #222;
-            display: none;
-            cursor: pointer;
-            font-family: 'Montserrat',sans-serif;
-        }
-        .pass-key:valid ~ .show{
-            display: block;
-        }
-        .pass{
+        .pass {
             text-align: left;
             margin: 15px 0;
         }
-        .pass a{
+        .pass a {
             color: white;
             text-decoration: none;
-            font-family: 'Poppins',sans-serif;
+            font-family: 'Poppins', sans-serif;
         }
-        .pass:hover a{
+        .pass:hover a {
             text-decoration: underline;
         }
-        .field input[type="submit"]{
+        .field input[type="submit"] {
             background: lightgreen;
             border: 1px solid lightgreen;
             color: white;
@@ -112,73 +96,72 @@
             letter-spacing: 1px;
             font-weight: 600;
             cursor: pointer;
-            font-family: 'Montserrat',sans-serif;
+            font-family: 'Montserrat', sans-serif;
         }
-        .field input[type="submit"]:hover{
-            background: lightgreen;
+        .field input[type="submit"]:hover {
+            background: darkgreen;
         }
-        .login{
+        .login {
             color: white;
             margin: 20px 0;
-            font-family: 'Poppins',sans-serif;
+            font-family: 'Poppins', sans-serif;
         }
-        .links{
+        .login .social-btns {
             display: flex;
-            cursor: pointer;
+            justify-content: center;
+            gap: 15px;
+        }
+        .btn-social {
+            display: inline-block;
+            width: 100%;
             color: white;
-            margin: 0 0 20px 0;
-        }
-
-
-
-
-        .links i{
-            font-size: 17px;
-        }
-        i span{
-            margin-left: 8px;
-            font-weight: 500;
-            letter-spacing: 1px;
             font-size: 16px;
-            font-family: 'Poppins',sans-serif;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            transition: background 0.3s;
         }
-        .signup{
+        .btn-facebook {
+            background-color: #3b5998;
+        }
+        .btn-facebook:hover {
+            background-color: #2d4373;
+        }
+        .btn-google {
+            background-color: #db4437;
+        }
+        .btn-google:hover {
+            background-color: #c23321;
+        }
+        .fa-facebook, .fa-google {
+            margin-right: 10px;
+        }
+        .signup {
             font-size: 15px;
             color: black;
-            font-family: 'Poppins',sans-serif;
+            font-family: 'Poppins', sans-serif;
         }
-        .signup a{
-            color: lightgreen;
+        .signup a {
+            color: rgba(144, 238, 144, 0.97);
             text-decoration: none;
         }
-        .signup a:hover{
+        .signup a:hover {
             text-decoration: underline;
         }
-
-        .fa-google {
-            background:red;
-            color: white;
-        }
-
-
-
-
-
     </style>
-    <title> Responsive Login and Signup Form </title>
+    <title>Login and Signup</title>
 </head>
 
 <body>
-<div class ="bg-img">
+<div class="bg-img">
     <div class="content">
-        <br>
-        <br>
-        <img th:src="@{/Images/large.png}"   src="../static/Images/large.png" class="mb-2" width="100">
         <header>Login</header>
-        <form  th:action="@{/login}" method="post" th:object="${customer}">
+        <form th:action="@{/login}" method="post" th:object="${customer}">
             <div class="field">
                 <span class="fa fa-user"></span>
-                <input  th:field="*{username}" type="text" required placeholder="Email or Phone">
+                <input th:field="*{username}" type="text" required placeholder="Email or Phone">
             </div>
             <div class="field space">
                 <span class="fa fa-lock"></span>
@@ -188,69 +171,46 @@
             <div th:if="${param.error}" class="alert alert-error text-danger">
                 Invalid username or password.
             </div>
-
             <div class="pass">
                 <a href="forgotPassword.html" th:href="@{/forgotPassword}">Forgot Password?</a>
             </div>
-            <div class="field ">
+            <div class="field">
                 <input type="submit" value="LOGIN">
             </div>
         </form>
-        <div class="login  ">
-            Don't have account?
-            <br>
-            <a href="register.html" class="text-success" th:href="@{/registration}">Signup Now</a>
-            or
-            <a href="#" class="text-success" th:href="@{/loginguest}" >Guest</a>
-            or
-            <br>
-            <a href="#"  th:href="@{/oauth2/authorization/facebook}" class="fab fa-facebook"></a>
-            or
-            <a href="#"  th:href="@{/oauth2/authorization/google}" class="fab fa-google"></a>
-
+        <div class="login">
+            <p>Don't have an account?</p>
+            <a href="register.html" class="text-success" th:href="@{/registration}">Signup Now</a> or
+            <a href="#" class="text-success" th:href="@{/loginguest}">Guest</a>
         </div>
-<!--        <div >-->
-<!--            Or login with-->
-<!--            <a href="index"  th:href="@{/home}">Guest</a>-->
-<!--            or-->
-<!--            <a href="#" th:href="@{/oauth2/authorization/facebook}" class="fa fa-facebook"></a>-->
-<!--            or-->
-<!--            <a href="#" th:href="@{/oauth2/authorization/google}" class="fa fa-google"></a>-->
-<!--        </div>-->
 
-
-<!--        <div class="links">-->
-<!--            <div class="facebook">-->
-<!--                <a th:href="@{/oauth2/authorization/facebook}"class="fab fa-facebook-f"><span>acebook</span></a>-->
-<!--            </div>-->
-<!--            <div class="google">-->
-<!--                <a  href="" th:href="@{/oauth2/authorization/google}" class="fab fa-google"><span>oogle</span></a>-->
-<!--            </div>-->
-
-
-<!--        </div>-->
-<!--&lt;!&ndash;        <div class="signup">&ndash;&gt;-->
-<!--&lt;!&ndash;            Don't have account?&ndash;&gt;-->
-<!--&lt;!&ndash;            <a href="register.html"  th:href="@{/registration}">Signup Now</a>&ndash;&gt;-->
-<!--&lt;!&ndash;        </div>&ndash;&gt;-->
-<!--    </div>-->
-
+        <div class="social-btns">
+            <a href="#" th:href="@{/oauth2/authorization/facebook}" class="btn-social btn-facebook">
+                <i class="fab fa-facebook"></i> Continue with Facebook
+            </a>
+            <br>
+            <br>
+            <a href="#" th:href="@{/oauth2/authorization/google}" class="btn-social btn-google">
+                <i class="fab fa-google"></i> Continue with Google
+            </a>
+        </div>
+    </div>
 </div>
+
 <script>
-    const pass_field = document.querySelector('.pass-key');
+    const passField = document.querySelector('.pass-key');
     const showBtn = document.querySelector('.show');
-    showBtn.addEventListener('click', function(){
-        if(pass_field.type === "password"){
-            pass_field.type = "text";
+    showBtn.addEventListener('click', function () {
+        if (passField.type === "password") {
+            passField.type = "text";
             showBtn.textContent = "HIDE";
-            showBtn.style.color = "#3498db";
-        }else{
-            pass_field.type = "password";
+            showBtn.style.color = "rgba(144,238,144,0.97)";
+        } else {
+            passField.type = "password";
             showBtn.textContent = "SHOW";
-            showBtn.style.color = "#222";
+            showBtn.style.color = "rgba(144,238,144,0.97)";
         }
     });
 </script>
-</div>
 </body>
 </html>

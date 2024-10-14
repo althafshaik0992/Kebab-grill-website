@@ -36,6 +36,31 @@
     -moz-border-radius: 9px;
     border-radius: 9px;
 }
+.social-list {
+    list-style: none;
+    padding: 0;
+}
+
+.social-list li {
+    margin-bottom: 10px;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    font-size: 1.2em; /* Adjust the size as needed */
+}
+
+.social-icon {
+    margin-right: 8px;
+}
+
+.social-link:hover .social-icon {
+    transform: scale(1.1);
+    transition: transform 0.2s;
+}
 
 .label-warning[href],
 .badge-warning[href] {
